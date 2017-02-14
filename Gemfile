@@ -4,6 +4,7 @@ ruby '2.3.1'
 gem 'autoprefixer-rails'
 gem 'bourbon'
 gem 'flutie'
+gem 'parser', '2.3.1.1'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.0'
@@ -11,6 +12,10 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'title'
 gem 'uglifier'
+
+group :development do
+  gem 'listen'
+end
 
 group :development, :test do
   gem 'awesome_print'
