@@ -1,0 +1,46 @@
+section.calendar {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+
+  div.wrapper {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  header,
+  div.days {
+    display: flex;
+  }
+
+  header {
+    justify-content: space-between;
+  }
+
+  header div,
+  div.day {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  div.week {
+    display: flex;
+    height: 80px;
+  }
+
+  div.day {
+    color: #bbb;
+    text-align: right;
+    padding: 3px;
+  }
+
+  .day.not-month {
+    background-color: #eee;
+  }
+
+  div.day.today {
+    color: mediumorchid;
+  }
+}

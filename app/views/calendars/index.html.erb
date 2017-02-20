@@ -1,0 +1,14 @@
+<section class="calendar">
+  <header>
+    <%= link_to calendars_path(date: @date - 1.month) do %>
+      previous
+    <% end %>
+    <%= "#{@date.strftime("%B")} #{@date.year}" %>
+    <%= link_to calendars_path(date: @date + 1.month) do %>
+      next
+    <% end %>
+  </header>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+  <% end %>
+</section>
