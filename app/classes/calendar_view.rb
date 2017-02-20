@@ -1,4 +1,4 @@
-class Calendar
+class CalendarView
   HEADER = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday).freeze
   START_DAY = :sunday
 
