@@ -40,4 +40,52 @@ RSpec.describe ArDate do
       expect(date.day_number).to eq(1_720_004)
     end
   end
+
+  describe '#day_of_week' do
+    it 'returns an integer for the day of the week of a given day' do
+      date = ArDate.new(year: 1)
+
+      expect(date.day_of_week).to eq(0)
+    end
+
+    context 'when the day is later in the month' do
+      it 'returns an integer for the day of the week of a given day' do
+        date = ArDate.new(year: 1, day: 23)
+
+        expect(date.day_of_week).to eq(1)
+      end
+    end
+
+    context 'when the day is many months in' do
+      it 'returns an integer for the day of the week of a given day' do
+        date = ArDate.new(year: 1, month: 9, day: 23)
+
+        expect(date.day_of_week).to eq(6)
+      end
+    end
+
+    context 'when the day is many years in' do
+      it 'returns an integer for the day of the week of a given day' do
+        date = ArDate.new(year: 5, month: 9, day: 23)
+
+        expect(date.day_of_week).to eq(3)
+      end
+    end
+
+    context 'when the day is past a leap year' do
+      it 'returns an integer for the day of the week of a given day' do
+        date = ArDate.new(year: 10, month: 9, day: 23)
+
+        expect(date.day_of_week).to eq(2)
+      end
+    end
+
+    context 'the day is in a leap year but the leap day has not happened' do
+      it 'returns an integer for the day of the week of a given day' do
+        date = ArDate.new(year: 8, month: 1, day: 23)
+
+        expect(date.day_of_week).to eq(3)
+      end
+    end
+  end
 end
