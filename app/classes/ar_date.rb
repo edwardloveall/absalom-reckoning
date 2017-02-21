@@ -55,6 +55,12 @@ class ArDate
     )
   end
 
+
+  def beginning_of_month
+    @day = 1
+    self
+  end
+
   def day_number
     @_day_number ||= begin
       previous_year = year - 1

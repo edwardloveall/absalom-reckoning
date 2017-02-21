@@ -21,6 +21,15 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#begining_of_month' do
+    it 'returns the date at the first day of the month' do
+      date = ArDate.new(year: 4707, month: 9, day: 23)
+      month_start = ArDate.new(year: 4707, month: 9, day: 1)
+
+      expect(date.beginning_of_month).to eq(month_start)
+    end
+  end
+
   describe '#day_number' do
     it 'returns the day number for 1/1/1' do
       date = ArDate.new(year: 1, month: 1, day: 1)
