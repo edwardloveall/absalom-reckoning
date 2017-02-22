@@ -55,10 +55,8 @@ class ArDate
     )
   end
 
-
   def beginning_of_month
-    @day = 1
-    self
+    ArDate.new(year: year, month: month, day: 1)
   end
 
   def day_number
@@ -81,6 +79,7 @@ class ArDate
     else
       DAYS_IN_MONTH
     end
+  end
 
   def day_of_week
     (day_number - 1) % 7
