@@ -20,4 +20,24 @@ RSpec.describe ArDate do
       expect(date.day).to eq(23)
     end
   end
+
+  describe '#day_number' do
+    it 'returns the day number for 1/1/1' do
+      date = ArDate.new(year: 1, month: 1, day: 1)
+
+      expect(date.day_number).to eq(1)
+    end
+
+    it 'returns the day number for 1/1/9' do
+      date = ArDate.new(year: 9, month: 1, day: 1)
+
+      expect(date.day_number).to eq(2922)
+    end
+
+    it 'returns the day number for 9/23/4711' do
+      date = ArDate.new(year: 4711, month: 9, day: 23)
+
+      expect(date.day_number).to eq(1_720_004)
+    end
+  end
 end
