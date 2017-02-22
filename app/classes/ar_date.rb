@@ -59,6 +59,11 @@ class ArDate
     ArDate.new(year: year, month: month, day: 1)
   end
 
+  def end_of_month
+    last_day = DAYS_IN_MONTH.values[month - 1]
+    ArDate.new(year: year, month: month, day: last_day)
+  end
+
   def day_number
     @_day_number ||= begin
       previous_year = year - 1

@@ -50,6 +50,15 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#end_of_month' do
+    it 'returns the date at the last day of the month' do
+      date = ArDate.new(year: 4707, month: 9, day: 23)
+      month_end = ArDate.new(year: 4707, month: 9, day: 30)
+
+      expect(date.end_of_month).to eq(month_end)
+    end
+  end
+
   describe '#day_of_week' do
     it 'returns an integer for the day of the week of a given day' do
       date = ArDate.new(year: 1)
