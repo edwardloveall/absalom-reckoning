@@ -77,10 +77,6 @@ class ArDate
     end
 
   def day_of_week
-    days_from_years = (year - 1) * 365
-    days_from_months = DAYS_IN_MONTH.values.first(month - 1).reduce(0, :+)
-    leap_days = (year / 8)
-    total_days = days_from_years + days_from_months + leap_days + (day - 1)
-    total_days % 7
+    (day_number - 1) % 7
   end
 end

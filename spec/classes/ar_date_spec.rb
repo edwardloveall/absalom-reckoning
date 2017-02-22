@@ -84,7 +84,7 @@ RSpec.describe ArDate do
       it 'returns an integer for the day of the week of a given day' do
         date = ArDate.new(year: 8, month: 1, day: 23)
 
-        expect(date.day_of_week).to eq(3)
+        expect(date.day_of_week).to eq(1)
       end
     end
   end
