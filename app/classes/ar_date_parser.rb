@@ -30,32 +30,64 @@ class ArDateParser
   }.freeze
 
   def self.from_day_number(day_number)
-    days_in_year = 365
-    fractional_leap_day = 1/8.to_f
-    average_days_in_year = days_in_year + fractional_leap_day
+    new.from_day_number(day_number)
+  end
 
-    year = (day_number / average_days_in_year).ceil
-    previous_year = year - 1
-
-    leap_days_before_year = previous_year / 8
-    days_before_year = 365 * previous_year + leap_days_before_year
-    days_into_year = day_number - days_before_year
-
-    leap_year = (year % 8).zero?
-    month_starts = MONTH_START_DAYS
-
-    if leap_year
-      month_starts = LEAP_YEAR_MONTH_START_DAYS
-    end
-
-    month = 0
-    while !(days_into_year <= month_starts.values[month])
-      month += 1
-    end
-
-    month_index = month - 1
-    day = days_into_year - month_starts.values[month_index]
-
+  def from_day_number(day_number)
+    @day_number = day_number
     ArDate.new(year: year, month: month, day: day)
+  end
+
+  private
+
+  attr_reader :day_number
+
+  def year
+    @_year || begin
+      days_in_year = 365
+      fractional_leap_day = 1 / 8.to_f
+      average_days_in_year = days_in_year + fractional_leap_day
+
+      (day_number / average_days_in_year).ceil
+    end
+  end
+
+  def days_into_year
+    @_days_into_year ||= begin
+      previous_year = year - 1
+
+      leap_days_before_year = previous_year / 8
+      days_before_year = 365 * previous_year + leap_days_before_year
+      day_number - days_before_year
+    end
+  end
+
+  def leap_year?
+    (year % 8).zero?
+  end
+
+  def month_starts
+    if leap_year?
+      LEAP_YEAR_MONTH_START_DAYS
+    else
+      MONTH_START_DAYS
+    end
+  end
+
+  def month
+    @_month ||= begin
+      month = 0
+      while !(days_into_year <= month_starts.values[month])
+        month += 1
+      end
+      month
+    end
+  end
+
+  def day
+    @_day ||= begin
+      month_index = month - 1
+      days_into_year - month_starts.values[month_index]
+    end
   end
 end
