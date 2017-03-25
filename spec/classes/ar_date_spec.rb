@@ -57,6 +57,15 @@ RSpec.describe ArDate do
 
       expect(date.end_of_month).to eq(month_end)
     end
+
+    context 'when in a leap month' do
+      it 'returns the date at the last day of the month' do
+        date = ArDate.new(year: 8, month: 2, day: 20)
+        month_end = ArDate.new(year: 8, month: 2, day: 29)
+
+        expect(date.end_of_month).to eq(month_end)
+      end
+    end
   end
 
   describe '#day_of_week' do

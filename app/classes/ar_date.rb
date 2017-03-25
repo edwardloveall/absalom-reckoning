@@ -60,7 +60,7 @@ class ArDate
   end
 
   def end_of_month
-    last_day = DAYS_IN_MONTH.values[month - 1]
+    last_day = days_in_month.values[month - 1]
     ArDate.new(year: year, month: month, day: last_day)
   end
 
