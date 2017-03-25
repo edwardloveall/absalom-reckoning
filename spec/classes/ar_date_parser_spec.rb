@@ -76,5 +76,16 @@ RSpec.describe ArDateParser do
         end
       end
     end
+
+    context 'when a day is in the last month of the year' do
+      it 'returns an ArDate from the day number' do
+        day = 349
+        date = ArDate.new(year: 1, month: 12, day: 15)
+
+        parsed_date = ArDateParser.from_day_number(day)
+
+        expect(parsed_date).to eq(date)
+      end
+    end
   end
 end

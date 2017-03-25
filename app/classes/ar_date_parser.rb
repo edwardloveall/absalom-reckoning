@@ -76,11 +76,10 @@ class ArDateParser
 
   def month
     @_month ||= begin
-      month = 0
-      while !(days_into_year <= month_starts.values[month])
-        month += 1
+      included_months = month_starts.select do |_, start|
+        start < days_into_year
       end
-      month
+      included_months.count
     end
   end
 
