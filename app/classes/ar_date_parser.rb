@@ -30,32 +30,16 @@ class ArDateParser
   }.freeze
 
   def self.from_day_number(day_number)
-    year = 0
-    month = 0
-    day = 0
+    days_in_year = 365
+    fractional_leap_day = 1/8.to_f
+    average_days_in_year = days_in_year + fractional_leap_day
 
-    shift_years = 7
-    day_after_leap_day = 31 + 29 + 1
-    start_of_month_two = 31 + 28 + 1
-    after_first_leap_day = (365 * shift_years) + day_after_leap_day
-    days_into_year = 0
+    year = (day_number / average_days_in_year).ceil
+    previous_year = year - 1
 
-    if day_number >= after_first_leap_day
-      leap_cycle = (365 * 8) + 1
-      shift_days = day_number - after_first_leap_day
-      leap_cycles = shift_days / leap_cycle
-      days_since_last_leap = shift_days % leap_cycle
-      days_into_year = (shift_days + start_of_month_two) % 365
-      years_since_last_leap = days_since_last_leap / 365
-
-      if days_into_year < start_of_month_two
-        years_since_last_leap += 1
-      end
-      year = leap_cycles * 8 + years_since_last_leap + shift_years + 1
-    else
-      year = (day_number / 365.to_f).ceil
-      days_into_year = day_number % 365
-    end
+    leap_days_before_year = previous_year / 8
+    days_before_year = 365 * previous_year + leap_days_before_year
+    days_into_year = day_number - days_before_year
 
     leap_year = (year % 8).zero?
     month_starts = MONTH_START_DAYS
@@ -64,12 +48,13 @@ class ArDateParser
       month_starts = LEAP_YEAR_MONTH_START_DAYS
     end
 
+    month = 0
     while !(days_into_year <= month_starts.values[month])
       month += 1
     end
 
-    day = days_into_year - month_starts.values[month - 1]
-    binding.pry
+    month_index = month - 1
+    day = days_into_year - month_starts.values[month_index]
 
     ArDate.new(year: year, month: month, day: day)
   end
