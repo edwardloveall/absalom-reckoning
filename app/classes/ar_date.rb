@@ -1,4 +1,44 @@
 class ArDate
+  DAYS_INTO_WEEK = {
+    moonday: 0,
+    toilday: 1,
+    wealday: 2,
+    oathday: 3,
+    fireday: 4,
+    starday: 5,
+    sunday: 6
+  }
+
+  DAYS_IN_MONTH = {
+    abadius: 31,
+    calistril: 28,
+    pharast: 31,
+    gozran: 30,
+    desnus: 31,
+    sarenith: 30,
+    erastus: 31,
+    arodus: 31,
+    rova: 30,
+    lamashan: 31,
+    neth: 30,
+    kuthona: 31
+  }
+
+  LEAP_YEAR_DAYS_IN_MONTH = {
+    abadius: 31,
+    calistril: 29,
+    pharast: 31,
+    gozran: 30,
+    desnus: 31,
+    sarenith: 30,
+    erastus: 31,
+    arodus: 31,
+    rova: 30,
+    lamashan: 31,
+    neth: 30,
+    kuthona: 31
+  }
+
   attr_accessor :year, :month, :day
 
   def initialize(year: 4711, month: 1, day: 1)
@@ -16,13 +56,24 @@ class ArDate
   end
 
   def day_number
-    shifted_month = (month + 9) % 12
-    days_after_calistril = (153 * shifted_month + 2) / 5
-    abadius_or_calistril = (14 - month) / 12
-    shifted_year = year - abadius_or_calistril
-    year_in_days = 365 * shifted_year
-    leap_days = shifted_year / 8
-    shifted_days = 365 - (31 + 28)
-    (year_in_days + days_after_calistril + leap_days + day) - shifted_days
+    @_day_number ||= begin
+      previous_year = year - 1
+      days_from_years = previous_year * 365
+      days_from_months = days_in_month.values.first(month - 1).reduce(0, :+)
+      leap_days = previous_year / 8
+      days_from_years + days_from_months + leap_days + day
+    end
+  end
+
+  def leap_year?
+    (year % 8).zero?
+  end
+
+  def days_in_month
+    if leap_year?
+      LEAP_YEAR_DAYS_IN_MONTH
+    else
+      DAYS_IN_MONTH
+    end
   end
 end
