@@ -21,6 +21,35 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#<=>' do
+    it 'returns -1 when date is less than the other date' do
+      smaller_date = ArDate.new(year: 1, month: 12, day: 17)
+      larger_date = ArDate.new(year: 3, month: 2, day: 12)
+
+      result = smaller_date <=> larger_date
+
+      expect(result).to eq(-1)
+    end
+
+    it 'returns 0 when date is equal to the other date' do
+      first_date = ArDate.new(year: 2, month: 5, day: 21)
+      second_date = ArDate.new(year: 2, month: 5, day: 21)
+
+      result = first_date <=> second_date
+
+      expect(result).to eq(0)
+    end
+
+    it 'returns 1 when date is greater than the other date' do
+      larger_date = ArDate.new(year: 4711, month: 1, day: 1)
+      smaller_date = ArDate.new(year: 3, month: 2, day: 12)
+
+      result = larger_date <=> smaller_date
+
+      expect(result).to eq(1)
+    end
+  end
+
   describe '#begining_of_month' do
     it 'returns the date at the first day of the month' do
       date = ArDate.new(year: 4707, month: 9, day: 23)

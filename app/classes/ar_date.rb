@@ -1,4 +1,6 @@
 class ArDate
+  include Comparable
+
   DAYS_INTO_WEEK = {
     moonday: 0,
     toilday: 1,
@@ -53,6 +55,10 @@ class ArDate
       month == other.month &&
       day == other.day
     )
+  end
+
+  def <=>(other)
+    day_number <=> other.day_number
   end
 
   def beginning_of_month
