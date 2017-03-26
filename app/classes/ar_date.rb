@@ -7,7 +7,7 @@ class ArDate
     fireday: 4,
     starday: 5,
     sunday: 6
-  }
+  }.freeze
 
   DAYS_IN_MONTH = {
     abadius: 31,
@@ -22,7 +22,7 @@ class ArDate
     lamashan: 31,
     neth: 30,
     kuthona: 31
-  }
+  }.freeze
 
   LEAP_YEAR_DAYS_IN_MONTH = {
     abadius: 31,
@@ -37,7 +37,7 @@ class ArDate
     lamashan: 31,
     neth: 30,
     kuthona: 31
-  }
+  }.freeze
 
   attr_accessor :year, :month, :day
 
