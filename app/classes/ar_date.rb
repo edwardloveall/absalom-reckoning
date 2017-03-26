@@ -64,6 +64,11 @@ class ArDate
     ArDate.new(year: year, month: month, day: last_day)
   end
 
+  def beginning_of_week
+    new_day_number = day_number - day_of_week
+    ArDateParser.from_day_number(new_day_number)
+  end
+
   def day_number
     @_day_number ||= begin
       previous_year = year - 1

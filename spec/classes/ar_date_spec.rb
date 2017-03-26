@@ -48,6 +48,24 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#beginning_of_week' do
+    it 'returns a date at the beginning of the current week' do
+      date = ArDate.new(year: 1, month: 1, day: 5)
+      week_start = ArDate.new(year: 1, month: 1, day: 1)
+
+      expect(date.beginning_of_week).to eq(week_start)
+    end
+
+    context 'when the start of the week is in the previous month' do
+      it 'returns a date at the beginning of the current week' do
+        date = ArDate.new(year: 1, month: 2, day: 1)
+        week_start = ArDate.new(year: 1, month: 1, day: 29)
+
+        expect(date.beginning_of_week).to eq(week_start)
+      end
+    end
+  end
+
   describe '#day_number' do
     it 'returns the day number for 1/1/1' do
       date = ArDate.new(year: 1, month: 1, day: 1)
