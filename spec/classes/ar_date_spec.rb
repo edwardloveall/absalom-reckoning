@@ -66,6 +66,24 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#end_of_week' do
+    it 'returns a date at the end of the current week' do
+      date = ArDate.new(year: 1, month: 1, day: 5)
+      week_end = ArDate.new(year: 1, month: 1, day: 7)
+
+      expect(date.end_of_week).to eq(week_end)
+    end
+
+    context 'when the end of the week is in the next month' do
+      it 'returns a date at the end of the current week' do
+        date = ArDate.new(year: 1, month: 1, day: 31)
+        week_end = ArDate.new(year: 1, month: 2, day: 4)
+
+        expect(date.end_of_week).to eq(week_end)
+      end
+    end
+  end
+
   describe '#day_number' do
     it 'returns the day number for 1/1/1' do
       date = ArDate.new(year: 1, month: 1, day: 1)

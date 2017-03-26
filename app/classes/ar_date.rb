@@ -69,6 +69,13 @@ class ArDate
     ArDateParser.from_day_number(new_day_number)
   end
 
+  def end_of_week
+    last_day_index = 6
+    days_until_week_end = last_day_index - day_of_week
+    new_day_number = day_number + days_until_week_end
+    ArDateParser.from_day_number(new_day_number)
+  end
+
   def day_number
     @_day_number ||= begin
       previous_year = year - 1
