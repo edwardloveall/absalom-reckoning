@@ -50,6 +50,33 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#succ' do
+    it 'returns an ArDate on the next day' do
+      start_date = ArDate.new(year: 10, month: 5, day: 2)
+      end_date = ArDate.new(year: 10, month: 5, day: 3)
+
+      expect(start_date.succ).to eq(end_date)
+    end
+
+    context 'when the next day is after a leap day' do
+      it 'returns an ArDate on the next day' do
+        start_date = ArDate.new(year: 8, month: 2, day: 29)
+        end_date = ArDate.new(year: 8, month: 3, day: 1)
+
+        expect(start_date.succ).to eq(end_date)
+      end
+    end
+
+    context 'when the next day is in the new year' do
+      it 'returns an ArDate on the next day' do
+        start_date = ArDate.new(year: 17, month: 12, day: 31)
+        end_date = ArDate.new(year: 18, month: 1, day: 1)
+
+        expect(start_date.succ).to eq(end_date)
+      end
+    end
+  end
+
   describe '#begining_of_month' do
     it 'returns the date at the first day of the month' do
       date = ArDate.new(year: 4707, month: 9, day: 23)

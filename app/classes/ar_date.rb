@@ -61,6 +61,10 @@ class ArDate
     day_number <=> other.day_number
   end
 
+  def succ
+    ArDateParser.from_day_number(day_number.succ)
+  end
+
   def beginning_of_month
     ArDate.new(year: year, month: month, day: 1)
   end
