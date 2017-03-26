@@ -30,6 +30,24 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#end_of_month' do
+    it 'returns the date at the last day of the month' do
+      date = ArDate.new(year: 4707, month: 9, day: 23)
+      month_end = ArDate.new(year: 4707, month: 9, day: 30)
+
+      expect(date.end_of_month).to eq(month_end)
+    end
+
+    context 'when in a leap month' do
+      it 'returns the date at the last day of the month' do
+        date = ArDate.new(year: 8, month: 2, day: 20)
+        month_end = ArDate.new(year: 8, month: 2, day: 29)
+
+        expect(date.end_of_month).to eq(month_end)
+      end
+    end
+  end
+
   describe '#day_number' do
     it 'returns the day number for 1/1/1' do
       date = ArDate.new(year: 1, month: 1, day: 1)
@@ -47,24 +65,6 @@ RSpec.describe ArDate do
       date = ArDate.new(year: 4711, month: 9, day: 23)
 
       expect(date.day_number).to eq(1_720_004)
-    end
-  end
-
-  describe '#end_of_month' do
-    it 'returns the date at the last day of the month' do
-      date = ArDate.new(year: 4707, month: 9, day: 23)
-      month_end = ArDate.new(year: 4707, month: 9, day: 30)
-
-      expect(date.end_of_month).to eq(month_end)
-    end
-
-    context 'when in a leap month' do
-      it 'returns the date at the last day of the month' do
-        date = ArDate.new(year: 8, month: 2, day: 20)
-        month_end = ArDate.new(year: 8, month: 2, day: 29)
-
-        expect(date.end_of_month).to eq(month_end)
-      end
     end
   end
 
