@@ -87,13 +87,11 @@ class ArDate
   end
 
   def day_number
-    @_day_number ||= begin
-      previous_year = year - 1
-      days_from_years = previous_year * 365
-      days_from_months = days_in_month.values.first(month - 1).reduce(0, :+)
-      leap_days = previous_year / 8
-      days_from_years + days_from_months + leap_days + day
-    end
+    previous_year = year - 1
+    days_from_years = previous_year * 365
+    days_from_months = days_in_month.values.first(month - 1).reduce(0, :+)
+    leap_days = previous_year / 8
+    days_from_years + days_from_months + leap_days + day
   end
 
   def leap_year?
