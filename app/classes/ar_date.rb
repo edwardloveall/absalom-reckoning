@@ -61,6 +61,19 @@ class ArDate
     day_number <=> other.day_number
   end
 
+  def >>(months)
+    years_to_add, new_month = (month + months).divmod(12)
+    new_year = year + years_to_add
+    new_date = ArDate.new(year: new_year, month: new_month, day: day)
+
+    max_month_days = days_in_month.values[new_month - 1]
+    if new_date.day > max_month_days
+      new_date.day = max_month_days
+    end
+
+    new_date
+  end
+
   def succ
     ArDateParser.from_day_number(day_number.succ)
   end
