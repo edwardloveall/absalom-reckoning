@@ -94,6 +94,50 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#<<' do
+    it 'returns the same date one month earlier' do
+      now = ArDate.new(year: 1, month: 2, day: 1)
+      prev_month = ArDate.new(year: 1, month: 1, day: 1)
+
+      result = now << 1
+
+      expect(result).to eq(prev_month)
+    end
+
+    context 'when the month math spans multiple months' do
+      it 'returns a date some months before' do
+        now = ArDate.new(year: 1, month: 3, day: 1)
+        prev_month = ArDate.new(year: 1, month: 1, day: 1)
+
+        result = now << 2
+
+        expect(result).to eq(prev_month)
+      end
+    end
+
+    context 'when the month math spans multiple years' do
+      it 'returns a date some months before' do
+        now = ArDate.new(year: 2, month: 3, day: 7)
+        prev_month = ArDate.new(year: 1, month: 1, day: 7)
+
+        result = now << 14
+
+        expect(result).to eq(prev_month)
+      end
+    end
+
+    context 'when the day is an invalid day for the resulting month' do
+      it 'returns a date some months before' do
+        now = ArDate.new(year: 1, month: 5, day: 31)
+        prev_month = ArDate.new(year: 1, month: 4, day: 30)
+
+        result = now << 1
+
+        expect(result).to eq(prev_month)
+      end
+    end
+  end
+
   describe '#succ' do
     it 'returns an ArDate on the next day' do
       start_date = ArDate.new(year: 10, month: 5, day: 2)

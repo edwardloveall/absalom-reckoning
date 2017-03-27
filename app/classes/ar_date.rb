@@ -74,6 +74,10 @@ class ArDate
     new_date
   end
 
+  def <<(months)
+    self.>>(-months)
+  end
+
   def succ
     ArDateParser.from_day_number(day_number.succ)
   end
