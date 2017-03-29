@@ -30,7 +30,7 @@ class ArDateParser
   }.freeze
 
   DATE_FORMATS = {
-    year_month_day: /\d{4}\W\d{2}\W\d{2}/
+    year_month_day: /\d+\W\d+\W\d+/
   }.freeze
 
   class DateFormatNotFound < StandardError; end

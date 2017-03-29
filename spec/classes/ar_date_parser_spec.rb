@@ -105,5 +105,13 @@ RSpec.describe ArDateParser do
 
       expect(date).to eq(target_date)
     end
+
+    it 'returns a date from the format Y-M-D' do
+      target_date = ArDate.new(year: 1, month: 1, day: 1)
+
+      date = ArDateParser.from_date_string('1-1-1')
+
+      expect(date).to eq(target_date)
+    end
   end
 end
