@@ -90,6 +90,14 @@ RSpec.describe ArDateParser do
   end
 
   describe '.from_date_string' do
+    context "when it can't find a matching parser" do
+      it 'raises an error' do
+        expect {
+          ArDateParser.from_date_string('foo')
+        }.to raise_error(ArDateParser::DateFormatNotFound)
+      end
+    end
+
     it 'returns a date from the format YYYY-MM-DD' do
       target_date = ArDate.new(year: 3000, month: 4, day: 17)
 

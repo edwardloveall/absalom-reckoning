@@ -33,6 +33,8 @@ class ArDateParser
     year_month_day: /\d{4}\W\d{2}\W\d{2}/
   }.freeze
 
+  class DateFormatNotFound < StandardError; end
+
   def self.from_day_number(day_number)
     new.from_day_number(day_number)
   end
@@ -52,6 +54,7 @@ class ArDateParser
         return send(method, date_string)
       end
     end
+    raise DateFormatNotFound
   end
 
   private
