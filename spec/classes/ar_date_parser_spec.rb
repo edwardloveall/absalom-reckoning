@@ -113,5 +113,25 @@ RSpec.describe ArDateParser do
 
       expect(date).to eq(target_date)
     end
+
+    context 'when the separators are dots' do
+      it 'returns a date from the format YYYY.M.DD' do
+        target_date = ArDate.new(year: 3000, month: 4, day: 17)
+
+        date = ArDateParser.from_date_string('3000.4.17')
+
+        expect(date).to eq(target_date)
+      end
+    end
+
+    context 'when the separators are slashes' do
+      it 'returns a date from the format YYYY/M/DD' do
+        target_date = ArDate.new(year: 3000, month: 4, day: 17)
+
+        date = ArDateParser.from_date_string('3000/4/17')
+
+        expect(date).to eq(target_date)
+      end
+    end
   end
 end
