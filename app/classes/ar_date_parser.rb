@@ -29,6 +29,10 @@ class ArDateParser
     kuthona: 335
   }.freeze
 
+  DATE_FORMATS = {
+    year_month_day: /\d{4}\W\d{2}\W\d{2}/
+  }.freeze
+
   def self.from_day_number(day_number)
     new.from_day_number(day_number)
   end
@@ -36,6 +40,18 @@ class ArDateParser
   def from_day_number(day_number)
     @day_number = day_number
     ArDate.new(year: year, month: month, day: day)
+  end
+
+  def self.from_date_string(date_string)
+    new.from_date_string(date_string)
+  end
+
+  def from_date_string(date_string)
+    DATE_FORMATS.each do |method, regex|
+      if date_string.match(regex)
+        return send(method, date_string)
+      end
+    end
   end
 
   private
@@ -88,5 +104,17 @@ class ArDateParser
       month_index = month - 1
       days_into_year - month_starts.values[month_index]
     end
+  end
+
+  def year_month_day(date_string)
+    scanner = StringScanner.new(date_string)
+
+    year = scanner.scan(/\d+/).to_i
+    scanner.skip(/\W/)
+    month = scanner.scan(/\d+/).to_i
+    scanner.skip(/\W/)
+    day = scanner.scan(/\d+/).to_i
+
+    ArDate.new(year: year, month: month, day: day)
   end
 end

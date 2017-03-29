@@ -88,4 +88,14 @@ RSpec.describe ArDateParser do
       end
     end
   end
+
+  describe '.from_date_string' do
+    it 'returns a date from the format YYYY-MM-DD' do
+      target_date = ArDate.new(year: 3000, month: 4, day: 17)
+
+      date = ArDateParser.from_date_string('3000-04-17')
+
+      expect(date).to eq(target_date)
+    end
+  end
 end
