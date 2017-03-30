@@ -247,6 +247,17 @@ RSpec.describe ArDate do
         expect(date.end_of_week).to eq(week_end)
       end
     end
+
+    context 'when an argument for the week start day is given' do
+      it 'returns a date at the end of that week' do
+        date = ArDate.new(year: 1, month: 1, day: 31)
+        week_end = ArDate.new(year: 1, month: 2, day: 3)
+
+        result = date.end_of_week(:sunday)
+
+        expect(result).to eq(week_end)
+      end
+    end
   end
 
   describe '#day_number' do
