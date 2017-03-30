@@ -218,6 +218,17 @@ RSpec.describe ArDate do
         expect(date.beginning_of_week).to eq(week_start)
       end
     end
+
+    context 'when an argument for the week start day is given' do
+      it 'returns a date at that start day' do
+        date = ArDate.new(year: 1, month: 2, day: 1)
+        week_start = ArDate.new(year: 1, month: 1, day: 28)
+
+        result = date.beginning_of_week(:sunday)
+
+        expect(result).to eq(week_start)
+      end
+    end
   end
 
   describe '#end_of_week' do

@@ -95,8 +95,11 @@ class ArDate
     ArDate.new(year: year, month: month, day: last_day)
   end
 
-  def beginning_of_week
-    new_day_number = day_number - day_of_week
+  def beginning_of_week(start_day = :moonday)
+    start_day_index = DAYS_INTO_WEEK[start_day]
+    days_until_next_start = (start_day_index - day_of_week + 7) % 7
+    days_into_week = 7 - days_until_next_start
+    new_day_number = day_number - days_into_week
     ArDateParser.from_day_number(new_day_number)
   end
 
