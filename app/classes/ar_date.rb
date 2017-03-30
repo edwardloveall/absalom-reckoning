@@ -43,6 +43,10 @@ class ArDate
 
   attr_accessor :year, :month, :day
 
+  def self.parse(date_string)
+    ArDateParser.from_date_string(date_string)
+  end
+
   def initialize(year: 4711, month: 1, day: 1)
     @year = year
     @month = month

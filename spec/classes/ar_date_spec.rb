@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe ArDate do
+  describe '.parse' do
+    it 'calls ArDateParser.from_date_string' do
+      allow(ArDateParser).to receive(:from_date_string)
+
+      ArDate.parse('3000/4/17')
+
+      expect(ArDateParser).to have_received(:from_date_string)
+    end
+  end
+
   describe '#initialize' do
     context 'when no parameters are given' do
       it 'sets the default year, month, and day' do
