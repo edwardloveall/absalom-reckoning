@@ -1,6 +1,6 @@
 class CalendarView
-  HEADER = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday).freeze
-  START_DAY = :sunday
+  HEADER = ArDate::DAY_NAMES
+  START_DAY = :moonday
 
   delegate :content_tag, to: :view
   attr_reader :view, :date, :callback
@@ -19,7 +19,7 @@ class CalendarView
 
   def header
     content_tag :header do
-      HEADER.map { |day| content_tag :div, day }.join.html_safe
+      HEADER.map { |day| content_tag :div, day.capitalize }.join.html_safe
     end
   end
 
@@ -37,7 +37,7 @@ class CalendarView
 
   def day_classes(day)
     classes = ['day']
-    classes << 'today' if day == Date.today
+    classes << 'today' if day == ArDate.new
     classes << 'not-month' if day.month != date.month
     classes.empty? ? nil : classes.join(' ')
   end

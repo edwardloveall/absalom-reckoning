@@ -1,5 +1,9 @@
 class CalendarsController < ApplicationController
   def index
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    if params[:date].present?
+      @date = ArDate.parse(params[:date])
+    else
+      @date = ArDate.new
+    end
   end
 end
