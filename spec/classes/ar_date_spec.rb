@@ -31,6 +31,14 @@ RSpec.describe ArDate do
     end
   end
 
+  describe '#to_s' do
+    it 'returns the date as a string in YYYY-MM-DD format' do
+      date = ArDate.new(year: 2942, month: 3, day: 15)
+
+      expect(date.to_s).to eq('2942-03-15')
+    end
+  end
+
   describe '#<=>' do
     it 'returns -1 when date is less than the other date' do
       smaller_date = ArDate.new(year: 1, month: 12, day: 17)

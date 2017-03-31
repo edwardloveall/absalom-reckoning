@@ -19,6 +19,12 @@ class ArDate
     @day = day
   end
 
+  def to_s
+    month_string = month.to_s.rjust(2, '0')
+    day_string = day.to_s.rjust(2, '0')
+    "#{year}-#{month_string}-#{day_string}"
+  end
+
   def ==(other)
     (
       year == other.year &&
