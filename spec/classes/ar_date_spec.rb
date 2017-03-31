@@ -154,6 +154,26 @@ RSpec.describe ArDate do
         expect(result).to eq(prev_month)
       end
     end
+
+    context 'when the month is 1' do
+      it 'returns a date one month before' do
+        now = ArDate.new(year: 4711, month: 1, day: 1)
+        prev_month = ArDate.new(year: 4710, month: 12, day: 1)
+
+        result = now << 1
+
+        expect(result).to eq(prev_month)
+      end
+
+      it 'returns a date many month before' do
+        now = ArDate.new(year: 4711, month: 1, day: 1)
+        prev_month = ArDate.new(year: 4709, month: 12, day: 1)
+
+        result = now << 13
+
+        expect(result).to eq(prev_month)
+      end
+    end
   end
 
   describe '#succ' do

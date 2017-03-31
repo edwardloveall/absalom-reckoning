@@ -38,7 +38,9 @@ class ArDate
   end
 
   def >>(months)
-    years_to_add, new_month = (month + months).divmod(12)
+    month_positions = (1..12).to_a
+    years_to_add, month_index = (month - 1 + months).divmod(12)
+    new_month = month_positions[month_index]
     new_year = year + years_to_add
     new_date = ArDate.new(year: new_year, month: new_month, day: day)
 
