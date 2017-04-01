@@ -1,3 +1,5 @@
+require 'ar_date/attribute'
+
 class ArDate
   include Comparable
 
