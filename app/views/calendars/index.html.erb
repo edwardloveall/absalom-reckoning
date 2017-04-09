@@ -8,5 +8,11 @@
       next
     <% end %>
   </header>
-  <%= calendar @date, @events %>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <ul>
+      <%= render(partial: 'calendars/event',
+                 collection: @events.for(date: date)) %>
+    </ul>
+  <% end %>
 </section>
