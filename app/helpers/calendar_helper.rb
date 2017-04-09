@@ -1,5 +1,5 @@
 module CalendarHelper
-  def calendar(date = ArDate.new, &block)
-    CalendarView.new(self, date, block).full
+  def calendar(date, events)
+    CalendarView.new(self, date, events).full
   end
 end

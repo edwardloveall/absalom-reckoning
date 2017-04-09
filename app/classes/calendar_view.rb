@@ -3,12 +3,12 @@ class CalendarView
   START_DAY = :moonday
 
   delegate :content_tag, to: :view
-  attr_reader :view, :date, :callback
+  attr_reader :view, :date, :events
 
-  def initialize(view, date, callback)
+  def initialize(view, date, events)
     @view = view
     @date = date
-    @callback = callback
+    @events = events
   end
 
   def full
@@ -31,8 +31,17 @@ class CalendarView
     end.join.html_safe
   end
 
+  def weeks
+    first = date.beginning_of_month.beginning_of_week(START_DAY)
+    last = date.end_of_month.end_of_week(START_DAY)
+    (first..last).to_a.in_groups_of(7)
+  end
+
   def day_cell(day)
-    content_tag :div, view.capture(day, &callback), class: day_classes(day)
+    content_tag :div, class: day_classes(day) do
+      view.concat(day.day)
+      view.concat(event_list(day))
+    end
   end
 
   def day_classes(day)
@@ -42,9 +51,19 @@ class CalendarView
     classes.empty? ? nil : classes.join(' ')
   end
 
-  def weeks
-    first = date.beginning_of_month.beginning_of_week(START_DAY)
-    last = date.end_of_month.end_of_week(START_DAY)
-    (first..last).to_a.in_groups_of(7)
+  def day_header(day)
+    content_tag(day.day)
+  end
+
+  def event_list(day)
+    events_for_day = events.select { |event| event.occurred_on == day }
+
+    view.capture do
+      content_tag(:ul) do
+        events_for_day.each do |event|
+          view.concat(content_tag(:li, event.title))
+        end
+      end
+    end
   end
 end

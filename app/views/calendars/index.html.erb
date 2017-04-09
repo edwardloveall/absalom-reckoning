@@ -8,7 +8,5 @@
       next
     <% end %>
   </header>
-  <%= calendar @date do |date| %>
-    <%= date.day %>
-  <% end %>
+  <%= calendar @date, @events %>
 </section>
