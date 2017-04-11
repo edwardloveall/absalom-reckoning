@@ -1,16 +1,18 @@
 <section class="calendar">
-  <header>
+  <nav>
     <%= link_to calendars_path(date: @date << 1) do %>
       previous
     <% end %>
-    <%= "#{ArDate::MONTH_NAMES[@date.month - 1]} #{@date.year}" %>
+    <span class="month-and-year">
+      <%= "#{ArDate::MONTH_NAMES[@date.month - 1]} #{@date.year}" %>
+    </span>
     <%= link_to calendars_path(date: @date >> 1) do %>
       next
     <% end %>
-  </header>
+  </nav>
   <%= calendar @date do |date| %>
-    <%= date.day %>
-    <ul>
+    <span class="number"><%= date.day %></span>
+    <ul class="events">
       <%= render(partial: 'calendars/event',
                  collection: @events.for(date: date)) %>
     </ul>

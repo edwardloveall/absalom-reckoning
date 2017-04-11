@@ -1,0 +1,25 @@
+$out-gray: #e6e8eb;
+$medium-gray: #bbb;
+$white: #fff;
+$light-gray: mix($out-gray, $white, 30%);
+$geraldine: #f98687;
+
+$base-border-color: $medium-gray;
+$base-border-radius: 5px;
+$accent-color: $geraldine;
+$accent-text-color: darken($accent-color, 10%);
+$link-color: $accent-text-color;
+
+$base-border: 1px solid $base-border-color;
+$site-background: $out-gray;
+
+$small-spacing: 0.2rem;
+$base-spacing: 1rem;
+$large-spacing: 2rem;
+$base-line-height: 1.5em;
+
+$font-size-base: 16px;
+$font-size-large: 24px;
+
+$brothers-font: "brothers";
+$ingra-font: "ingra-2";

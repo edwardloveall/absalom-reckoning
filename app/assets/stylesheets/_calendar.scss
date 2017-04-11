@@ -1,46 +1,105 @@
+$non-month-background-color: $light-gray;
+
 section.calendar {
+  font-family: $brothers-font;
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  flex-grow: 1;
+  margin: 2vw;
 
   div.wrapper {
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
+  nav,
   header,
   div.days {
     display: flex;
   }
 
-  header {
+  nav {
+    align-items: center;
     justify-content: space-between;
+    margin-top: $base-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  nav a {
+    color: $link-color;
+    padding: $small-spacing;
+    text-decoration: none;
+  }
+
+  nav .month-and-year {
+    font-size: $font-size-large;
   }
 
   header div,
   div.day {
-    border-left: 1px solid #ddd;
-    border-top: 1px solid #ddd;
     flex-grow: 1;
-    flex-basis: 0;
+    flex-basis: 0px;
+    overflow: hidden;
+  }
+
+  header div {
+    background-color: $light-gray;
+    font-family: $ingra-font;
+    margin-left: $small-spacing;
+    margin-top: $small-spacing;
+    text-align: center;
+  }
+
+  div.day {
+    background-color: $white;
+    margin-left: $small-spacing;
+    margin-top: $small-spacing;
   }
 
   div.week {
     display: flex;
-    height: 80px;
+    flex-basis: 0px;
+    flex-grow: 1;
   }
 
   div.day {
-    color: #bbb;
-    text-align: right;
-    padding: 3px;
+    color: $medium-gray;
+  }
+
+  span.number {
+    display: block;
+    padding-bottom: $small-spacing;
+    padding-left: $small-spacing * 2;
+    padding-top: $small-spacing;
   }
 
   .day.not-month {
-    background-color: #eee;
+    background-color: $non-month-background-color;
   }
 
   div.day.today {
-    color: mediumorchid;
+    color: $accent-text-color;
+    position: relative;
+
+    span.number {
+      background-color: $accent-color;
+      color: white;
+    }
+  }
+
+  ul.events {
+    font-family: $ingra-font;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+
+    li {
+      color: black;
+      overflow: hidden;
+      padding: 0 $small-spacing * 2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
