@@ -4,7 +4,7 @@ ruby '2.3.1'
 gem 'autoprefixer-rails'
 gem 'bourbon'
 gem 'flutie'
-gem 'json', '1.8.3'
+gem 'json'
 gem 'parser', '2.3.1.1'
 gem 'pg'
 gem 'puma'
@@ -26,8 +26,8 @@ group :development, :test do
   gem 'i18n-tasks'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec_junit_formatter'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
