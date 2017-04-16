@@ -30,6 +30,10 @@ RSpec.describe Event do
     end
   end
 
+  describe 'associations' do
+    it { should belong_to(:calendar) }
+  end
+
   describe 'validations' do
     it { should validate_presence_of(:occurred_on) }
     it { should validate_presence_of(:title) }
