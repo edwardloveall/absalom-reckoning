@@ -4,10 +4,16 @@ namespace :dev do
     require 'csv'
     include ActionView::Helpers::SanitizeHelper
 
+    create_calendar
     create_events
   end
 
+  def create_calendar
+    Calendar.create(title: 'The Lord of the Rings')
+  end
+
   def create_events
+    calendar = Calendar.find_by(title: 'The Lord of the Rings')
     tsv_text = File.read(Rails.root.join('lib/data/lotr_events.tsv'))
     events = CSV.parse(tsv_text,
                        col_sep: "\t",
@@ -16,7 +22,7 @@ namespace :dev do
     events.each do |event|
       date = ArDate.new(date_format(event))
       title = title_format(event[:description])
-      Event.create(title: title, occurred_on: date)
+      Event.create(title: title, occurred_on: date, calendar: calendar)
     end
   end
 
