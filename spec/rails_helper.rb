@@ -19,9 +19,14 @@ RSpec.configure do |config|
     page.driver.block_unknown_urls
   end
   config.include Features, type: :feature
+  config.include Monban::Test::Helpers, type: :feature
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+
+  config.after(:each) do
+    Monban.test_reset!
+  end
 
   config.after(:suite) do
     FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
@@ -30,3 +35,4 @@ end
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
+Monban.test_mode!

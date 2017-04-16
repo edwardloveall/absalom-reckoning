@@ -1,1 +1,8 @@
 en:
+  helpers:
+    submit:
+      user:
+        create: Sign up
+      session:
+        create: Sign in
+        destroy: Sign out

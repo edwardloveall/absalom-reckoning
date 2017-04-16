@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416021920) do
+ActiveRecord::Schema.define(version: 20170416184338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20170416021920) do
     t.integer  "calendar_id"
     t.index ["calendar_id"], name: "index_events_on_calendar_id", using: :btree
     t.index ["occurred_on"], name: "index_events_on_occurred_on", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
 end
