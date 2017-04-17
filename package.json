@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "rails-ujs": "^5.1.0-beta1"
+  },
+  "name": "absalom-reckoning",
+  "version": "1.0.0",
+  "description": "A calendar for the Pathfinder RPG",
+  "main": "index.js",
+  "repository": "git@github.com:edwardloveall/absalom-reckoning.git",
+  "author": "Edward Loveall <edward@edwardloveall.com>",
+  "license": "MIT"
+}

@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Node/Yarn
+node_modules
+
 # Ignore Byebug command history file.
 .byebug_history
 
