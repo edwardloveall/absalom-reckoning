@@ -1,11 +1,10 @@
 $non-month-background-color: $light-gray;
 
 section.calendar {
-  font-family: $brothers-font;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 2vw;
+  margin: $base-spacing;
 
   div.wrapper {
     display: flex;
@@ -79,7 +78,7 @@ section.calendar {
   }
 
   div.day.today {
-    color: $accent-text-color;
+    color: $accent-color;
     position: relative;
 
     span.number {

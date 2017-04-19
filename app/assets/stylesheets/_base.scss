@@ -4,7 +4,9 @@ html {
 
 body {
   background-color: $out-gray;
+  font-family: $brothers-font;
   font-size: $font-size-base;
+  display: flex;
   height: 100%;
   line-height: $base-line-height;
   margin: 0;
@@ -14,4 +16,19 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+}
+
+a {
+  color: $link-color;
+}
+
+ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+li {
+  list-style-position: inside;
+  list-style-type: none;
 }

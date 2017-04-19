@@ -2,13 +2,12 @@ $out-gray: #e6e8eb;
 $medium-gray: #bbb;
 $white: #fff;
 $light-gray: mix($out-gray, $white, 30%);
-$geraldine: #f98687;
+$geraldine: #f75557;
 
 $base-border-color: $medium-gray;
 $base-border-radius: 5px;
 $accent-color: $geraldine;
-$accent-text-color: darken($accent-color, 10%);
-$link-color: $accent-text-color;
+$link-color: $accent-color;
 
 $base-border: 1px solid $base-border-color;
 $site-background: $out-gray;
