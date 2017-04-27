@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:DatabaseCleaner/database_cleaner.git
+  revision: f30d5be108aa5edadfc16c480be3ed23cfbe0e05
+  ref: f30d5be
+  specs:
+    database_cleaner (1.6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,7 +75,6 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    database_cleaner (1.5.3)
     diff-lcs (1.3)
     docile (1.1.5)
     dotenv (2.2.0)
@@ -262,7 +268,7 @@ DEPENDENCIES
   bourbon
   bundler-audit
   capybara-webkit
-  database_cleaner
+  database_cleaner!
   dotenv-rails
   factory_girl_rails
   flutie
