@@ -1,5 +1,7 @@
 class Calendar < ApplicationRecord
   has_many :events
+  has_many :permissions
+  has_many :users, through: :permissions
 
   def self.events_for_month(around:)
     date = around
