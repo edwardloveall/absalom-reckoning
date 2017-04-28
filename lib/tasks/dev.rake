@@ -4,16 +4,25 @@ namespace :dev do
     require 'csv'
     include ActionView::Helpers::SanitizeHelper
 
-    create_calendar
-    create_events
+    user = create_user
+    calendar = create_calendar(user: user)
+    create_events(calendar: calendar)
   end
 
-  def create_calendar
-    Calendar.create(title: 'The Lord of the Rings')
+  def create_user
+    Monban.config.sign_up_service.new(
+      email: 'edward@edwardloveall.com',
+      password: '12345'
+    ).perform
   end
 
-  def create_events
-    calendar = Calendar.find_by(title: 'The Lord of the Rings')
+  def create_calendar(user:)
+    Calendar.create(title: 'The Lord of the Rings').tap do |calendar|
+      Permission.create(calendar: calendar, user: user, level: :owner)
+    end
+  end
+
+  def create_events(calendar:)
     tsv_text = File.read(Rails.root.join('lib/data/lotr_events.tsv'))
     events = CSV.parse(tsv_text,
                        col_sep: "\t",
