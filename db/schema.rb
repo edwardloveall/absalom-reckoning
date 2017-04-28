@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416184338) do
+ActiveRecord::Schema.define(version: 20170427194923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20170416184338) do
     t.integer "calendar_id"
     t.index ["calendar_id"], name: "index_events_on_calendar_id"
     t.index ["occurred_on"], name: "index_events_on_occurred_on"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "calendar_id"
+    t.bigint "user_id"
+    t.string "level", default: "viewer"
+    t.index ["calendar_id"], name: "index_permissions_on_calendar_id"
+    t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
