@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:elsurudo/simple_form.git
+  revision: a1faca93ed39c0f54055890578307bdbade3de0b
+  branch: rails-5.1.0
+  specs:
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -210,7 +219,6 @@ GEM
       tilt (>= 1.1, < 3)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    simple_form (1.4.1)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -281,7 +289,7 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails
   shoulda-matchers
-  simple_form
+  simple_form!
   simplecov
   timecop
   title
