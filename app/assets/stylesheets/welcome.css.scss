@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'base';
+
+body {
+  display: flex;
+  font-family: $base-font-family;
+}
+
+main {
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}

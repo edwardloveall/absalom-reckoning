@@ -6,3 +6,5 @@ en:
       session:
         create: Sign in
         destroy: Sign out
+  titles:
+    application: Absalom Reckoning

@@ -4,7 +4,7 @@ html {
 
 body {
   background-color: $out-gray;
-  font-family: $brothers-font;
+  font-family: $base-font-family;
   font-size: $font-size-base;
   display: flex;
   height: 100%;
@@ -20,6 +20,7 @@ main {
 
 a {
   color: $link-color;
+  text-decoration: none;
 }
 
 ul {
