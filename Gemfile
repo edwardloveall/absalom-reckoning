@@ -34,9 +34,7 @@ end
 
 group :test do
   gem 'capybara-webkit'
-  gem 'database_cleaner',
-      git: 'git@github.com:DatabaseCleaner/database_cleaner.git',
-      ref: 'f30d5be'
+  gem 'database_cleaner'
   gem 'formulaic'
   gem 'launchy'
   gem 'shoulda-matchers'
