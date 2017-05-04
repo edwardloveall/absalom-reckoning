@@ -10,7 +10,7 @@ RSpec.describe Permission do
     it { should validate_presence_of(:calendar) }
     it { should validate_presence_of(:level) }
     it do
-      should validate_inclusion_of(:level).in_array(Permission::LEVELS.values)
+      should validate_inclusion_of(:level).in_array(Permission::LEVELS)
     end
     it { should validate_presence_of(:user) }
   end

@@ -1,14 +1,10 @@
 class Permission < ApplicationRecord
-  LEVELS = {
-    own: 'owner',
-    edit: 'editor',
-    view: 'viewer'
-  }.freeze
+  LEVELS = %w(owner editor viewer).freeze
 
   belongs_to :calendar
   belongs_to :user
 
   validates :calendar, presence: true
-  validates :level, presence: true, inclusion: { in: LEVELS.values }
+  validates :level, presence: true, inclusion: { in: LEVELS }
   validates :user, presence: true
 end
