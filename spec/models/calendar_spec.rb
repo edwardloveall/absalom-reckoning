@@ -7,7 +7,7 @@ RSpec.describe Calendar do
     it { should have_many(:users).through(:permissions) }
   end
 
-  describe '.events_for_month()' do
+  describe '#events_for_month()' do
     it 'returns events based on an input date for a calendar' do
       date = ArDate.new(year: 4711, month: 1, day: 1)
       calendar = create(:calendar)
@@ -21,9 +21,9 @@ RSpec.describe Calendar do
       after = create(:event, occurred_on: after_date, calendar: calendar)
       events = [before, during, after]
 
-      result = Calendar.events_for_month(around: date)
+      result = calendar.events_for_month(around: date)
 
-      expect(events).to match_array(result)
+      expect(result).to match_array(events)
     end
   end
 end

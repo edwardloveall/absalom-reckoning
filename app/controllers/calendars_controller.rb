@@ -6,6 +6,6 @@ class CalendarsController < ApplicationController
       @date = ArDate.new
     end
 
-    @events = EventFilterer.new(Calendar.events_for_month(around: @date))
+    @events = EventFilterer.new(@calendar.events_for_month(around: @date))
   end
 end
