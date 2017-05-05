@@ -12,7 +12,7 @@ gem 'puma'
 gem 'rails', '~> 5.1.0'
 gem 'sass-rails'
 gem 'simple_form',
-    git: 'git@github.com:elsurudo/simple_form.git',
+    git: 'https://github.com/elsurudo/simple_form.git',
     branch: 'rails-5.1.0'
 gem 'title'
 gem 'uglifier'
