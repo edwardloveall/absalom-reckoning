@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'User signs in' do
   scenario 'sees email' do
-    user = create(:user)
-    attributes = { email: user.email, password: user.password_digest }
+    attributes = { email: 'user@example.com', password: '12345' }
+    user = SignUpUser.perform(attributes)
 
     visit root_path
     click_on 'Sign in'
