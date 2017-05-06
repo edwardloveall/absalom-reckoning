@@ -16,6 +16,24 @@ RSpec.feature 'User signs up' do
     end
   end
 
+  scenario 'sees a calendar' do
+    attributes = attributes_for(:user)
+
+    visit root_path
+    click_on 'Sign up'
+
+    within('form') do
+      fill_form_and_submit(:user, attributes)
+    end
+
+    user = User.find_by(email: attributes[:email])
+    calendar = user.calendars.first
+
+    within 'aside.sidebar' do
+      expect(page).to have_css('li', text: calendar.title)
+    end
+  end
+
   context 'with invalid user data' do
     scenario 'sees error' do
       attributes = { email: '', password: '' }
