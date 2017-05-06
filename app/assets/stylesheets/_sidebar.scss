@@ -1,5 +1,12 @@
 aside.sidebar {
   background-color: $light-gray;
+  display: flex;
   flex-basis: 200px;
+  flex-direction: column;
   flex-shrink: 0;
+  padding: $base-spacing;
+
+  ul.calendar-list {
+    flex-grow: 1;
+  }
 }
