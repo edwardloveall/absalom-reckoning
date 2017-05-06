@@ -5,11 +5,9 @@ RSpec.feature 'Users signs out' do
     user = create(:user)
     sign_in(user)
 
-    visit root_path
+    visit calendar_path(user.calendars.first)
     click_on 'Sign out'
 
-    within 'aside.sidebar' do
-      expect(page).to have_css('a', text: 'Sign in')
-    end
+    expect(page).to have_css('a', text: 'Sign in')
   end
 end

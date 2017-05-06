@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       calendar = Calendar.create(title: 'My Campaign')
       Permission.create(user: @user, calendar: calendar, level: 'owner')
       sign_in(@user)
-      redirect_to root_path
+      redirect_to calendar_path(@user.calendars.first)
     else
       render :new
     end

@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
-  def index
+  def show
+    @calendar = Calendar.find(params[:id])
     if params[:date].present?
       @date = ArDate.parse(params[:date])
     else

@@ -1,3 +1,4 @@
 base_locale: en
 ignore_unused:
   - 'helpers.submit.*'
+  - 'titles.*'

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = authenticate_session(session_params)
 
     if sign_in(user)
-      redirect_to root_path
+      redirect_to calendar_path(user.calendars.first)
     else
       render :new
     end
