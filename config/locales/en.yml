@@ -1,10 +1,15 @@
 en:
   helpers:
+    action:
+      event:
+        new: New event
     submit:
-      user:
-        create: Sign up
+      event:
+        create: Add event
       session:
         create: Sign in
         destroy: Sign out
+      user:
+        create: Sign up
   titles:
     application: Absalom Reckoning

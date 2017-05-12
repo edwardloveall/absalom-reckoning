@@ -11,7 +11,10 @@
     <% end %>
   </nav>
   <%= calendar @date do |date| %>
-    <span class="number"><%= date.day %></span>
+    <header class="number">
+      <%= date.day %>
+      <%= link_to t('helpers.action.event.new'), new_calendar_event_path(@calendar, date: date) %>
+    </header>
     <ul class="events">
       <%= render(partial: 'calendars/event',
                  collection: @events.for(date: date)) %>

@@ -1,0 +1,5 @@
+<%= simple_form_for([:calendar, @event]) do |form| %>
+  <%= hidden_field_tag(:date, params[:date]) %>
+  <%= form.input(:title) %>
+  <%= form.submit %>
+<% end %>
