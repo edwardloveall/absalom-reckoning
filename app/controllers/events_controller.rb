@@ -4,20 +4,32 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = calendar.events.new(event_params)
+    @event = calendar.events.new(event_params.merge(occurred_on: date))
 
     if @event.save
       redirect_to calendar_path(calendar)
     end
   end
 
+  def edit
+    @calendar = calendar
+    @event = @calendar.events.find(params[:id])
+  end
+
+  def update
+    @calendar = calendar
+    @event = @calendar.events.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to calendar_path(@calendar)
+    end
+  end
+
   private
 
   def event_params
-    params[:event][:occurred_on] = date
     params.require(:event)
           .permit(:title, :occurred_on, :calendar)
-          .merge(occurred_on: date)
   end
 
   def calendar

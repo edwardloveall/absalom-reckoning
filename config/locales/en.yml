@@ -6,6 +6,7 @@ en:
     submit:
       event:
         create: Add event
+        update: Edit event
       session:
         create: Sign in
         destroy: Sign out

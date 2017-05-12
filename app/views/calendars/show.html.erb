@@ -17,7 +17,8 @@
     </header>
     <ul class="events">
       <%= render(partial: 'calendars/event',
-                 collection: @events.for(date: date)) %>
+                 collection: @events.for(date: date),
+                 locals: { calendar: @calendar }) %>
     </ul>
   <% end %>
 </section>
