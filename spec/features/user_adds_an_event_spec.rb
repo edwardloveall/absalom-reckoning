@@ -10,9 +10,11 @@ RSpec.feature 'User adds an Event' do
       click_link('New event')
     end
 
-    form_params = { title: 'TPK' }
+    form_params = { title: 'TPK', date: '4711-01-04' }
     fill_form_and_submit(:event, form_params)
 
-    expect(page).to have_css('li', text: 'TPK')
+    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      expect(page).to have_css('li', text: 'TPK')
+    end
   end
 end

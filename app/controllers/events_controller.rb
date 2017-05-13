@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   def new
-    @event = calendar.events.new(occurred_on: date)
+    @event = calendar.events.new
   end
 
   def create
-    @event = calendar.events.new(event_params.merge(occurred_on: date))
+    @event = calendar.events.new(event_params)
 
     if @event.save
       redirect_to calendar_path(calendar)
@@ -29,15 +29,15 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-          .permit(:title, :occurred_on, :calendar)
+          .permit(:title)
+          .merge(occurred_on: date_from(params[:event][:occurred_on]))
   end
 
   def calendar
     Calendar.find(params[:calendar_id])
   end
 
-  def date
-    date_string = params[:date]
+  def date_from(date_string)
     ArDateParser.from_date_string(date_string)
   end
 end
