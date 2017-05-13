@@ -11,9 +11,13 @@
     <% end %>
   </nav>
   <%= calendar @date do |date| %>
-    <header class="number">
-      <%= date.day %>
-      <%= link_to t('helpers.action.event.new'), new_calendar_event_path(@calendar, date: date) %>
+    <header>
+      <span class="number"><%= date.day %></span>
+      <%= link_to(
+        t('helpers.action.event.new'),
+        new_calendar_event_path(@calendar, date: date),
+        class: 'new-event'
+      ) %>
     </header>
     <ul class="events">
       <%= render(partial: 'calendars/event',

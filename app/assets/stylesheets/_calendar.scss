@@ -64,13 +64,22 @@ section.calendar {
 
   div.day {
     color: $medium-gray;
-  }
 
-  span.number {
-    display: block;
-    padding-bottom: $small-spacing;
-    padding-left: $small-spacing * 2;
-    padding-top: $small-spacing;
+    &:hover {
+      a.new-event {
+        display: inline;
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: $small-spacing $small-spacing * 2;
+    }
+
+    a.new-event {
+      display: none;
+    }
   }
 
   .day.not-month {
@@ -81,9 +90,13 @@ section.calendar {
     color: $accent-color;
     position: relative;
 
-    span.number {
+    header {
       background-color: $accent-color;
       color: white;
+
+      a {
+        color: white;
+      }
     }
   }
 
