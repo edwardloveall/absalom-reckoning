@@ -1,0 +1,43 @@
+form {
+  margin: auto;
+  max-width: $form-width;
+
+  label {
+    display: block;
+    padding-bottom: $small-spacing;
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+    padding-top: $base-spacing;
+  }
+
+  #{$all-text-inputs} {
+    background-color: white;
+    border: none;
+    font-family: $base-font-family;
+    font-size: $font-size-base;
+    display: block;
+    padding: $base-spacing;
+    width: 100%;
+
+    &:focus {
+      outline: $base-outline;
+    }
+  }
+
+  #{$all-buttons} {
+    background-color: $accent-color;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: $base-font-family;
+    font-size: $font-size-base;
+    margin: 0;
+    margin-top: $base-spacing + $small-spacing + 1rem;
+    padding: $base-spacing;
+
+    &:hover {
+      background-color: white;
+      color: $accent-color;
+    }
+  }
+}
