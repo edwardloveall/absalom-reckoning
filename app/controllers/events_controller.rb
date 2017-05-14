@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def calendar
-    Calendar.find(params[:calendar_id])
+    @_calendar ||= Calendar.find(params[:calendar_id])
   end
 
   def date_from(date_string)
