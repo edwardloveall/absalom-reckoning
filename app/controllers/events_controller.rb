@@ -8,6 +8,8 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to calendar_path(calendar)
+    else
+      render :new
     end
   end
 
@@ -22,6 +24,8 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       redirect_to calendar_path(@calendar)
+    else
+      render :edit
     end
   end
 
