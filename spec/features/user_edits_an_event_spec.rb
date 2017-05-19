@@ -30,6 +30,8 @@ RSpec.feature 'User tries to edit an Event with invalid data' do
     form_params = { title: '' }
     fill_form_and_submit(:event, :update, form_params)
 
-    expect(page).to have_css('li', text: "Title can't be blank")
+    within('.event_title') do
+      expect(page).to have_css('span', text: "can't be blank")
+    end
   end
 end

@@ -1,12 +1,5 @@
 <%= simple_form_for([@calendar, @event]) do |form| %>
-  <% if @event.errors.any? %>
-    <%= pluralize(@event.errors.count, 'error') %> prevented your account from being created:
-    <ul>
-      <% @event.errors.full_messages.each do |error_message| %>
-        <li><%= error_message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= form_error_hint(@event) %>
   <%= form.input(:occurred_on, label: 'Date') %>
   <%= form.input(:title) %>
   <%= form.submit %>
