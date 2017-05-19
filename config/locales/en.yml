@@ -12,7 +12,7 @@ en:
     submit:
       event:
         create: Add event
-        update: Edit event
+        update: Update event
       session:
         create: Sign in
         destroy: Sign out
