@@ -46,7 +46,10 @@ RSpec.feature 'User signs up' do
       end
 
       within('form') do
-        expect(page).to have_text('prevented your account from being created')
+        expect(page).to have_css(
+          '.error-tip',
+          text: '2 errors prevented your account from being created'
+        )
       end
     end
   end

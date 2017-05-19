@@ -3,6 +3,12 @@ en:
     action:
       event:
         new: New event
+    error:
+      event:
+        create: '%{error_count} prevented the event from being created'
+        update: '%{error_count} prevented the event from being saved'
+      user:
+        create: '%{error_count} prevented your account from being created'
     submit:
       event:
         create: Add event

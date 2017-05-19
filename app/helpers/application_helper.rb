@@ -1,12 +1,13 @@
 module ApplicationHelper
   def form_error_hint(model)
     if model.errors.any?
-      type = model.model_name.human
+      model_key = model.model_name.i18n_key
       error_count = pluralize(model.errors.count, 'error')
+      action = model.persisted? ? 'update' : 'create'
       content_tag(
         :p,
-        "#{error_count} prevented the #{type} from being saved:",
-        class: 'errors'
+        t("helpers.error.#{model_key}.#{action}", error_count: error_count),
+        class: 'error-tip'
       )
     end
   end

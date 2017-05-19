@@ -6,7 +6,7 @@ RSpec.describe ApplicationHelper do
       model = Event.new
       model.validate
       html = <<-HTML.strip_heredoc.strip
-        <p class="errors">3 errors prevented the Event from being saved:</p>
+        <p class="error-tip">3 errors prevented the event from being created</p>
       HTML
 
       result = helper.form_error_hint(model)
