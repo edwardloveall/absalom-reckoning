@@ -25,4 +25,25 @@ RSpec.describe ApplicationHelper do
       end
     end
   end
+
+  describe '#date_from_day_number' do
+    it 'returns an ArDate based on a day number' do
+      date = ArDate.new(year: 1, month: 1, day: 1)
+      day_number = 1
+
+      result = helper.date_from_day_number(day_number)
+
+      expect(result).to eq(date)
+    end
+    context 'when day number is a string' do
+      it 'returns an ArDate based on a day number' do
+        date = ArDate.new(year: 1, month: 1, day: 1)
+        day_number = 1.to_s
+
+        result = helper.date_from_day_number(day_number)
+
+        expect(result).to eq(date)
+      end
+    end
+  end
 end
