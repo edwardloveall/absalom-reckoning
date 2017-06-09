@@ -10,7 +10,7 @@ RSpec.feature 'User adds an Event' do
       click_link('New event')
     end
 
-    form_params = { title: 'TPK', date: '4711-01-04' }
+    form_params = { title: 'TPK' }
     fill_form_and_submit(:event, form_params)
 
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do

@@ -32,16 +32,10 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event)
-          .permit(:title)
-          .merge(occurred_on: date_from(params[:event][:occurred_on]))
+    params.require(:event).permit(:title, :occurred_on)
   end
 
   def calendar
     @_calendar ||= Calendar.find(params[:calendar_id])
-  end
-
-  def date_from(date_string)
-    ArDateParser.from_date_string(date_string)
   end
 end

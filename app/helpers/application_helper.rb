@@ -11,4 +11,8 @@ module ApplicationHelper
       )
     end
   end
+
+  def date_from_day_number(day_number)
+    ArDateParser.from_day_number(day_number.to_i)
+  end
 end

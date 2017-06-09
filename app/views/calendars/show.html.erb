@@ -15,7 +15,7 @@
       <span class="number"><%= date.day %></span>
       <%= link_to(
         t('helpers.action.event.new'),
-        new_calendar_event_path(@calendar, date: date),
+        new_calendar_event_path(@calendar, occurred_on: date.day_number),
         class: 'new-event'
       ) %>
     </header>
