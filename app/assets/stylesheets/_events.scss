@@ -1,0 +1,13 @@
+form.new_event,
+form.edit_event {
+  div.actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: $base-spacing + $small-spacing + 1rem;
+  }
+
+  input[type=submit] {
+    margin-top: 0;
+  }
+}
