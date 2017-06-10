@@ -9,4 +9,8 @@
   ) %>
   <%= form.input(:title) %>
   <%= form.submit %>
+  <%= link_to(
+    t('helpers.submit.event.cancel'),
+    calendar_path(@calendar, date: @event.occurred_on)
+  ) %>
 <% end %>

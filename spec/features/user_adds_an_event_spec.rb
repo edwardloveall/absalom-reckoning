@@ -58,3 +58,21 @@ RSpec.feature 'User tries to add an event with invalid data' do
     end
   end
 end
+
+RSpec.feature 'User decides not to add an event' do
+  scenario 'and is redirected back to their calendar' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    sign_in(user)
+
+    visit calendar_path(user.calendars.first)
+    click_on('next')
+    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      click_link('New event')
+    end
+
+    click_on('Cancel')
+
+    expect(current_url).to eq(calendar_url(user.calendars.first, date: '4711-02-08'))
+    expect(page).to have_css('h2', text: 'Calistril 4711')
+  end
+end

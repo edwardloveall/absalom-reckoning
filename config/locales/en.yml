@@ -13,6 +13,7 @@ en:
       event:
         create: Add event
         update: Update event
+        cancel: Cancel
       session:
         create: Sign in
         destroy: Sign out
