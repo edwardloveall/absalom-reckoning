@@ -3,9 +3,9 @@
     <%= link_to calendar_path(date: @date << 1) do %>
       previous
     <% end %>
-    <span class="month-and-year">
+    <h2 class="month-and-year">
       <%= "#{ArDate::MONTH_NAMES[@date.month - 1]} #{@date.year}" %>
-    </span>
+    </h2>
     <%= link_to calendar_path(date: @date >> 1) do %>
       next
     <% end %>

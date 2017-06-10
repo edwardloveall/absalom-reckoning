@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @event = calendar.events.new(event_params)
 
     if @event.save
-      redirect_to calendar_path(calendar)
+      redirect_to calendar_path(calendar, date: @event.occurred_on)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event = @calendar.events.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to calendar_path(@calendar)
+      redirect_to calendar_path(calendar, date: @event.occurred_on)
     else
       render :edit
     end
