@@ -3,11 +3,18 @@ $medium-gray: #bbb;
 $white: #fff;
 $light-gray: mix($out-gray, $white, 30%);
 $geraldine: #f75557;
+$fair-pink: #ffecec;
+$citrine-white: #f8f4d5;
+$kumera: #97732e;
 
 $base-border-color: $medium-gray;
 $base-border-radius: 5px;
 $accent-color: $geraldine;
 $link-color: $accent-color;
+$notice-bg-color: $citrine-white;
+$notice-color: $kumera;
+$error-bg-color: $fair-pink;
+$error-color: $geraldine;
 
 $base-border: 1px solid $base-border-color;
 $base-outline: 2px solid transparentize($accent-color, .4);

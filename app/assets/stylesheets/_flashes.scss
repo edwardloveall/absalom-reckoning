@@ -1,0 +1,19 @@
+ul.flashes {
+  li {
+    list-style-type: none;
+    margin-bottom: $base-spacing;
+    padding: $small-spacing $base-spacing;
+  }
+
+  li.notice {
+    background-color: $notice-bg-color;
+    border: 2px solid transparentize($notice-color, 0.5);
+    color: $notice-color;
+  }
+
+  li.error {
+    background-color: $error-bg-color;
+    border: 2px solid transparentize($error-color, 0.5);
+    color: $error-color;
+  }
+}
