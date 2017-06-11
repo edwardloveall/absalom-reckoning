@@ -1,0 +1,7 @@
+<% if !flash.empty? %>
+  <ul class="flashes">
+    <% flash.each do |name, message| %>
+      <%= content_tag(:li, message, class: name) %>
+    <% end %>
+  </ul>
+<% end %>

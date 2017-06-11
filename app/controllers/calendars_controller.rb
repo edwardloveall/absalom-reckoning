@@ -1,4 +1,4 @@
-class CalendarsController < ApplicationController
+class CalendarsController < AuthorizedController
   def show
     @calendar = Calendar.find(params[:id])
     if params[:date].present?
