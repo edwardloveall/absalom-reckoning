@@ -13,4 +13,41 @@ RSpec.describe User do
     it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:password_digest) }
   end
+
+  describe 'permissions' do
+    describe '#can_own?' do
+      it 'returns true for calendars owned by the user' do
+        user = create(:user)
+        calendar = create(:calendar)
+        create(:permission, :owner, user: user, calendar: calendar)
+
+        can_own = user.can_own?(calendar)
+
+        expect(can_own).to be_truthy
+      end
+
+      it 'returns false for calendars with no permission' do
+        user = create(:user)
+        calendar = create(:calendar)
+
+        can_own = user.can_own?(calendar)
+
+        expect(can_own).to be_falsey
+      end
+
+      it 'returns false for calendars with edit or view permission' do
+        user = create(:user)
+        edit_calendar = create(:calendar)
+        view_calendar = create(:calendar)
+        create(:permission, :editor, user: user, calendar: edit_calendar)
+        create(:permission, :viewer, user: user, calendar: view_calendar)
+
+        can_own_edit = user.can_own?(edit_calendar)
+        can_own_view = user.can_own?(view_calendar)
+
+        expect(can_own_edit).to be_falsey
+        expect(can_own_view).to be_falsey
+      end
+    end
+  end
 end
