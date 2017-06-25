@@ -49,5 +49,40 @@ RSpec.describe User do
         expect(can_own_view).to be_falsey
       end
     end
+
+    describe '#can_edit?' do
+      it 'returns true for calendars that have an owner or editor permission' do
+        user = create(:user)
+        own_calendar = create(:calendar)
+        edit_calendar = create(:calendar)
+        create(:permission, :owner, user: user, calendar: own_calendar)
+        create(:permission, :editor, user: user, calendar: edit_calendar)
+
+        can_edit_own = user.can_edit?(own_calendar)
+        can_edit_edit = user.can_edit?(edit_calendar)
+
+        expect(can_edit_own).to be_truthy
+        expect(can_edit_edit).to be_truthy
+      end
+
+      it 'returns false with no permissions' do
+        user = create(:user)
+        calendar = create(:calendar)
+
+        can_edit = user.can_edit?(calendar)
+
+        expect(can_edit).to be_falsey
+      end
+
+      it 'returns false with view permissions' do
+        user = create(:user)
+        calendar = create(:calendar)
+        create(:permission, :viewer, user: user, calendar: calendar)
+
+        can_edit = user.can_edit?(calendar)
+
+        expect(can_edit).to be_falsey
+      end
+    end
   end
 end
