@@ -15,4 +15,8 @@ class Permission < ApplicationRecord
   def self.edit
     %w(owner editor)
   end
+
+  def self.view
+    %w(owner editor viewer)
+  end
 end

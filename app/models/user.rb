@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def can_edit?(calendar)
     permissions.where(calendar: calendar, level: Permission.edit).any?
   end
+
+  def can_view?(calendar)
+    permissions.where(calendar: calendar, level: Permission.view).any?
+  end
 end
