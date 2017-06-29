@@ -4,10 +4,7 @@ class CalendarsController < AuthorizedController
 
   def show
     @calendar = Calendar.find(params[:id])
-    if !current_user.can_view?(@calendar)
-      flash[:notice] = I18n.t('helpers.error.calendar.not_found')
-      redirect_to calendars_path
-    end
+    raise CalendarNotFound if !current_user.can_view?(@calendar)
 
     if params[:date].present?
       @date = ArDate.parse(params[:date])
