@@ -51,3 +51,26 @@ RSpec.feature "User can't add event to calendar they can only view" do
     end
   end
 end
+
+RSpec.feature "User can't add event to calendar they can only view" do
+  scenario 'redirects the user to the calendar show view with a message' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    sign_in(user)
+    calendar = create(:calendar)
+    permission = create(:permission, :editor, user: user, calendar: calendar)
+
+    visit calendar_path(calendar)
+    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      click_on 'New event'
+    end
+
+    permission.update(level: 'viewer')
+    fill_form_and_submit(:event, title: 'TPK')
+
+    expect(current_path).to eq(calendar_path(calendar))
+    within('.flashes') do
+      message = "You don't have permission to do that"
+      expect(page).to have_css(:li, text: message)
+    end
+  end
+end

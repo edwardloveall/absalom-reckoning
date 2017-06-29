@@ -9,6 +9,12 @@ class EventsController < ApplicationController
   end
 
   def create
+    if !current_user.can_edit?(calendar)
+      flash[:error] = I18n.t('helpers.error.no_permission')
+      redirect_to calendar_path(calendar)
+      return
+    end
+
     @event = calendar.events.new(event_params)
 
     if @event.save
