@@ -105,3 +105,26 @@ RSpec.feature "User can't edit event on calendar they can only view" do
     end
   end
 end
+
+RSpec.feature "User can't update event on calendar they can only view" do
+  scenario 'redirects them back to the calendar with a message' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    sign_in(user)
+    calendar = create(:calendar)
+    event = create(:event, calendar: calendar)
+    permission = create(:permission, :editor, user: user, calendar: calendar)
+
+    visit calendar_path(calendar)
+    click_on event.title
+
+    permission.update(level: 'viewer')
+
+    fill_form_and_submit(:event, :update, title: 'TPK')
+
+    expect(current_path).to eq(calendar_path(calendar))
+    within('.flashes') do
+      message = "You don't have permission to do that"
+      expect(page).to have_css(:li, text: message)
+    end
+  end
+end
