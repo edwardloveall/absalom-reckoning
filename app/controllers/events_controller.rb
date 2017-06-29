@@ -1,19 +1,11 @@
 class EventsController < AuthorizedController
   def new
-    if current_user.can_edit?(calendar)
-      @event = calendar.events.new
-    else
-      flash[:error] = I18n.t('helpers.error.no_permission')
-      redirect_to calendar_path(calendar)
-    end
+    raise NotAuthorized if !current_user.can_edit?(calendar)
+    @event = calendar.events.new
   end
 
   def create
-    if !current_user.can_edit?(calendar)
-      flash[:error] = I18n.t('helpers.error.no_permission')
-      redirect_to calendar_path(calendar)
-      return
-    end
+    raise NotAuthorized if !current_user.can_edit?(calendar)
 
     @event = calendar.events.new(event_params)
 
@@ -25,21 +17,14 @@ class EventsController < AuthorizedController
   end
 
   def edit
-    if current_user.can_edit?(calendar)
-      @calendar = calendar
-      @event = @calendar.events.find(params[:id])
-    else
-      flash[:error] = I18n.t('helpers.error.no_permission')
-      redirect_to calendar_path(calendar)
-    end
+    raise NotAuthorized if !current_user.can_edit?(calendar)
+
+    @calendar = calendar
+    @event = @calendar.events.find(params[:id])
   end
 
   def update
-    if !current_user.can_edit?(calendar)
-      flash[:error] = I18n.t('helpers.error.no_permission')
-      redirect_to calendar_path(calendar)
-      return
-    end
+    raise NotAuthorized if !current_user.can_edit?(calendar)
 
     @calendar = calendar
     @event = @calendar.events.find(params[:id])
