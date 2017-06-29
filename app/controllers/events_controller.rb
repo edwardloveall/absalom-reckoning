@@ -25,8 +25,13 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @calendar = calendar
-    @event = @calendar.events.find(params[:id])
+    if current_user.can_edit?(calendar)
+      @calendar = calendar
+      @event = @calendar.events.find(params[:id])
+    else
+      flash[:error] = I18n.t('helpers.error.no_permission')
+      redirect_to calendar_path(calendar)
+    end
   end
 
   def update
