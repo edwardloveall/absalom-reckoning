@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < AuthorizedController
   def new
     if current_user.can_edit?(calendar)
       @event = calendar.events.new

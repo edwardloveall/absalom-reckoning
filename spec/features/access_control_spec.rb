@@ -14,7 +14,21 @@ RSpec.feature "User can't access a calendar if they're not signed in" do
   end
 end
 
-RSpec.feature "User can't see a calendar with view permissions" do
+RSpec.feature "User can't access event page if they're not signed in" do
+  scenario 'redirects the user to the homepage with a message' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    calendar = user.calendars.first
+
+    visit new_calendar_event_path(calendar)
+
+    expect(current_path).to eq(new_session_path)
+    within('.flashes') do
+      expect(page).to have_css(:li, text: 'You must be logged in')
+    end
+  end
+end
+
+RSpec.feature "User can't see a calendar without view permissions" do
   scenario 'redirects the user to their calendar page with a message' do
     user = SignUpUser.perform(email: 'user@example.com', password: '12345')
     sign_in(user)
