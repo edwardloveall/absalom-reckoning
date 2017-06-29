@@ -9,6 +9,7 @@ en:
       event:
         create: '%{error_count} prevented the event from being created'
         update: '%{error_count} prevented the event from being saved'
+      no_permission: You don't have permission to do that
       user:
         create: '%{error_count} prevented your account from being created'
       session:
