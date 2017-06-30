@@ -9,7 +9,7 @@ class CalendarsController < AuthorizedController
     if params[:date].present?
       @date = ArDate.parse(params[:date])
     else
-      @date = ArDate.new
+      @date = @calendar.last_edit_date
     end
 
     @events = EventFilterer.new(@calendar.events_for_month(around: @date))
