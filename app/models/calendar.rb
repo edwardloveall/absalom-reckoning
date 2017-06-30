@@ -11,4 +11,12 @@ class Calendar < ApplicationRecord
 
     events.where(occurred_on: month_range)
   end
+
+  def last_edit_date
+    if events.present?
+      events.order(updated_at: :desc).take.occurred_on
+    else
+      ArDate.new
+    end
+  end
 end

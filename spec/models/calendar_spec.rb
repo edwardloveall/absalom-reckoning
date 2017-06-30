@@ -7,6 +7,29 @@ RSpec.describe Calendar do
     it { should have_many(:users).through(:permissions) }
   end
 
+  describe '#last_edit_date' do
+    context 'if there are events' do
+      it 'returns the ArDate of the last edited event' do
+        cal = create(:calendar)
+        create(:event, calendar: cal, occurred_on: ArDate.parse('4710-01-01'))
+        create(:event, calendar: cal, occurred_on: ArDate.parse('4712-01-01'))
+        event_last = create(:event,
+                            calendar: cal,
+                            occurred_on: ArDate.parse('4711-01-01'))
+
+        expect(cal.last_edit_date).to eq(event_last.occurred_on)
+      end
+    end
+
+    context 'if there are no events' do
+      it 'returns the default start date for an ArDate' do
+        calendar = create(:calendar)
+
+        expect(calendar.last_edit_date).to eq(ArDate.new)
+      end
+    end
+  end
+
   describe '#events_for_month()' do
     it 'returns events based on an input date for a calendar' do
       date = ArDate.new(year: 4711, month: 1, day: 1)
