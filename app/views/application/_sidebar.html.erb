@@ -1,7 +1,7 @@
 <aside class="sidebar">
   <ul class="calendar-list">
     <% current_user.calendars.each do |calendar| %>
-      <li><%= calendar.title %></li>
+      <li><%= link_to calendar.title, calendar_path(calendar) %></li>
     <% end %>
   </ul>
   <nav>
