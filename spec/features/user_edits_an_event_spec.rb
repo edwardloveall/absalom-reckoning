@@ -24,7 +24,6 @@ RSpec.feature 'User edits an Event' do
       event = create(:event, calendar: user.calendars.first, occurred_on: date)
 
       visit calendar_path(user.calendars.first)
-      click_on('next')
       click_on(event.title)
 
       form_params = { title: 'A new title' }
@@ -64,7 +63,6 @@ RSpec.feature 'User cancels editing an event' do
     event = create(:event, calendar: calendar, occurred_on: date)
 
     visit calendar_path(user.calendars.first)
-    click_on('next')
     click_on(event.title)
     fill_form(:event, { title: 'Different title' })
     click_on('Cancel')
