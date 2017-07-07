@@ -64,7 +64,7 @@ RSpec.feature 'User cancels editing an event' do
 
     visit calendar_path(user.calendars.first)
     click_on(event.title)
-    fill_form(:event, { title: 'Different title' })
+    fill_form(:event, title: 'Different title')
     click_on('Cancel')
 
     expect(current_url).to eq(calendar_url(calendar, date: event.occurred_on))
