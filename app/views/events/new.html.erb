@@ -1,11 +1,9 @@
 <%= simple_form_for([:calendar, @event]) do |form| %>
   <% form_error_hint(@event) %>
-  <%= label_tag(:date) %>
-  <%= text_field_tag(:date, date_from_day_number(params[:occurred_on]), disabled: true) %>
   <%= form.input(
     :occurred_on,
-    input_html: { value: params[:occurred_on] },
-    as: :hidden
+    label: 'Date',
+    input_html: { value: date_from_day_number(params[:occurred_on]).to_s }
   ) %>
   <%= form.input(:title) %>
   <div class="actions">

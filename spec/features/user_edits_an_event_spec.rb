@@ -71,3 +71,20 @@ RSpec.feature 'User cancels editing an event' do
     expect(page).to have_css('h2', text: 'Calistril 4711')
   end
 end
+
+RSpec.feature 'User changes the event date' do
+  scenario 'and is taken to the new event' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    sign_in(user)
+    calendar = user.calendars.first
+    event = create(:event, calendar: calendar)
+
+    visit calendar_path(calendar)
+    click_on(event.title)
+    fill_in('Date', with: '4700-02-03')
+    click_on(I18n.t('helpers.submit.event.update'))
+
+    expect(page).to have_css('h2.month-and-year', text: 'Calistril 4700')
+    expect(page).to have_css('ul.events li a', text: event.title)
+  end
+end

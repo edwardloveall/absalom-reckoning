@@ -39,6 +39,10 @@ class EventsController < AuthorizedController
   private
 
   def event_params
+    date = params[:event].delete(:occurred_on)
+    if !date.nil?
+      params[:event][:occurred_on] = ArDate.parse(date).day_number
+    end
     params.require(:event).permit(:title, :occurred_on)
   end
 

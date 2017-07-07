@@ -76,3 +76,20 @@ RSpec.feature 'User decides not to add an event' do
     expect(page).to have_css('h2', text: 'Calistril 4711')
   end
 end
+
+RSpec.feature 'User sets an event date manually' do
+  scenario 'creates an event on that date' do
+    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    sign_in(user)
+    form_params = { title: 'TPK', date: '4700-02-03' }
+
+    visit calendar_path(user.calendars.first)
+    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      click_link('New event')
+    end
+    fill_form_and_submit(:event, form_params)
+
+    expect(page).to have_css('h2.month-and-year', text: 'Calistril 4700')
+    expect(page).to have_css('ul.events li a', text: 'TPK')
+  end
+end
