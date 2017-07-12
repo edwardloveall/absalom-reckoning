@@ -72,7 +72,8 @@ RSpec.feature 'User decides not to add an event' do
 
     click_on('Cancel')
 
-    expect(current_url).to eq(calendar_url(user.calendars.first, date: '4711-02-08'))
+    expected_url = calendar_url(user.calendars.first, date: '4711-02-08')
+    expect(current_url).to eq(expected_url)
     expect(page).to have_css('h2', text: 'Calistril 4711')
   end
 end
