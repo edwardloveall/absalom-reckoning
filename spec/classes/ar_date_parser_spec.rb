@@ -92,9 +92,9 @@ RSpec.describe ArDateParser do
   describe '.from_date_string' do
     context "when it can't find a matching parser" do
       it 'raises an error' do
-        expect {
+        expect do
           ArDateParser.from_date_string('foo')
-        }.to raise_error(ArDateParser::DateFormatNotFound)
+        end.to raise_error(ArDateParser::DateFormatNotFound)
       end
     end
 
