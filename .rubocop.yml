@@ -5,6 +5,9 @@
 
 AllCops:
   TargetRubyVersion: 2.3
+  Exclude:
+    - db/schema.rb
+    - config/initializers/new_framework_defaults.rb
 
 Lint/AmbiguousOperator:
   Enabled: true
@@ -161,7 +164,7 @@ Lint/Void:
   Enabled: true
 
 Metrics/AbcSize:
-  Enabled: true
+  Enabled: false
   Max: 15
 
 Metrics/BlockNesting:
@@ -171,9 +174,10 @@ Metrics/BlockNesting:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
+    - lib/**/*.rake
 
 Metrics/ClassLength:
-  Enabled: true
+  Enabled: false
   CountComments: false
   Max: 100
 
@@ -504,6 +508,9 @@ Style/Copyright:
 Style/DefWithParentheses:
   Enabled: true
 
+Style/EmptyMethod:
+  Enabled: false
+
 Style/PreferredHashMethods:
   Enabled: true
 
@@ -802,6 +809,8 @@ Style/OneLineConditional:
 
 Style/OpMethod:
   Enabled: true
+  Exclude:
+    - 'app/classes/ar_date.rb'
 
 Style/OptionHash:
   Enabled: false
