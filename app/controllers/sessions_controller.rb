@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   layout 'session'
 
   def new
+    if signed_in?
+      redirect_to calendar_path(current_user.calendars.first)
+    end
   end
 
   def create

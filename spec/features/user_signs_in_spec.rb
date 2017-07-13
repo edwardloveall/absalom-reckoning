@@ -31,4 +31,23 @@ RSpec.feature 'User signs in' do
       expect(current_path).to eq(session_path)
     end
   end
+
+  context 'user is already signed in' do
+    scenario 'is taken to their calendar' do
+      attributes = { email: 'user@example.com', password: '12345' }
+      user = SignUpUser.perform(attributes)
+      calendar = user.calendars.first
+
+      visit new_session_path
+      within('form') do
+        fill_form_and_submit(:session, attributes)
+      end
+
+      expect(current_path).to eq(calendar_path(calendar))
+
+      visit new_session_path
+
+      expect(current_path).to eq(calendar_path(calendar))
+    end
+  end
 end
