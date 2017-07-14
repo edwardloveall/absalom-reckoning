@@ -6,6 +6,7 @@
   </ul>
   <nav>
     <ul>
+      <li><%= link_to 'New Calendar', new_calendar_path %></li>
       <li><%= link_to current_user.email, nil %></li>
       <li><%= link_to 'Sign out', session_path, method: :delete %></li>
     </ul>

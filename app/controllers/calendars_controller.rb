@@ -14,4 +14,22 @@ class CalendarsController < AuthorizedController
 
     @events = EventFilterer.new(@calendar.events_for_month(around: @date))
   end
+
+  def new
+    @calendar = Calendar.new
+  end
+
+  def create
+    @calendar = current_user.calendars.create(calendar_params)
+
+    if @calendar.save
+      redirect_to calendar_path(@calendar)
+    end
+  end
+
+  private
+
+  def calendar_params
+    params.require(:calendar).permit(:title)
+  end
 end
