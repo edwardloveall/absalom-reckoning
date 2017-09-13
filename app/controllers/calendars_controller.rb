@@ -23,6 +23,8 @@ class CalendarsController < AuthorizedController
     @calendar = current_user.calendars.create(calendar_params)
 
     if @calendar.save
+      permission = @calendar.permissions.find_by(user: current_user)
+      permission.update(level: :owner)
       redirect_to calendar_path(@calendar)
     end
   end
