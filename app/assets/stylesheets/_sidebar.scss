@@ -1,10 +1,20 @@
 aside.sidebar {
   background-color: $alt-background;
   display: flex;
-  flex-basis: 200px;
+  flex-basis: $sidebar-width;
   flex-direction: column;
   flex-shrink: 0;
   padding: $base-spacing;
+
+  ul.calendar-list {
+    width: $sidebar-width;
+
+    li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 
   nav.calendar-actions {
     flex-grow: 1;
