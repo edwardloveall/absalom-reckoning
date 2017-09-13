@@ -3,7 +3,7 @@ class Calendar < ApplicationRecord
   has_many :permissions
   has_many :users, through: :permissions
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 100 }
 
   def events_for_month(around:)
     date = around
