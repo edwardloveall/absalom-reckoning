@@ -27,6 +27,18 @@ class CalendarsController < AuthorizedController
     end
   end
 
+  def edit
+    @calendar = current_user.calendars.find(params[:id])
+  end
+
+  def update
+    @calendar = current_user.calendars.find(params[:id])
+
+    if @calendar.update(calendar_params)
+      redirect_to calendars_path
+    end
+  end
+
   private
 
   def calendar_params

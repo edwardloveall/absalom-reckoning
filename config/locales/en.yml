@@ -1,6 +1,10 @@
 en:
   helpers:
     action:
+      calendar:
+        new: New Calendar
+        edit: edit
+        index: Edit Calendars
       event:
         new: New event
     error:
@@ -15,6 +19,8 @@ en:
       session:
         unauthorized: You must be logged in
     submit:
+      calendar:
+        update: Update calendar
       event:
         create: Add event
         update: Update event

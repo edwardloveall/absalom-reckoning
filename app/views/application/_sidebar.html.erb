@@ -3,7 +3,8 @@
     <% current_user.calendars.each do |calendar| %>
       <li><%= link_to calendar.title, calendar_path(calendar) %></li>
     <% end %>
-    <li class="new-calendar"><%= link_to 'New Calendar', new_calendar_path, class: 'action' %></li>
+    <li class="new-calendar"><%= link_to t('helpers.action.calendar.new'), new_calendar_path, class: 'action' %></li>
+    <li><%= link_to t('helpers.action.calendar.index'), calendars_path, class: 'action' %></li>
   </ul>
   <nav>
     <ul>
