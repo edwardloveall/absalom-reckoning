@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User signs in' do
   scenario 'sees email' do
     attributes = { email: 'user@example.com', password: '12345' }
-    user = SignUpUser.perform(attributes)
+    user = signed_up_user(attributes)
 
     visit root_path
     click_on 'Sign in'
@@ -35,7 +35,7 @@ RSpec.feature 'User signs in' do
   context 'user is already signed in' do
     scenario 'is taken to their calendar' do
       attributes = { email: 'user@example.com', password: '12345' }
-      user = SignUpUser.perform(attributes)
+      user = signed_up_user(attributes)
       calendar = user.calendars.first
 
       visit new_session_path

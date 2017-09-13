@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User creates a calendar' do
   scenario 'is taken to that calendar' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     title = 'Holidays'
 

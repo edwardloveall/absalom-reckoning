@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User edits an Event' do
   scenario 'sees their changes' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     date = ArDate.new(year: 4711, month: 1, day: 4)
     event = create(:event, calendar: user.calendars.first, occurred_on: date)
@@ -18,7 +18,7 @@ RSpec.feature 'User edits an Event' do
 
   context 'in a different month' do
     scenario 'sees their changes' do
-      user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+      user = signed_up_user
       sign_in(user)
       date = ArDate.new(year: 4711, month: 2, day: 15)
       event = create(:event, calendar: user.calendars.first, occurred_on: date)
@@ -37,7 +37,7 @@ end
 
 RSpec.feature 'User tries to edit an Event with invalid data' do
   scenario 'sees and error' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     date = ArDate.new(year: 4711, month: 1, day: 4)
     event = create(:event, calendar: user.calendars.first, occurred_on: date)
@@ -56,7 +56,7 @@ end
 
 RSpec.feature 'User cancels editing an event' do
   scenario 'and is taken back to the same calendar month' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first
     date = ArDate.new(year: 4711, month: 2, day: 15)
@@ -74,7 +74,7 @@ end
 
 RSpec.feature 'User changes the event date' do
   scenario 'and is taken to the new event' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first
     event = create(:event, calendar: calendar)

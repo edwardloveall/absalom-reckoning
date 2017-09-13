@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "User can't access a calendar if they're not signed in" do
   scenario 'redirects the user to the homepage with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     calendar = user.calendars.first
 
     visit calendar_path(calendar)
@@ -16,7 +16,7 @@ end
 
 RSpec.feature "User can't access event page if they're not signed in" do
   scenario 'redirects the user to the homepage with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     calendar = user.calendars.first
 
     visit new_calendar_event_path(calendar)
@@ -30,7 +30,7 @@ end
 
 RSpec.feature "User can't see a calendar without view permissions" do
   scenario 'redirects the user to their calendar page with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
 
@@ -46,7 +46,7 @@ end
 
 RSpec.feature "User can't add event to calendar they can only view" do
   scenario 'redirects the user to the calendar show view with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     create(:permission, :viewer, user: user, calendar: calendar)
@@ -68,7 +68,7 @@ end
 
 RSpec.feature "User can't add event to calendar they can only view" do
   scenario 'redirects the user to the calendar show view with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     permission = create(:permission, :editor, user: user, calendar: calendar)
@@ -91,7 +91,7 @@ end
 
 RSpec.feature "User can't edit event on calendar they can only view" do
   scenario 'only shows the event title' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     event = create(:event, calendar: calendar)
@@ -104,7 +104,7 @@ RSpec.feature "User can't edit event on calendar they can only view" do
   end
 
   scenario 'redirects them back to the calendar with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     event = create(:event, calendar: calendar)
@@ -122,7 +122,7 @@ end
 
 RSpec.feature "User can't update event on calendar they can only view" do
   scenario 'redirects them back to the calendar with a message' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     event = create(:event, calendar: calendar)

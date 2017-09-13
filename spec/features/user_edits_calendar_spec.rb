@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User edits a Calendar' do
   scenario 'changes the calendar attributes' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     calendar = user.calendars.first
     sign_in(user)
     visit calendars_path

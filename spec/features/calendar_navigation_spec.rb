@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User navigates to a calendar' do
   scenario 'by clicking links in the sidebar' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
     create(:permission, :owner, user: user, calendar: calendar)
@@ -14,7 +14,7 @@ RSpec.feature 'User navigates to a calendar' do
   end
 
   scenario 'is taken to the month that they edited last' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first
 

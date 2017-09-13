@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User adds an Event' do
   scenario 'sees their event' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
 
     visit calendar_path(user.calendars.first)
@@ -20,7 +20,7 @@ RSpec.feature 'User adds an Event' do
 
   context 'on a different month' do
     scenario 'is taken back to to that month' do
-      user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+      user = signed_up_user
       sign_in(user)
 
       visit calendar_path(user.calendars.first)
@@ -42,7 +42,7 @@ end
 
 RSpec.feature 'User tries to add an event with invalid data' do
   scenario 'sees and error' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
 
     visit calendar_path(user.calendars.first)
@@ -61,7 +61,7 @@ end
 
 RSpec.feature 'User decides not to add an event' do
   scenario 'and is redirected back to their calendar' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
 
     visit calendar_path(user.calendars.first)
@@ -80,7 +80,7 @@ end
 
 RSpec.feature 'User sets an event date manually' do
   scenario 'creates an event on that date' do
-    user = SignUpUser.perform(email: 'user@example.com', password: '12345')
+    user = signed_up_user
     sign_in(user)
     form_params = { title: 'TPK', date: '4700-02-03' }
 
