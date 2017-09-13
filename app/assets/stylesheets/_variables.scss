@@ -19,8 +19,11 @@ $error-color: $geraldine;
 $base-border: 1px solid $base-border-color;
 $base-outline: 2px solid transparentize($accent-color, .4);
 $site-background: $out-gray;
+$alt-background: $light-gray;
+$alt-action-background-color: $accent-color;
 
 $form-width: 400px;
+$base-border-radius: 3px;
 
 $small-spacing: 0.2rem;
 $base-spacing: 1rem;
@@ -33,3 +36,8 @@ $font-size-large: 24px;
 $brothers-font: "brothers";
 $ingra-font: "ingra-2";
 $base-font-family: $brothers-font;
+
+$action-margin: $small-spacing;
+$action-padding: $small-spacing $base-spacing;
+$action-border-radius: $base-border-radius;
+$action-text-color: $white;

@@ -1,5 +1,5 @@
 aside.sidebar {
-  background-color: $light-gray;
+  background-color: $alt-background;
   display: flex;
   flex-basis: 200px;
   flex-direction: column;
@@ -8,5 +8,27 @@ aside.sidebar {
 
   ul.calendar-list {
     flex-grow: 1;
+  }
+
+  li.new-calendar {
+    margin-top: $base-spacing;
+  }
+
+  .action {
+    background-color: $alt-action-background-color;
+    border-radius: $action-border-radius;
+    color: $action-text-color;
+    display: block;
+    margin-bottom: $action-margin;
+    margin-top: $action-margin;
+    padding: $action-padding;
+    text-align: center;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $action-text-color;
+      color: $alt-action-background-color;
+    }
   }
 }
