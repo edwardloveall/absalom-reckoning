@@ -7,6 +7,10 @@ RSpec.describe Calendar do
     it { should have_many(:users).through(:permissions) }
   end
 
+  describe 'validations' do
+    it { should validate_presence_of(:title) }
+  end
+
   describe '#last_edit_date' do
     context 'if there are events' do
       it 'returns the ArDate of the last edited event' do
