@@ -3,10 +3,12 @@
     <% current_user.calendars.each do |calendar| %>
       <li><%= link_to calendar.title, calendar_path(calendar) %></li>
     <% end %>
-    <li class="new-calendar"><%= link_to t('helpers.action.calendar.new'), new_calendar_path, class: 'action' %></li>
-    <li><%= link_to t('helpers.action.calendar.index'), calendars_path, class: 'action' %></li>
   </ul>
-  <nav>
+  <nav class="calendar-actions">
+    <%= link_to t('helpers.action.calendar.new'), new_calendar_path, class: 'action' %>
+    <%= link_to t('helpers.action.calendar.index'), calendars_path, class: 'action' %>
+  </nav>
+  <nav class="session">
     <ul>
       <li><%= link_to current_user.email, nil %></li>
       <li><%= link_to 'Sign out', session_path, method: :delete %></li>

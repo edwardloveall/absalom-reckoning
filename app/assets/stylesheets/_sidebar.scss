@@ -6,11 +6,8 @@ aside.sidebar {
   flex-shrink: 0;
   padding: $base-spacing;
 
-  ul.calendar-list {
+  nav.calendar-actions {
     flex-grow: 1;
-  }
-
-  li.new-calendar {
     margin-top: $base-spacing;
   }
 
