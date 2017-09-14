@@ -7,12 +7,24 @@ aside.sidebar {
   padding: $base-spacing;
 
   ul.calendar-list {
-    width: $sidebar-width;
-
     li {
+      margin-bottom: $small-spacing;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      &[data-current=true],
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $sidebar-highlight-background;
+        border-radius: $base-border-radius;
+      }
+    }
+
+    a {
+      display: block;
+      padding: $small-spacing;
     }
   }
 
@@ -39,7 +51,7 @@ aside.sidebar {
     &:active,
     &:focus,
     &:hover {
-      background-color: $action-text-color;
+      background-color: $sidebar-highlight-background;
       color: $alt-action-background-color;
     }
   }

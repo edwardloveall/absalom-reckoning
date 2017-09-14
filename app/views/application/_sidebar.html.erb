@@ -2,7 +2,9 @@
   <% if signed_in? %>
     <ul class="calendar-list">
       <% current_user.calendars.each do |calendar| %>
-        <li><%= link_to calendar.title, calendar_path(calendar) %></li>
+        <li data-current="<%= calendar == @calendar %>">
+          <%= link_to(calendar.title, calendar_path(calendar)) %>
+        </li>
       <% end %>
     </ul>
     <nav class="calendar-actions">
