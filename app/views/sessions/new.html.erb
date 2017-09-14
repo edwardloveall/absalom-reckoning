@@ -1,5 +1,4 @@
 <%= simple_form_for :session, url: session_path do |form| %>
-  <%= render 'flashes' %>
   <%= form.input :email %>
   <%= form.input :password %>
   <%= form.submit t('helpers.submit.session.create') %>

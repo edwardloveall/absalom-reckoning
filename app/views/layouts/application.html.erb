@@ -11,7 +11,9 @@
     <%= render 'sidebar' %>
     <main>
       <%= render 'flashes' %>
-      <%= yield %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
     </main>
     <%= render 'javascript' %>
   </body>

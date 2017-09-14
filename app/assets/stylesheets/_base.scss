@@ -24,6 +24,11 @@ main {
   padding: $base-spacing;
 }
 
+.content-wrapper {
+  margin: auto;
+  max-width: $content-width;
+}
+
 a {
   color: $link-color;
   text-decoration: none;

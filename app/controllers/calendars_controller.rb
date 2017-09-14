@@ -1,4 +1,6 @@
 class CalendarsController < AuthorizedController
+  layout 'calendar', only: :show
+
   def index
   end
 

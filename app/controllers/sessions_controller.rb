@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create], raise: false
-  layout 'session'
 
   def new
     if signed_in?
