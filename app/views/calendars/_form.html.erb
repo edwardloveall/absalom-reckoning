@@ -1,4 +1,14 @@
 <%= simple_form_for(@calendar) do |form| %>
   <%= form.input :title %>
-  <%= form.submit %>
+  <div class="actions">
+    <%= form.submit %>
+    <% if @calendar.persisted? %>
+      <%= link_to(
+        t('helpers.action.calendar.destroy'),
+        calendar_path(@calendar),
+        method: :delete,
+        data: { confirm: 'Are you sure? This will also delete all events associated with the calendar.' }
+      ) %>
+    <% end %>
+  </div>
 <% end %>

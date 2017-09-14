@@ -37,4 +37,15 @@ form {
       color: $accent-color;
     }
   }
+
+  div.actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: $base-spacing + $small-spacing + 1rem;
+
+    input[type=submit] {
+      margin-top: 0;
+    }
+  }
 }
