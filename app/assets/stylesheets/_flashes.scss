@@ -1,19 +1,38 @@
 ul.flashes {
+  $icon-border-radius: 2px;
+  $icon-size: 5px;
+
+  margin-bottom: $base-spacing;
+
   li {
+    align-items: center;
+    color: $medium-text-color;
+    display: flex;
     list-style-type: none;
-    margin-bottom: $base-spacing;
-    padding: $small-spacing $base-spacing;
+    margin-bottom: $small-spacing;
+
+    &:before {
+      border-radius: 50%;
+      border-style: solid;
+      border-width: $icon-border-radius;
+      content: '';
+      flex-basis: $icon-size;
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: $icon-size;
+      margin-right: $base-spacing;
+    }
   }
 
   li.notice {
-    background-color: $notice-bg-color;
-    border: 2px solid transparentize($notice-color, 0.5);
-    color: $notice-color;
+    &:before {
+      border-color: $notice-color;
+    }
   }
 
   li.error {
-    background-color: $error-bg-color;
-    border: 2px solid transparentize($error-color, 0.5);
-    color: $error-color;
+    &:before {
+      border-color: $error-color;
+    }
   }
 }

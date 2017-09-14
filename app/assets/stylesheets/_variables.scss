@@ -3,17 +3,18 @@ $medium-gray: #bbb;
 $white: #fff;
 $light-gray: mix($out-gray, $white, 30%);
 $geraldine: #f75557;
-$fair-pink: #ffecec;
-$citrine-white: #f8f4d5;
-$kumera: #97732e;
+$casablanca: #edaf4a;
+$dark-gray: #666;
+$black: #000000;
 
 $base-border-color: $medium-gray;
 $base-border-radius: 5px;
+$base-text-color: $black;
+$light-text-color: $medium-gray;
+$medium-text-color: $dark-gray;
 $accent-color: $geraldine;
 $link-color: $accent-color;
-$notice-bg-color: $citrine-white;
-$notice-color: $kumera;
-$error-bg-color: $fair-pink;
+$notice-color: $casablanca;
 $error-color: $geraldine;
 
 $base-border: 1px solid $base-border-color;

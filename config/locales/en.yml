@@ -13,7 +13,7 @@ en:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
     error:
       calendar:
-        not_found: We couldn't find a calendar that you have access to
+        not_found: We couldn't find that calendar for you
       event:
         create: '%{error_count} prevented the event from being created'
         update: '%{error_count} prevented the event from being saved'
