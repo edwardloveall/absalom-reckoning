@@ -15,5 +15,10 @@
         <li><%= link_to 'Sign out', session_path, method: :delete %></li>
       </ul>
     </nav>
+  <% else %>
+    <nav class="signed-out">
+      <%= link_to t('helpers.submit.session.create'), new_session_path, class: 'action' %>
+      <%= link_to t('helpers.submit.user.create'), new_user_path, class: 'action' %>
+    </nav>
   <% end %>
 </aside>

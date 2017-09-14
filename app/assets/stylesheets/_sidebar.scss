@@ -21,6 +21,11 @@ aside.sidebar {
     margin-top: $base-spacing;
   }
 
+  nav.signed-out {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
   .action {
     background-color: $alt-action-background-color;
     border-radius: $action-border-radius;
