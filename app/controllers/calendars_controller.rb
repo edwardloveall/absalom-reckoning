@@ -41,6 +41,14 @@ class CalendarsController < AuthorizedController
     end
   end
 
+  def destroy
+    @calendar = current_user.calendars.find(params[:id])
+
+    if @calendar.destroy
+      redirect_to calendars_path
+    end
+  end
+
   private
 
   def calendar_params

@@ -2,9 +2,10 @@ en:
   helpers:
     action:
       calendar:
-        new: New Calendar
+        destroy: delete
         edit: edit
         index: Edit Calendars
+        new: New Calendar
       event:
         new: New event
     error:
