@@ -1,6 +1,6 @@
 class Calendar < ApplicationRecord
   has_many :events, dependent: :destroy
-  has_many :permissions
+  has_many :permissions, dependent: :destroy
   has_many :users, through: :permissions
 
   validates :title, presence: true, length: { maximum: 100 }

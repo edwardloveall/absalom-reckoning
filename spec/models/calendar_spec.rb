@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Calendar do
   describe 'associations' do
     it { should have_many(:events).dependent(:destroy) }
-    it { should have_many(:permissions) }
+    it { should have_many(:permissions).dependent(:destroy) }
     it { should have_many(:users).through(:permissions) }
   end
 
