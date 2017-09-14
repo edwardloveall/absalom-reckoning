@@ -17,6 +17,8 @@ gem 'uglifier'
 
 group :development do
   gem 'listen'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
