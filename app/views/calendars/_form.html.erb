@@ -7,7 +7,7 @@
         t('helpers.action.calendar.destroy'),
         calendar_path(@calendar),
         method: :delete,
-        data: { confirm: 'Are you sure? This will also delete all events associated with the calendar.' }
+        data: { confirm: t('helpers.messages.calendar.confirm_delete') }
       ) %>
     <% end %>
   </div>

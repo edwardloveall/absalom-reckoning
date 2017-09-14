@@ -2,12 +2,15 @@ en:
   helpers:
     action:
       calendar:
-        destroy: delete
-        edit: edit
+        destroy: Delete
+        edit: Edit
         index: Edit Calendars
         new: New Calendar
       event:
-        new: New event
+        new: New Event
+    messages:
+      calendar:
+        confirm_delete: Are you sure? This will also delete all events associated with the calendar.
     error:
       calendar:
         not_found: We couldn't find a calendar that you have access to
@@ -21,10 +24,10 @@ en:
         unauthorized: You must be logged in
     submit:
       calendar:
-        update: Update calendar
+        update: Update Calendar
       event:
-        create: Add event
-        update: Update event
+        create: Add Event
+        update: Update Event
         cancel: Cancel
       session:
         create: Sign in

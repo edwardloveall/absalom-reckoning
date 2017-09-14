@@ -66,8 +66,8 @@ RSpec.feature "User can't add event to calendar they can only view" do
   end
 end
 
-RSpec.feature "User can't add event to calendar they can only view" do
-  scenario 'redirects the user to the calendar show view with a message' do
+RSpec.feature "User can add event to calendar they can edit" do
+  scenario 'shows them the event on the calendar' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -75,7 +75,7 @@ RSpec.feature "User can't add event to calendar they can only view" do
 
     visit calendar_path(calendar)
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_on 'New event'
+      click_on 'New Event'
     end
 
     permission.update(level: 'viewer')

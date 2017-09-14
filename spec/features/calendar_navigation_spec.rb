@@ -23,7 +23,7 @@ RSpec.feature 'User navigates to a calendar' do
     click_on('next')
     month_name = find('main h2').text
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_link('New event')
+      click_link('New Event')
     end
     fill_form_and_submit(:event, title: 'TPK')
 

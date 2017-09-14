@@ -7,7 +7,7 @@ RSpec.feature 'User adds an Event' do
 
     visit calendar_path(user.calendars.first)
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_link('New event')
+      click_link('New Event')
     end
 
     form_params = { title: 'TPK' }
@@ -26,7 +26,7 @@ RSpec.feature 'User adds an Event' do
       visit calendar_path(user.calendars.first)
       click_on('next')
       within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-        click_link('New event')
+        click_link('New Event')
       end
 
       form_params = { title: 'TPK' }
@@ -47,7 +47,7 @@ RSpec.feature 'User tries to add an event with invalid data' do
 
     visit calendar_path(user.calendars.first)
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_link('New event')
+      click_link('New Event')
     end
 
     form_params = { title: '' }
@@ -67,7 +67,7 @@ RSpec.feature 'User decides not to add an event' do
     visit calendar_path(user.calendars.first)
     click_on('next')
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_link('New event')
+      click_link('New Event')
     end
 
     click_on('Cancel')
@@ -86,7 +86,7 @@ RSpec.feature 'User sets an event date manually' do
 
     visit calendar_path(user.calendars.first)
     within('.week:nth-of-type(2) .day:nth-of-type(3)') do
-      click_link('New event')
+      click_link('New Event')
     end
     fill_form_and_submit(:event, form_params)
 
