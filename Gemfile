@@ -16,6 +16,7 @@ gem 'title'
 gem 'uglifier'
 
 group :development do
+  gem 'bullet'
   gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
