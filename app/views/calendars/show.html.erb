@@ -1,14 +1,8 @@
 <section class="calendar">
   <nav>
-    <%= link_to calendar_path(date: @date << 1) do %>
-      previous
-    <% end %>
-    <h2 class="month-and-year">
-      <%= "#{ArDate::MONTH_NAMES[@date.month - 1]} #{@date.year}" %>
-    </h2>
-    <%= link_to calendar_path(date: @date >> 1) do %>
-      next
-    <% end %>
+    <%= @presenter.previous_month_link(from: @date) %>
+    <%= @presenter.month_and_year(from: @date) %>
+    <%= @presenter.next_month_link(from: @date) %>
   </nav>
   <%= calendar @date do |date| %>
     <header>

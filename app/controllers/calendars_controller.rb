@@ -6,6 +6,7 @@ class CalendarsController < AuthorizedController
 
   def show
     @calendar = Calendar.find(params[:id])
+    @presenter = present(@calendar)
     raise CalendarNotFound if !current_user.can_view?(@calendar)
 
     if params[:date].present?
