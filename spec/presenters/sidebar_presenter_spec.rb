@@ -57,4 +57,19 @@ RSpec.describe SidebarPresenter do
       HTML
     end
   end
+
+  describe '#signed_out_actions' do
+    it 'returns html for actions for the signed out user' do
+      presenter = present(:sidebar, nil)
+
+      result = presenter.signed_out_actions
+
+      expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
+        <nav class="signed-out">
+          <a class="action" href="/session/new">Sign in</a>
+          <a class="action" href="/users/new">Sign up</a>
+        </nav>
+      HTML
+    end
+  end
 end

@@ -40,4 +40,13 @@ class SidebarPresenter < Keynote::Presenter
       end
     end
   end
+
+  def signed_out_actions
+    build_html do
+      nav class: 'signed-out' do
+        a.action t('helpers.submit.session.create'), href: new_session_path
+        a.action t('helpers.submit.user.create'), href: new_user_path
+      end
+    end
+  end
 end
