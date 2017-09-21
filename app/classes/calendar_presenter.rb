@@ -1,6 +1,5 @@
 class CalendarPresenter < Keynote::Presenter
   presents :calendar
-  use_html_5_tags
 
   def next_month_link(from:)
     link_to(
@@ -21,15 +20,6 @@ class CalendarPresenter < Keynote::Presenter
     build_html do
       h2 class: 'month-and-year' do
         "#{month} #{from.year}"
-      end
-    end
-  end
-
-  def calendar_actions
-    build_html do
-      nav class: 'calendar-actions' do
-        a.action t('helpers.action.calendar.new'), href: new_calendar_path
-        a.action t('helpers.action.calendar.index'), href: calendars_path
       end
     end
   end

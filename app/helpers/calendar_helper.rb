@@ -10,4 +10,11 @@ module CalendarHelper
       content_tag(:span, event.title)
     end
   end
+
+  def calendar_actions
+    content_tag(:nav, class: 'calendar-actions') do
+      concat link_to t('helpers.action.calendar.new'), new_calendar_path, class: 'action'
+      concat link_to t('helpers.action.calendar.index'), calendars_path, class: 'action'
+    end
+  end
 end
