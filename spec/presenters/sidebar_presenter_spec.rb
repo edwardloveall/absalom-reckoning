@@ -23,4 +23,20 @@ RSpec.describe SidebarPresenter do
       HTML
     end
   end
+
+  describe '#calendar_actions' do
+    it 'returns html for actions you can take on a calendar' do
+      user = double(:user)
+      presenter = present(:sidebar, user)
+
+      result = presenter.calendar_actions
+
+      expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
+        <nav class="calendar-actions">
+          <a class="action" href="/calendars/new">New Calendar</a>
+          <a class="action" href="/calendars">Edit Calendars</a>
+        </nav>
+      HTML
+    end
+  end
 end
