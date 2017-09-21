@@ -6,10 +6,10 @@ RSpec.describe CalendarHelper do
       result = helper.calendar_actions
 
       expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
-      <nav class="calendar-actions">
-        <a class="action" href="/calendars/new">New Calendar</a>
-        <a class="action" href="/calendars">Edit Calendars</a>
-      </nav>
+      <ul class="calendar-actions">
+        <li><a class="action" href="/calendars/new">New Calendar</a></li>
+        <li><a class="action" href="/calendars">Edit Calendars</a></li>
+      </ul>
       HTML
     end
   end
