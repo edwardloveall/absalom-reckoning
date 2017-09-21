@@ -39,4 +39,22 @@ RSpec.describe SidebarPresenter do
       HTML
     end
   end
+
+  describe '#session_actions' do
+    it 'returns html for session related actions' do
+      user = create(:user)
+      presenter = present(:sidebar, user)
+
+      result = presenter.session_actions
+
+      expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
+        <nav class="session">
+          <ul>
+            <li><a href="">#{user.email}</a></li>
+            <li><a rel="nofollow" data-method="delete" href="/session">Sign out</a></li>
+          </ul>
+        </nav>
+      HTML
+    end
+  end
 end
