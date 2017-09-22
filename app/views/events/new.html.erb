@@ -1,5 +1,5 @@
 <%= simple_form_for([:calendar, @event]) do |form| %>
-  <% form_error_hint(@event) %>
+  <%= form_error_hint(@event) %>
   <%= form.input(
     :occurred_on,
     label: 'Date',
