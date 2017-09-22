@@ -28,12 +28,10 @@ RSpec.describe UserPresenter do
       result = presenter.session_actions
 
       expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
-        <nav class="session">
-          <ul>
-            <li><a href="">#{user.email}</a></li>
-            <li><a rel="nofollow" data-method="delete" href="/session">Sign out</a></li>
-          </ul>
-        </nav>
+        <ul class="session">
+          <li><a href="">#{user.email}</a></li>
+          <li><a rel="nofollow" data-method="delete" href="/session">Sign out</a></li>
+        </ul>
       HTML
     end
   end

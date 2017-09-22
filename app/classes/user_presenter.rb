@@ -15,16 +15,14 @@ class UserPresenter < Keynote::Presenter
 
   def session_actions
     build_html do
-      nav class: :session do
-        ul do
-          li { link_to user.email, '' }
-          li do
-            link_to(
-              t('helpers.submit.session.destroy'),
-              session_path,
-              method: :delete
-            )
-          end
+      ul class: :session do
+        li { link_to user.email, '' }
+        li do
+          link_to(
+            t('helpers.submit.session.destroy'),
+            session_path,
+            method: :delete
+          )
         end
       end
     end
