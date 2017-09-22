@@ -12,14 +12,10 @@ RSpec.describe UserPresenter do
       result = presenter.calendar_list(for_current: selected_calendar)
 
       expect(result).to eq <<-HTML.strip_heredoc.strip_html_whitespace
-        <ul class="calendar-list">
-          <li data-current="true">
-            <a href="/calendars/#{selected_calendar.id}">#{selected_calendar.title}</a>
-          </li>
-          <li data-current="false">
-            <a href="/calendars/#{other_calendar.id}">#{other_calendar.title}</a>
-          </li>
-        </ul>
+        <nav class="calendar-list">
+          <a href="/calendars/#{selected_calendar.id}" data-current="true">#{selected_calendar.title}</a>
+          <a href="/calendars/#{other_calendar.id}" data-current="false">#{other_calendar.title}</a>
+        </nav>
       HTML
     end
   end

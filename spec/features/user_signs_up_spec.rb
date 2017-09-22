@@ -30,7 +30,7 @@ RSpec.feature 'User signs up' do
     calendar = user.calendars.first
 
     within 'aside.sidebar' do
-      expect(page).to have_css('li', text: calendar.title)
+      expect(page).to have_css('a', text: calendar.title)
     end
   end
 

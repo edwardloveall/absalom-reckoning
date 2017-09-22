@@ -13,7 +13,7 @@ RSpec.feature 'User creates a calendar' do
     calendar = Calendar.find_by(title: title)
 
     expect(current_path).to eq(calendar_path(calendar))
-    expect(page).to have_css('aside li', text: title)
+    expect(page).to have_css('aside a', text: title)
   end
 
   scenario 'is allowed to add events to it' do

@@ -7,8 +7,9 @@ aside.sidebar {
   padding: $base-spacing;
 
   .calendar-list {
-    li {
+    a {
       border-radius: $base-border-radius;
+      color: $medium-text-color;
       margin-bottom: $small-spacing;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -21,12 +22,8 @@ aside.sidebar {
         background-color: $sidebar-highlight-background;
       }
 
-      &[data-current=true] a {
+      &[data-current=true] {
         color: $accent-color;
-      }
-
-      a {
-        color: $medium-text-color;
       }
     }
 

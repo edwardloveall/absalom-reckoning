@@ -7,7 +7,7 @@ RSpec.feature 'User deletes a calendar' do
 
     visit(calendar_path(calendar))
 
-    expect(page).to have_css('.sidebar ul.calendar-list li', count: 1)
+    expect(page).to have_css('.sidebar .calendar-list a', count: 1)
 
     within('.sidebar') do
       click_on t('helpers.action.calendar.index')
@@ -16,6 +16,6 @@ RSpec.feature 'User deletes a calendar' do
     click_on t('helpers.action.calendar.destroy')
 
     expect(current_path).to eq(calendars_path)
-    expect(page).to have_css('.sidebar ul.calendar-list li', count: 0)
+    expect(page).to have_css('.sidebar .calendar-list a', count: 0)
   end
 end
