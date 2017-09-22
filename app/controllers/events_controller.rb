@@ -1,12 +1,11 @@
 class EventsController < AuthorizedController
   def new
-    raise NotAuthorized if !current_user.can_edit?(calendar)
+    require_calendar_edit_access
     @event = calendar.events.new
   end
 
   def create
-    raise NotAuthorized if !current_user.can_edit?(calendar)
-
+    require_calendar_edit_access
     @event = calendar.events.new(event_params)
 
     if @event.save
@@ -17,15 +16,13 @@ class EventsController < AuthorizedController
   end
 
   def edit
-    raise NotAuthorized if !current_user.can_edit?(calendar)
-
+    require_calendar_edit_access
     @calendar = calendar
     @event = @calendar.events.find(params[:id])
   end
 
   def update
-    raise NotAuthorized if !current_user.can_edit?(calendar)
-
+    require_calendar_edit_access
     @calendar = calendar
     @event = @calendar.events.find(params[:id])
 
@@ -37,8 +34,7 @@ class EventsController < AuthorizedController
   end
 
   def destroy
-    raise NotAuthorized if !current_user.can_edit?(calendar)
-
+    require_calendar_edit_access
     @calendar = calendar
     @event = @calendar.events.find(params[:id])
 
@@ -61,5 +57,9 @@ class EventsController < AuthorizedController
 
   def calendar
     @_calendar ||= Calendar.find(params[:calendar_id])
+  end
+
+  def require_calendar_edit_access
+    raise NotAuthorized if !current_user.can_edit?(calendar)
   end
 end
