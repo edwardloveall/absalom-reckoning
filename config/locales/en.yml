@@ -10,9 +10,11 @@ en:
         prev_month: previous
       event:
         new: New Event
+        delete: Delete
     messages:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
+      confirm_delete: Are you sure?
     error:
       calendar:
         not_found: We couldn't find that calendar for you

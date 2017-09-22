@@ -9,8 +9,10 @@
   <div class="actions">
     <%= form.submit %>
     <%= link_to(
-      t('helpers.submit.event.cancel'),
-      calendar_path(@calendar, date: @event.occurred_on)
+      t('helpers.action.event.delete'),
+      calendar_event_path(@calendar, @event),
+      method: :delete,
+      data: { confirm: t('helpers.messages.confirm_delete') }
     ) %>
   </div>
 <% end %>

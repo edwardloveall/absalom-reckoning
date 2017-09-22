@@ -36,6 +36,19 @@ class EventsController < AuthorizedController
     end
   end
 
+  def destroy
+    raise NotAuthorized if !current_user.can_edit?(calendar)
+
+    @calendar = calendar
+    @event = @calendar.events.find(params[:id])
+
+    if @event.destroy
+      redirect_to calendar_path(calendar, date: @event.occurred_on)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def event_params
