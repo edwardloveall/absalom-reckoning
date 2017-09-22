@@ -9,8 +9,9 @@ en:
         next_month: next
         prev_month: previous
       event:
-        new: New Event
+        cancel: Cancel
         delete: Delete
+        new: New Event
     messages:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
@@ -32,7 +33,6 @@ en:
       event:
         create: Add Event
         update: Update Event
-        cancel: Cancel
       session:
         create: Sign in
         destroy: Sign out
