@@ -1,5 +1,6 @@
 class Calendar < ApplicationRecord
   has_many :events, dependent: :destroy
+  has_many :invitations, dependent: :destroy
   has_many :permissions, dependent: :destroy
   has_many :users, through: :permissions
 
