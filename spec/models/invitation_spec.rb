@@ -9,6 +9,7 @@ RSpec.describe Invitation do
   describe 'validations' do
     it { should validate_presence_of(:calendar) }
     it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).scoped_to(:calendar_id) }
     it { should validate_presence_of(:owner) }
   end
 end
