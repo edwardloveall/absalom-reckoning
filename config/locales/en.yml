@@ -16,6 +16,8 @@ en:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
       confirm_delete: Are you sure?
+      invitation:
+        create: 'Success! %{email} can now accept this invitation.'
     error:
       calendar:
         not_found: We couldn't find that calendar for you
@@ -33,6 +35,8 @@ en:
       event:
         create: Add Event
         update: Update Event
+      invitation:
+        create: Invite
       session:
         create: Sign in
         destroy: Sign out

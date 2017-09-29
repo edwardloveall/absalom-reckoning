@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :calendars do
     resources :events, except: [:index, :show]
+    resources :invitations, only: [:create]
   end
   root to: 'welcome#show'
 end

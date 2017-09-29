@@ -34,6 +34,7 @@ class CalendarsController < AuthorizedController
 
   def edit
     @calendar = current_user.calendars.find(params[:id])
+    @invitation = @calendar.invitations.new(owner: current_user)
   end
 
   def update
