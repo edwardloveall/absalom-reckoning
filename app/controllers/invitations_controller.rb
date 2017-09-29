@@ -1,4 +1,8 @@
 class InvitationsController < AuthorizedController
+  def index
+    @invitations = Invitation.where(email: current_user.email)
+  end
+
   def create
     @invitation = Invitation.new(invitation_params)
     if @invitation.save
@@ -13,6 +17,6 @@ class InvitationsController < AuthorizedController
   private
 
   def invitation_params
-    params.require(:invitation).permit(:email, :calendar_id, :owner_id)
+    params.require(:invitation).permit(:email, :level, :calendar_id, :owner_id)
   end
 end

@@ -1,0 +1,8 @@
+<ul class="invitations">
+  <% @invitations.each do |invitation| %>
+    <li>
+      <span class="title"><%= invitation.calendar.title %></span>
+      <%= link_to 'Accept', permissions_path(invitation: invitation), method: :post %>
+    </li>
+  <% end %>
+</ul>

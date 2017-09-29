@@ -1,6 +1,9 @@
 <aside class="sidebar">
   <% if signed_in? %>
     <%= present(current_user).calendar_list(for_current: @calendar) %>
+    <% if Invitation.exists?(email: current_user.email) %>
+      <%= link_to 'Invitations', invitations_path %>
+    <% end %>
     <%= calendar_actions %>
     <%= present(current_user).session_actions %>
   <% else %>
