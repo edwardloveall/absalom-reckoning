@@ -2,7 +2,7 @@
   <% @invitations.each do |invitation| %>
     <li>
       <span class="title"><%= invitation.calendar.title %></span>
-      <%= link_to 'Accept', permissions_path(invitation: invitation), method: :post %>
+      <%= link_to 'Accept', permissions_path(invitation_id: invitation), method: :post %>
     </li>
   <% end %>
 </ul>
