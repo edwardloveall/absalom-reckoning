@@ -8,6 +8,6 @@
   <%= form.input :owner_id, as: :hidden %>
   <%= form.input :calendar_id, as: :hidden %>
   <%= form.input :email %>
-  <%= form.input :level, collection: [%w(Editor editor), %w(Viewer viewer)] %>
+  <%= form.input :level, collection: permission_levels_for_select %>
   <%= form.submit %>
 <% end %>

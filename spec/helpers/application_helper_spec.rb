@@ -46,4 +46,12 @@ RSpec.describe ApplicationHelper do
       end
     end
   end
+
+  describe '#permission_levels_for_select' do
+    it 'returns an array of titles and values for form input' do
+      result = helper.permission_levels_for_select
+
+      expect(result).to eq([%w(Editor editor), %w(Viewer viewer)])
+    end
+  end
 end

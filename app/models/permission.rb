@@ -1,5 +1,6 @@
 class Permission < ApplicationRecord
   LEVELS = %w(owner editor viewer).freeze
+  INVITATION_LEVELS = %w(editor viewer).freeze
 
   belongs_to :calendar
   belongs_to :user

@@ -19,4 +19,10 @@ module ApplicationHelper
   def date_from_day_number(day_number)
     ArDateParser.from_day_number(day_number.to_i)
   end
+
+  def permission_levels_for_select
+    Permission::INVITATION_LEVELS.map do |level|
+      [level.titleize, level]
+    end
+  end
 end
