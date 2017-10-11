@@ -4,7 +4,7 @@
     <%= @presenter.month_and_year(from: @date) %>
     <%= @presenter.next_month_link(from: @date) %>
   </nav>
-  <%= calendar @date do |date| %>
+  <%= calendar_display @date do |date| %>
     <header>
       <span class="number"><%= date.day %></span>
       <% if current_user.can_edit?(@calendar) %>

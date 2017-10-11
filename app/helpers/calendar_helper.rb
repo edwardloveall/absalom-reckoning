@@ -1,5 +1,5 @@
 module CalendarHelper
-  def calendar(date, &callback)
+  def calendar_display(date, &callback)
     CalendarView.new(self, date, callback).full
   end
 

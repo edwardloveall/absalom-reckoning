@@ -1,11 +1,11 @@
-<%= simple_form_for(@calendar) do |form| %>
+<%= simple_form_for(calendar) do |form| %>
   <%= form.input :title %>
   <div class="actions">
     <%= form.submit %>
-    <% if @calendar.persisted? %>
+    <% if calendar.persisted? %>
       <%= link_to(
         t('helpers.action.calendar.destroy'),
-        calendar_path(@calendar),
+        calendar_path(calendar),
         method: :delete,
         data: { confirm: t('helpers.messages.calendar.confirm_delete') }
       ) %>

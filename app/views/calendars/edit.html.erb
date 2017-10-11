@@ -1,4 +1,4 @@
-<%= render 'form' %>
+<%= render partial: 'form', locals: { calendar: @calendar } %>
 <ul class="invitations">
   <% @calendar.invitations.each do |invitation| %>
     <li>
