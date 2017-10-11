@@ -1,7 +1,15 @@
 <%= render 'form' %>
-<ul class="invitation-list">
+<ul class="invitations">
   <% @calendar.invitations.each do |invitation| %>
-    <li><%= invitation.email %></li>
+    <li>
+      <%= invitation.email %>
+      <%= link_to(
+        t('helpers.action.invitation.delete'),
+        calendar_invitation_path(@calendar, invitation),
+        method: :delete,
+        class: 'delete'
+      ) %>
+    </li>
   <% end %>
 </ul>
 <%= simple_form_for([@calendar, @invitation]) do |form| %>

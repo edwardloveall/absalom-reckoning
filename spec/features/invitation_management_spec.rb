@@ -17,7 +17,7 @@ RSpec.feature 'Invitation management' do
     click_on 'Invite'
 
     flash_text = "Success! #{email} can now accept this invitation."
-    expect(page).to have_css('.invitation-list li', text: email)
+    expect(page).to have_css('.invitations li', text: email)
     expect(page).to have_css('.flashes li', text: flash_text)
 
     click_on 'Sign out'
@@ -34,5 +34,39 @@ RSpec.feature 'Invitation management' do
     within('.sidebar') do
       expect(page).to have_css('a[data-current="true"]', text: calendar_title)
     end
+  end
+
+  scenario 'user deletes an invite' do
+    email = 'invited@example.com'
+    invited = sign_in(signed_up_user(email: email))
+    owner = signed_up_user
+    calendar_title = 'Awesome Calendar'
+    calendar = owner.calendars.first
+    calendar.update(title: calendar_title)
+    invitation = create(
+      :invitation,
+      email: email,
+      owner: owner,
+      calendar: calendar
+    )
+
+    visit root_path
+    click_on 'Invitations'
+
+    within('ul.invitations') do
+      expect(page).to have_css('li', text: calendar_title)
+    end
+
+    click_on 'Sign out'
+
+    sign_in(owner)
+    visit root_path
+    click_on 'Edit Calendars'
+    click_on 'Edit'
+    within('.invitations') do
+      find(:css, '.delete').click
+    end
+
+    expect(page).not_to have_css('li', text: email)
   end
 end

@@ -14,6 +14,17 @@ class InvitationsController < AuthorizedController
     end
   end
 
+  def destroy
+    @calendar = Calendar.find(params[:calendar_id])
+    @invitation = @calendar.invitations.find(params[:id])
+
+    if @invitation.destroy
+      redirect_to edit_calendar_path(@calendar)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def invitation_params

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :permissions, only: [:create]
   resources :calendars do
     resources :events, except: [:index, :show]
-    resources :invitations, only: [:create]
+    resources :invitations, only: [:create, :destroy]
   end
   root to: 'welcome#show'
 end

@@ -12,6 +12,8 @@ en:
         cancel: Cancel
         delete: Delete
         new: New Event
+      invitation:
+        delete: Delete
     messages:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
