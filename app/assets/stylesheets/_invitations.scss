@@ -1,0 +1,25 @@
+.invitations {
+  margin-top: $separator-spacing;
+
+  h2 {
+    margin-bottom: $small-spacing;
+  }
+
+  .current-invitations {
+    margin-top: $large-spacing;
+  }
+
+  li {
+    align-items: center;
+    background-color: $alt-background;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $small-spacing;
+    padding: $base-spacing;
+  }
+
+  .title,
+  .email {
+    margin-right: $base-spacing;
+  }
+}

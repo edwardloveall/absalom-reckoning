@@ -14,10 +14,10 @@ RSpec.feature 'Invitation management' do
     click_on 'Edit'
     fill_in 'Email', with: email
     select 'Viewer', from: 'Level'
-    click_on 'Invite'
+    click_on 'Send Invitation'
 
     flash_text = "Success! #{email} can now accept this invitation."
-    expect(page).to have_css('.invitations li', text: email)
+    expect(page).to have_css('.current-invitations li', text: email)
     expect(page).to have_css('.flashes li', text: flash_text)
 
     click_on 'Sign out'
@@ -26,7 +26,7 @@ RSpec.feature 'Invitation management' do
     visit root_path
 
     click_on 'Invitations'
-    within('ul.invitations li:first-child') do
+    within('ul.current-invitations li:first-child') do
       click_on 'Accept'
     end
     click_on calendar_title
@@ -53,7 +53,7 @@ RSpec.feature 'Invitation management' do
     visit root_path
     click_on 'Invitations'
 
-    within('ul.invitations') do
+    within('ul.current-invitations') do
       expect(page).to have_css('li', text: calendar_title)
     end
 
@@ -63,7 +63,7 @@ RSpec.feature 'Invitation management' do
     visit root_path
     click_on 'Edit Calendars'
     click_on 'Edit'
-    within('.invitations') do
+    within('.current-invitations') do
       find(:css, '.delete').click
     end
 

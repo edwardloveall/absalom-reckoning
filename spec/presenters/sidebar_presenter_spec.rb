@@ -8,7 +8,7 @@ RSpec.describe SidebarPresenter do
         user = create(:user, email: email)
         invitation = create(:invitation, email: email)
         presenter = present(:sidebar, user)
-        html = '<a href="/invitations">Invitations</a>'
+        html = '<a class="action" href="/invitations">Invitations</a>'
 
         result = presenter.invitation_link
 

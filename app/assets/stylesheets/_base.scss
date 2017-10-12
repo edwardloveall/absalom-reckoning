@@ -37,6 +37,24 @@ a {
   text-decoration: none;
 }
 
+a.action {
+  background-color: $alt-action-background-color;
+  border-radius: $action-border-radius;
+  color: $action-text-color;
+  display: block;
+  margin-bottom: $action-margin;
+  margin-top: $action-margin;
+  padding: $action-padding;
+  text-align: center;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $sidebar-highlight-background;
+    color: $alt-action-background-color;
+  }
+}
+
 ul {
   margin-bottom: 0;
   margin-top: 0;
@@ -48,6 +66,6 @@ li {
   list-style-type: none;
 }
 
-h2 {
+h2, h3 {
   margin: 0;
 }

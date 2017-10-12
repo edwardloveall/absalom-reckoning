@@ -1,21 +1,26 @@
 <%= render partial: 'form', locals: { calendar: @calendar } %>
-<ul class="invitations">
-  <% @calendar.invitations.each do |invitation| %>
-    <li>
-      <%= invitation.email %>
-      <%= link_to(
-        t('helpers.action.invitation.delete'),
-        calendar_invitation_path(@calendar, invitation),
-        method: :delete,
-        class: 'delete'
-      ) %>
-    </li>
+<section class="invitations">
+  <h3>Invitations</h3>
+  <% if @calendar.invitations.present? %>
+    <ul class="current-invitations">
+      <% @calendar.invitations.each do |invitation| %>
+        <li>
+          <span class="email"><%= invitation.email %></span>
+          <%= link_to(
+            t('helpers.submit.invitation.destroy'),
+            calendar_invitation_path(@calendar, invitation),
+            method: :delete,
+            class: 'delete action'
+          ) %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
-<%= simple_form_for([@calendar, @invitation]) do |form| %>
-  <%= form.input :owner_id, as: :hidden %>
-  <%= form.input :calendar_id, as: :hidden %>
-  <%= form.input :email %>
-  <%= form.input :level, collection: permission_levels_for_select %>
-  <%= form.submit %>
-<% end %>
+  <%= simple_form_for([@calendar, @invitation]) do |form| %>
+    <%= form.input :owner_id, as: :hidden %>
+    <%= form.input :calendar_id, as: :hidden %>
+    <%= form.input :email %>
+    <%= form.input :level, collection: permission_levels_for_select %>
+    <%= form.submit %>
+  <% end %>
+</section>

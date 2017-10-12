@@ -44,22 +44,4 @@ aside.sidebar {
     margin-bottom: auto;
     margin-top: auto;
   }
-
-  .action {
-    background-color: $alt-action-background-color;
-    border-radius: $action-border-radius;
-    color: $action-text-color;
-    display: block;
-    margin-bottom: $action-margin;
-    margin-top: $action-margin;
-    padding: $action-padding;
-    text-align: center;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: $sidebar-highlight-background;
-      color: $alt-action-background-color;
-    }
-  }
 }
