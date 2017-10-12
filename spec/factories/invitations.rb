@@ -3,5 +3,6 @@ FactoryGirl.define do
     email
     calendar
     association :owner, factory: :user
+    level 'owner'
   end
 end

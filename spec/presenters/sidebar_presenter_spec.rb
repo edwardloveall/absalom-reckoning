@@ -6,7 +6,7 @@ RSpec.describe SidebarPresenter do
       it 'returns a link to their invitation page' do
         email = 'user@example.com'
         user = create(:user, email: email)
-        invitation = create(:invitation, email: email)
+        invitation = create(:invitation, email: email, level: 'editor')
         presenter = present(:sidebar, user)
         html = '<a class="action" href="/invitations">Invitations</a>'
 

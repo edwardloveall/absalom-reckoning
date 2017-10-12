@@ -4,5 +4,8 @@ class Invitation < ApplicationRecord
 
   validates :calendar, presence: true
   validates :email, presence: true, uniqueness: { scope: :calendar_id }
+  validates :level, presence: true, inclusion: {
+    in: Permission::INVITATION_LEVELS
+  }
   validates :owner, presence: true
 end

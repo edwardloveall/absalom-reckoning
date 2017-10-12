@@ -47,7 +47,8 @@ RSpec.feature 'Invitation management' do
       :invitation,
       email: email,
       owner: owner,
-      calendar: calendar
+      calendar: calendar,
+      level: 'editor'
     )
 
     visit root_path
