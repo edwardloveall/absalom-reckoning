@@ -16,9 +16,6 @@ module Features
 end
 
 RSpec.configure do |config|
-  config.before(:each, js: true) do
-    page.driver.block_unknown_urls
-  end
   config.include Features, type: :feature
   config.include Monban::Test::Helpers, type: :feature
   config.include SignedUpUser, type: :feature
@@ -37,3 +34,19 @@ end
 
 ActiveRecord::Migration.maintain_test_schema!
 Monban.test_mode!
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
