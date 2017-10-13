@@ -9,7 +9,7 @@ class AuthorizedController < ApplicationController
 
   def not_authorized
     flash[:error] = I18n.t('helpers.error.no_permission')
-    redirect_to calendar_path(calendar)
+    redirect_to root_path
   end
 
   def calendar_not_found

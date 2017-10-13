@@ -2,6 +2,9 @@ class CalendarsController < AuthorizedController
   layout 'calendar', only: :show
 
   def index
+    @calendars = Calendar.
+      joins(:permissions).
+      where(permissions: { level: 'owner', user: current_user })
   end
 
   def show
@@ -34,6 +37,7 @@ class CalendarsController < AuthorizedController
 
   def edit
     @calendar = current_user.calendars.find(params[:id])
+    raise NotAuthorized if !current_user.can_own?(@calendar)
     @invitation = Invitation.new(calendar: @calendar, owner: current_user)
   end
 

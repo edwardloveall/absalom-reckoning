@@ -58,7 +58,7 @@ RSpec.feature "User can't add event to calendar they can only view" do
 
     visit new_calendar_event_path(calendar)
 
-    expect(current_path).to eq(calendar_path(calendar))
+    expect(current_path).to eq(root_path)
     within('.flashes') do
       message = "You don't have permission to do that"
       expect(page).to have_css(:li, text: message)
@@ -81,7 +81,7 @@ RSpec.feature "User can add event to calendar they can edit" do
     permission.update(level: 'viewer')
     fill_form_and_submit(:event, title: 'TPK')
 
-    expect(current_path).to eq(calendar_path(calendar))
+    expect(current_path).to eq(root_path)
     within('.flashes') do
       message = "You don't have permission to do that"
       expect(page).to have_css(:li, text: message)
@@ -112,7 +112,7 @@ RSpec.feature "User can't edit event on calendar they can only view" do
 
     visit edit_calendar_event_path(calendar, event)
 
-    expect(current_path).to eq(calendar_path(calendar))
+    expect(current_path).to eq(root_path)
     within('.flashes') do
       message = "You don't have permission to do that"
       expect(page).to have_css(:li, text: message)
@@ -135,7 +135,7 @@ RSpec.feature "User can't update event on calendar they can only view" do
 
     fill_form_and_submit(:event, :update, title: 'TPK')
 
-    expect(current_path).to eq(calendar_path(calendar))
+    expect(current_path).to eq(root_path)
     within('.flashes') do
       message = "You don't have permission to do that"
       expect(page).to have_css(:li, text: message)
