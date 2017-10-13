@@ -24,6 +24,12 @@ ul.flashes {
     }
   }
 
+  li.success {
+    &:before {
+      border-color: $success-color;
+    }
+  }
+
   li.notice {
     &:before {
       border-color: $notice-color;
