@@ -14,7 +14,7 @@ gem 'rails', '~> 5.1.0'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'time_for_a_boolean',
-  git: 'git@github.com:calebthompson/time_for_a_boolean.git',
+  git: 'https://github.com/calebthompson/time_for_a_boolean.git',
   ref: '636a4c6'
 gem 'title'
 gem 'uglifier'

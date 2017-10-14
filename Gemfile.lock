@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:calebthompson/time_for_a_boolean.git
+  remote: https://github.com/calebthompson/time_for_a_boolean.git
   revision: 636a4c6b4645f9888402ff49b40b7f42c270d946
   ref: 636a4c6
   specs:
