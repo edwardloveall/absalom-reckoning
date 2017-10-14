@@ -1,6 +1,6 @@
 class InvitationsController < AuthorizedController
   def index
-    @invitations = Invitation.where(email: current_user.email)
+    @invitations = Invitation.pending.where(email: current_user.email)
   end
 
   def create

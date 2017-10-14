@@ -2,6 +2,8 @@ class Invitation < ApplicationRecord
   belongs_to :calendar
   belongs_to :owner, class_name: 'User'
 
+  scope :pending, -> { where(accepted_at: nil) }
+
   time_for_a_boolean :accepted
 
   validates :calendar, presence: true
@@ -10,4 +12,8 @@ class Invitation < ApplicationRecord
     in: Permission::INVITATION_LEVELS
   }
   validates :owner, presence: true
+
+  def accept!
+    update(accepted: true)
+  end
 end

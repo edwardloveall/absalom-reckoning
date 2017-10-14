@@ -4,6 +4,7 @@ class PermissionsController < AuthorizedController
     permission = Permission.new(params_from_invite(invitation))
 
     if permission.save
+      invitation.accept!
       redirect_to calendar_path(permission.calendar)
     end
   end

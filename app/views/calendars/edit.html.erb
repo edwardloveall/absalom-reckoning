@@ -3,7 +3,7 @@
   <h3>Invitations</h3>
   <% if @calendar.invitations.present? %>
     <ul class="current-invitations">
-      <% @calendar.invitations.each do |invitation| %>
+      <% @calendar.invitations.pending.each do |invitation| %>
         <li>
           <span class="email"><%= invitation.email %></span>
           <%= link_to(

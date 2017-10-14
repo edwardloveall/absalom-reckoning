@@ -5,7 +5,7 @@ class UserPresenter < Keynote::Presenter
   def calendar_list(for_current:)
     build_html do
       nav class: 'calendar-list' do
-        user.calendars.each do |calendar|
+        user.calendars.order(:created_at).each do |calendar|
           current = (calendar == for_current).to_s
           a calendar.title, href: calendar_path(calendar), data: { current: current }
         end

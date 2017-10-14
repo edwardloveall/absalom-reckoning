@@ -70,4 +70,30 @@ RSpec.feature 'Invitation management' do
 
     expect(page).not_to have_css('li', text: email)
   end
+
+  scenario 'invitation is hidden after a permission is created' do
+    owner = signed_up_user
+    calendar = owner.calendars.first
+    email = 'hello@example.com'
+    user = sign_in(signed_up_user(email: email))
+    invitation = create(
+      :invitation,
+      email: email,
+      owner: owner,
+      calendar: calendar
+    )
+
+    visit root_path
+    click_on 'Invitations'
+    click_on 'Accept'
+    visit invitations_path
+
+    expect(page).not_to have_css('.sidebar a', text: 'Invitations')
+    expect(page).to have_css('.current-invitations li', count: 0)
+
+    sign_in(owner)
+    visit edit_calendar_path(calendar)
+
+    expect(page).to have_css('.current-invitations li', text: email, count: 0)
+  end
 end

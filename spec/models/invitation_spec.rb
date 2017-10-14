@@ -17,4 +17,14 @@ RSpec.describe Invitation do
     end
     it { should validate_presence_of(:owner) }
   end
+
+  describe '#accept!' do
+    it 'sets the accepted_at attribute to the current datetime' do
+      invitation = create(:invitation, accepted_at: nil)
+
+      invitation.accept!
+
+      expect(invitation.accepted_at).to be_a(ActiveSupport::TimeWithZone)
+    end
+  end
 end
