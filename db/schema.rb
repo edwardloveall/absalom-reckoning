@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924143508) do
+ActiveRecord::Schema.define(version: 20171013203605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170924143508) do
     t.string "email"
     t.string "level"
     t.bigint "owner_id"
+    t.datetime "accepted_at"
     t.index ["calendar_id"], name: "index_invitations_on_calendar_id"
     t.index ["email"], name: "index_invitations_on_email"
     t.index ["owner_id"], name: "index_invitations_on_owner_id"
