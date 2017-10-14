@@ -1,0 +1,12 @@
+body.error {
+  text-align: center;
+
+  .content-wrapper {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  footer {
+    color: $light-text-color;
+  }
+}
