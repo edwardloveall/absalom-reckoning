@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :events, except: [:index, :show]
     resources :invitations, only: [:create, :destroy]
   end
+  match '/404', to: 'errors#not_found', via: :all
   root to: 'welcome#show'
 end
