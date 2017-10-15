@@ -13,7 +13,6 @@ class AuthorizedController < ApplicationController
   end
 
   def calendar_not_found
-    flash[:notice] = I18n.t('helpers.error.calendar.not_found')
-    redirect_to calendars_path
+    redirect_to not_found_path
   end
 end

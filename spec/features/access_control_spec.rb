@@ -36,11 +36,8 @@ RSpec.feature "User can't see a calendar without view permissions" do
 
     visit calendar_path(calendar)
 
-    expect(current_path).to eq(calendars_path)
-    within('.flashes') do
-      message = "We couldn't find that calendar for you"
-      expect(page).to have_css(:li, text: message)
-    end
+    expect(current_path).to eq(not_found_path)
+    expect(page).to have_css('footer', text: '404')
   end
 end
 
