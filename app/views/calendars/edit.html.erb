@@ -1,38 +1,12 @@
-<%= render partial: 'form', locals: { calendar: @calendar } %>
+<%= render partial: 'form', locals: { calendar: @calendar_presenter.calendar } %>
 <section class="permissions">
   <h3>Permissions</h3>
-  <ul class="current-permissions">
-    <% @calendar.permissions.where(level: Permission::INVITATION_LEVELS).each do |permission| %>
-      <li>
-        <%= permission.user.email %>
-        <%= link_to(
-          t('helpers.submit.permission.destroy'),
-          calendar_permission_path(@calendar, permission),
-          method: :delete,
-          class: 'delete action'
-        ) %>
-      </li>
-    <% end %>
-  </ul>
+  <%= @calendar_presenter.permission_list %>
 </section>
 <section class="invitations">
   <h3>Invitations</h3>
-  <% if @calendar.invitations.present? %>
-    <ul class="current-invitations">
-      <% @calendar.invitations.pending.each do |invitation| %>
-        <li>
-          <span class="email"><%= invitation.email %></span>
-          <%= link_to(
-            t('helpers.submit.invitation.destroy'),
-            calendar_invitation_path(@calendar, invitation),
-            method: :delete,
-            class: 'delete action'
-          ) %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <%= simple_form_for([@calendar, @invitation]) do |form| %>
+  <%= @calendar_presenter.invitation_list %>
+  <%= simple_form_for([@calendar_presenter.calendar, @invitation]) do |form| %>
     <%= form.input :owner_id, as: :hidden %>
     <%= form.input :calendar_id, as: :hidden %>
     <%= form.input :email %>

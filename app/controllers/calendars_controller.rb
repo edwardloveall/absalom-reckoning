@@ -36,9 +36,10 @@ class CalendarsController < AuthorizedController
   end
 
   def edit
-    @calendar = current_user.calendars.find(params[:id])
-    raise NotAuthorized if !current_user.can_own?(@calendar)
-    @invitation = Invitation.new(calendar: @calendar, owner: current_user)
+    calendar = current_user.calendars.find(params[:id])
+    @calendar_presenter = present(:calendar_edit, calendar)
+    raise NotAuthorized if !current_user.can_own?(calendar)
+    @invitation = Invitation.new(calendar: calendar, owner: current_user)
   end
 
   def update
