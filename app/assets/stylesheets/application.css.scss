@@ -1,12 +1,15 @@
 @import 'variables';
 @import 'bourbon';
 
+@import 'mixins/list-with-item-action';
+
 @import 'base';
 @import 'flashes';
 @import 'forms';
 @import 'calendar';
 @import 'sidebar';
 @import 'invitations';
+@import 'permissions';
 
 @import 'errors';
 @import 'dirty-hacks';

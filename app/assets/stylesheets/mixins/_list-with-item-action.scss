@@ -1,0 +1,20 @@
+@mixin list-with-item-action {
+  margin-top: $separator-spacing;
+
+  ul {
+    margin-top: $base-spacing;
+  }
+
+  li {
+    align-items: center;
+    background-color: $alt-background;
+    display: flex;
+    justify-content: space-between;
+    padding: $base-spacing;
+  }
+
+  .title,
+  .email {
+    margin-right: $base-spacing;
+  }
+}

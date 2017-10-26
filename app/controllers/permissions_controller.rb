@@ -9,6 +9,14 @@ class PermissionsController < AuthorizedController
     end
   end
 
+  def destroy
+    calendar = current_user.calendars.find(params[:calendar_id])
+    permission = calendar.permissions.find(params[:id])
+    permission.destroy
+
+    redirect_to edit_calendar_path(calendar)
+  end
+
   private
 
   def params_from_invite(invitation)

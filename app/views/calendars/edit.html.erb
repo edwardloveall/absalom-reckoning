@@ -1,4 +1,20 @@
 <%= render partial: 'form', locals: { calendar: @calendar } %>
+<section class="permissions">
+  <h3>Permissions</h3>
+  <ul class="current-permissions">
+    <% @calendar.permissions.where(level: Permission::INVITATION_LEVELS).each do |permission| %>
+      <li>
+        <%= permission.user.email %>
+        <%= link_to(
+          t('helpers.submit.permission.destroy'),
+          calendar_permission_path(@calendar, permission),
+          method: :delete,
+          class: 'delete action'
+        ) %>
+      </li>
+    <% end %>
+  </ul>
+</section>
 <section class="invitations">
   <h3>Invitations</h3>
   <% if @calendar.invitations.present? %>
