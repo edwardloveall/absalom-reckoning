@@ -48,6 +48,22 @@ RSpec.describe SidebarPresenter do
     end
   end
 
+  describe '#calendar_actions' do
+    it 'returns links for meta-actions you can do on calendars' do
+      user = double(:user)
+      presenter = present(:sidebar, user)
+
+      result = presenter.calendar_actions
+
+      expect(result).to eq <<~HTML.strip_html_whitespace
+        <ul class="calendar-actions">
+          <li><a href="/calendars/new" class="action">New Calendar</a></li>
+          <li><a href="/calendars" class="action">Edit Calendars</a></li>
+        </ul>
+      HTML
+    end
+  end
+
   describe '#session_actions' do
     it 'returns html for session related actions' do
       user = create(:user)

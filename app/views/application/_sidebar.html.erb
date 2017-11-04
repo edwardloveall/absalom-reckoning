@@ -2,7 +2,7 @@
   <% if signed_in? %>
     <%= present(:sidebar, current_user).calendar_list(for_current: @calendar) %>
     <%= present(:sidebar, current_user).invitation_link %>
-    <%= calendar_actions %>
+    <%= present(:sidebar, current_user).calendar_actions %>
     <%= present(:sidebar, current_user).session_actions %>
   <% else %>
     <nav class="signed-out">

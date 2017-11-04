@@ -23,6 +23,19 @@ class SidebarPresenter < Keynote::Presenter
     end
   end
 
+  def calendar_actions
+    build_html do
+      ul class: 'calendar-actions' do
+        li do
+          a t('helpers.action.calendar.new'), href: new_calendar_path, class: 'action'
+        end
+        li do
+          a t('helpers.action.calendar.index'), href: calendars_path, class: 'action'
+        end
+      end
+    end
+  end
+
   def session_actions
     build_html do
       ul class: :session do
