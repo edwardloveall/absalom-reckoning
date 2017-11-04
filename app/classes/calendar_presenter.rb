@@ -4,14 +4,16 @@ class CalendarPresenter < Keynote::Presenter
   def next_month_link(from:)
     link_to(
       t('helpers.action.calendar.next_month'),
-      calendar_path(calendar, date: from >> 1)
+      calendar_path(calendar, date: from >> 1),
+      class: 'next'
     )
   end
 
   def previous_month_link(from:)
     link_to(
       t('helpers.action.calendar.prev_month'),
-      calendar_path(calendar, date: from << 1)
+      calendar_path(calendar, date: from << 1),
+      class: 'previous'
     )
   end
 

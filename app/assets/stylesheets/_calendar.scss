@@ -19,20 +19,44 @@ section.calendar {
   }
 
   nav {
-    align-items: center;
-    justify-content: space-between;
-    margin-top: $base-spacing;
+    justify-content: center;
     margin-bottom: $base-spacing;
   }
 
   nav a {
+    @include hide-text;
+    background-color: $alt-background;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: $base-border-radius;
     color: $link-color;
-    padding: $small-spacing;
+    display: block;
+    flex-basis: $large-spacing;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: $large-spacing;
     text-decoration: none;
   }
 
+  nav a:hover,
+  nav a:active,
+  nav a:focus {
+    background-color: $active-action-background;
+  }
+
+  nav a.previous {
+    background-image: url(asset-path('previous.svg'));
+  }
+
+  nav a.next {
+    background-image: url(asset-path('next.svg'));
+  }
+
   nav .month-and-year {
+    align-self: center;
     font-size: $font-size-large;
+    margin-left: $base-spacing;
+    margin-right: $base-spacing;
   }
 
   header div,

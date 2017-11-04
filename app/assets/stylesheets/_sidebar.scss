@@ -21,7 +21,7 @@ aside.sidebar {
       &:active,
       &:focus,
       &:hover {
-        background-color: $sidebar-highlight-background;
+        background-color: $active-action-background;
       }
 
       &[data-current=true] {

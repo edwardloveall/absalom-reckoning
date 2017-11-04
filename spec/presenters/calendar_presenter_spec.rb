@@ -7,7 +7,7 @@ RSpec.describe CalendarPresenter do
       presenter = present(calendar)
       date = ArDate.new(year: 1, month: 1, day: 1)
       date_string = '1-02-01'
-      html = "<a href=\"/calendars/#{calendar.id}?date=#{date_string}\">next</a>"
+      html = "<a class=\"next\" href=\"/calendars/#{calendar.id}?date=#{date_string}\">next</a>"
 
       result = presenter.next_month_link(from: date)
 
@@ -21,7 +21,7 @@ RSpec.describe CalendarPresenter do
       presenter = present(calendar)
       date = ArDate.new(year: 1, month: 2, day: 1)
       date_string = '1-01-01'
-      html = "<a href=\"/calendars/#{calendar.id}?date=#{date_string}\">previous</a>"
+      html = "<a class=\"previous\" href=\"/calendars/#{calendar.id}?date=#{date_string}\">previous</a>"
 
       result = presenter.previous_month_link(from: date)
 

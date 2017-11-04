@@ -51,7 +51,7 @@ a.action {
   &:active,
   &:focus,
   &:hover {
-    background-color: $sidebar-highlight-background;
+    background-color: $active-action-background;
     color: $alt-action-background-color;
   }
 }
