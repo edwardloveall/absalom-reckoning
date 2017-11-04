@@ -1,17 +1,5 @@
 class UserPresenter < Keynote::Presenter
   presents :user
-  use_html_5_tags
-
-  def calendar_list(for_current:)
-    build_html do
-      nav class: 'calendar-list' do
-        user.calendars.order(:created_at).each do |calendar|
-          current = (calendar == for_current).to_s
-          a calendar.title, href: calendar_path(calendar), data: { current: current }
-        end
-      end
-    end
-  end
 
   def session_actions
     build_html do

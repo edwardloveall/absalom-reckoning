@@ -1,6 +1,6 @@
 <aside class="sidebar">
   <% if signed_in? %>
-    <%= present(current_user).calendar_list(for_current: @calendar) %>
+    <%= present(:sidebar, current_user).calendar_list(for_current: @calendar) %>
     <%= present(:sidebar, current_user).invitation_link %>
     <%= calendar_actions %>
     <%= present(current_user).session_actions %>
