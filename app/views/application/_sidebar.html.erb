@@ -3,7 +3,7 @@
     <%= present(:sidebar, current_user).calendar_list(for_current: @calendar) %>
     <%= present(:sidebar, current_user).invitation_link %>
     <%= calendar_actions %>
-    <%= present(current_user).session_actions %>
+    <%= present(:sidebar, current_user).session_actions %>
   <% else %>
     <nav class="signed-out">
       <%= link_to t('helpers.submit.session.create'), new_session_path, class: 'action' %>
