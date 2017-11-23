@@ -7,18 +7,18 @@
   <%= calendar_display @date do |date| %>
     <header>
       <span class="number"><%= date.day %></span>
-      <% if current_user.can_edit?(@calendar) %>
-        <%= link_to(
-          t('helpers.action.event.new'),
-          new_calendar_event_path(@calendar, occurred_on: date.day_number),
-          class: 'new-event'
-        ) %>
-      <% end %>
     </header>
     <ul class="events">
       <%= render(partial: 'calendars/event',
                  collection: @events.for(date: date),
                  locals: { calendar: @calendar }) %>
+      <% if current_user.can_edit?(@calendar) %>
+        <%= link_to(
+          t('helpers.action.event.new'),
+          new_calendar_event_path(@calendar, occurred_on: date.day_number),
+          class: 'new-event action'
+        ) %>
+      <% end %>
     </ul>
   <% end %>
 </section>
