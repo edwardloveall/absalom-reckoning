@@ -1,10 +1,8 @@
 class ArDate < ActiveRecord::Type::Value
   def cast(value)
     if value.is_a?(String)
-      value = value.to_i
-    end
-
-    if value.is_a?(Numeric)
+      ArDateParser.from_date_string(value)
+    elsif value.is_a?(Numeric)
       ArDateParser.from_day_number(value)
     else
       value
