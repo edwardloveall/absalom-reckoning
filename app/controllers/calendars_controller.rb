@@ -50,6 +50,15 @@ class CalendarsController < AuthorizedController
     end
   end
 
+  def current_date
+    @calendar = current_user.calendars.find(params[:id])
+    current_day_params = params.permit(:current_date)
+
+    if @calendar.update(current_day_params)
+      redirect_to calendar_path(@calendar)
+    end
+  end
+
   def destroy
     @calendar = current_user.calendars.find(params[:id])
 

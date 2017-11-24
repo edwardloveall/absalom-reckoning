@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :invitations, only: [:index]
   resources :permissions, only: [:create]
   resources :calendars do
+    member do
+      patch 'current_date'
+    end
     resources :events, except: [:index, :show]
     resources :invitations, only: [:create, :destroy]
     resources :permissions, only: [:destroy]

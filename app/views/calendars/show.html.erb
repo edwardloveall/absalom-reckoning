@@ -7,6 +7,13 @@
   <%= calendar_display @date do |date| %>
     <header>
       <span class="number"><%= date.day %></span>
+      <% if current_user.can_edit?(@calendar) %>
+        <% if date == @calendar.current_date %>
+          <span class="today">Today</span>
+        <% else %>
+          <%= link_to 'Set Today', current_date_calendar_path(@calendar, current_date: date), method: :patch, class: "action" %>
+        <% end %>
+      <% end %>
     </header>
     <ul class="events">
       <%= render(partial: 'calendars/event',
