@@ -64,9 +64,14 @@ class CalendarPresenter < Keynote::Presenter
   def today_action(on:)
     date = on
     if date == calendar.current_date
-      build_html { span.today 'Today' }
+      build_html { span.today t('titles.current_day') }
     elsif editor?
-      link_to 'Set Today', current_date_calendar_path(@calendar, current_date: date), method: :patch, class: 'set-today'
+      link_to(
+        t('helpers.action.calendar.set_today'),
+        current_date_calendar_path(@calendar, current_date: date),
+        method: :patch,
+        class: 'set-today'
+      )
     end
   end
 

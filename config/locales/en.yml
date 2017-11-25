@@ -8,6 +8,7 @@ en:
         new: New Calendar
         next_month: next
         prev_month: previous
+        set_today: Set Today
       event:
         cancel: Cancel
         delete: Delete
@@ -48,3 +49,4 @@ en:
         create: Sign up
   titles:
     application: Absalom Reckoning
+    current_day: Today
