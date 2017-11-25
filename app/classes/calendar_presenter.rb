@@ -6,27 +6,27 @@ class CalendarPresenter < Keynote::Presenter
 
   START_DAY = :moonday
 
-  def next_month_link(from:)
+  def next_month_link
     link_to(
       t('helpers.action.calendar.next_month'),
-      calendar_path(calendar, date: from >> 1),
+      calendar_path(calendar, date: origin_date >> 1),
       class: 'next'
     )
   end
 
-  def previous_month_link(from:)
+  def previous_month_link
     link_to(
       t('helpers.action.calendar.prev_month'),
-      calendar_path(calendar, date: from << 1),
+      calendar_path(calendar, date: origin_date << 1),
       class: 'previous'
     )
   end
 
-  def month_and_year(from: date)
-    month = ArDate::MONTH_NAMES[from.month - 1]
+  def month_and_year
+    month = ArDate::MONTH_NAMES[origin_date.month - 1]
     build_html do
       h2 class: 'month-and-year' do
-        "#{month} #{from.year}"
+        "#{month} #{origin_date.year}"
       end
     end
   end
