@@ -234,7 +234,7 @@ RSpec.describe CalendarPresenter do
       it 'returns a list of event links for a particular date' do
         current_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4711, month: 1, day: 13)
-        calendar = create(:calendar, current_date: current_date)
+        calendar = create(:calendar)
         event = calendar.events.create(title: 'Yay', occurred_on: current_date)
         calendar.events.create(title: 'Boo', occurred_on: other_date)
         user = build(:user)
@@ -258,7 +258,7 @@ RSpec.describe CalendarPresenter do
       it 'returns a list of event spans for a particular date' do
         current_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4711, month: 1, day: 13)
-        calendar = create(:calendar, current_date: current_date)
+        calendar = create(:calendar)
         event = calendar.events.create(title: 'Yay', occurred_on: current_date)
         calendar.events.create(title: 'Boo', occurred_on: other_date)
         user = build(:user)
@@ -272,6 +272,19 @@ RSpec.describe CalendarPresenter do
         HTML
 
         result = presenter.events(on: current_date)
+
+        expect(result).to eq(html)
+      end
+    end
+
+    context 'if there are no events' do
+      it 'returns an empty list' do
+        calendar = build(:calendar)
+        presenter = present(calendar)
+        some_date = ArDate.new(year: 4711, month: 1, day: 3)
+        html = '<ul class="events"></ul>'
+
+        result = presenter.events(on: some_date)
 
         expect(result).to eq(html)
       end

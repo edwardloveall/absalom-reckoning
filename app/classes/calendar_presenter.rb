@@ -72,14 +72,17 @@ class CalendarPresenter < Keynote::Presenter
 
   def events(on:)
     date = on
+    events = calendar.events.where(occurred_on: date)
     build_html do
       ul.events do
-        calendar.events.where(occurred_on: date).each do |event|
-          li do
-            if editor?
-              link_to event.title, edit_calendar_event_path(calendar, event)
-            else
-              span event.title
+        if !events.empty?
+          events.each do |event|
+            li do
+              if editor?
+                link_to event.title, edit_calendar_event_path(calendar, event)
+              else
+                span event.title
+              end
             end
           end
         end
