@@ -102,7 +102,7 @@ RSpec.describe CalendarPresenter do
     end
   end
 
-  describe '#week_days' do
+  describe '#week_dates' do
     it 'yields each date within the week' do
       calendar = build(:calendar)
       presenter = present(calendar)
@@ -113,9 +113,9 @@ RSpec.describe CalendarPresenter do
       date_enumerator = week.to_enum
 
       expect do |block|
-        presenter.week_days(within: week, &block)
+        presenter.week_dates(within: week, &block)
       end.to yield_control.exactly(7).times
-      presenter.week_days(within: week) do |date|
+      presenter.week_dates(within: week) do |date|
         expect(date).to eq(date_enumerator.next)
       end
     end

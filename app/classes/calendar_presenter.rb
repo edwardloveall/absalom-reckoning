@@ -47,7 +47,7 @@ class CalendarPresenter < Keynote::Presenter
     end
   end
 
-  def week_days(within:)
+  def week_dates(within:)
     week = within
     week.each do |date|
       yield date
