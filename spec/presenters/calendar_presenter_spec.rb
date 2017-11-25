@@ -64,31 +64,30 @@ RSpec.describe CalendarPresenter do
       calendar = build(:calendar, current_date: current_date)
       presenter = present(calendar)
       presenter.origin_date = ArDate.new(year: 4711, month: 1, day: 1)
-      weeks = []
-      weeks << (
+      weeks = [(
         ArDate.new(year: 4710, month: 12, day: 26)..
         ArDate.new(year: 4711, month: 1, day: 1)
-      ).to_a
-      weeks << (
+      ).to_a,
+      (
         ArDate.new(year: 4711, month: 1, day: 2)..
         ArDate.new(year: 4711, month: 1, day: 8)
-      ).to_a
-      weeks << (
+      ).to_a,
+      (
         ArDate.new(year: 4711, month: 1, day: 9)..
         ArDate.new(year: 4711, month: 1, day: 15)
-      ).to_a
-      weeks << (
+      ).to_a,
+      (
         ArDate.new(year: 4711, month: 1, day: 16)..
         ArDate.new(year: 4711, month: 1, day: 22)
-      ).to_a
-      weeks << (
+      ).to_a,
+      (
         ArDate.new(year: 4711, month: 1, day: 23)..
         ArDate.new(year: 4711, month: 1, day: 29)
-      ).to_a
-      weeks << (
+      ).to_a,
+      (
         ArDate.new(year: 4711, month: 1, day: 30)..
         ArDate.new(year: 4711, month: 2, day: 5)
-      ).to_a
+      ).to_a].to_enum
       week_enumerator = weeks.to_enum
 
       expect do |block|
@@ -102,8 +101,7 @@ RSpec.describe CalendarPresenter do
 
   describe '#week_dates' do
     it 'yields each date within the week' do
-      calendar = build(:calendar)
-      presenter = present(calendar)
+      presenter = present(Calendar.new)
       week = (
         ArDate.new(year: 4711, month: 1, day: 1)..
         ArDate.new(year: 4711, month: 1, day: 7)
@@ -124,7 +122,7 @@ RSpec.describe CalendarPresenter do
       it 'returns "date" class' do
         origin_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4711, month: 1, day: 4)
-        calendar = build(:calendar)
+        calendar = build(:calendar, current_date: origin_date)
         presenter = present(calendar)
         presenter.origin_date = origin_date
 
@@ -152,7 +150,7 @@ RSpec.describe CalendarPresenter do
       it 'returns "date not-month"' do
         origin_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4710, month: 12, day: 30)
-        calendar = build(:calendar, )
+        calendar = build(:calendar, current_date: origin_date)
         presenter = present(calendar)
         presenter.origin_date = origin_date
 
@@ -279,9 +277,9 @@ RSpec.describe CalendarPresenter do
 
     context 'if there are no events' do
       it 'returns an empty list' do
-        calendar = build(:calendar)
-        presenter = present(calendar)
         some_date = ArDate.new(year: 4711, month: 1, day: 3)
+        calendar = build(:calendar, current_date: some_date)
+        presenter = present(calendar)
         html = '<ul class="events"></ul>'
 
         result = presenter.events(on: some_date)
@@ -313,9 +311,8 @@ RSpec.describe CalendarPresenter do
     context 'if the user can not edit the calendar' do
       it 'returns nil' do
         date = ArDate.new
-        calendar = build(:calendar)
         user = build(:user)
-        presenter = present(calendar)
+        presenter = present(Calendar.new)
         presenter.current_user = user
         allow(user).to receive(:can_edit?).and_return(false)
 
