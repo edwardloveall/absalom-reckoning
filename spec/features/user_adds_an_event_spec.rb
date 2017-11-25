@@ -6,14 +6,14 @@ RSpec.feature 'User adds an Event' do
     sign_in(user)
 
     visit calendar_path(user.calendars.first)
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_link('New Event')
     end
 
     form_params = { title: 'TPK' }
     fill_form_and_submit(:event, form_params)
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       expect(page).to have_css('li', text: 'TPK')
     end
   end
@@ -25,7 +25,7 @@ RSpec.feature 'User adds an Event' do
 
       visit calendar_path(user.calendars.first)
       click_on('next')
-      within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      within('.week:nth-of-type(2) .date:nth-of-type(3)') do
         click_link('New Event')
       end
 
@@ -33,7 +33,7 @@ RSpec.feature 'User adds an Event' do
       fill_form_and_submit(:event, form_params)
 
       expect(page).to have_css('h2', text: 'Calistril 4711')
-      within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+      within('.week:nth-of-type(2) .date:nth-of-type(3)') do
         expect(page).to have_css('li', text: 'TPK')
       end
     end
@@ -46,7 +46,7 @@ RSpec.feature 'User tries to add an event with invalid data' do
     sign_in(user)
 
     visit calendar_path(user.calendars.first)
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_link('New Event')
     end
 
@@ -66,7 +66,7 @@ RSpec.feature 'User decides not to add an event' do
 
     visit calendar_path(user.calendars.first)
     click_on('next')
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_link('New Event')
     end
 
@@ -85,7 +85,7 @@ RSpec.feature 'User sets an event date manually' do
     form_params = { title: 'TPK', date: '4700-02-03' }
 
     visit calendar_path(user.calendars.first)
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_link('New Event')
     end
     fill_form_and_submit(:event, form_params)

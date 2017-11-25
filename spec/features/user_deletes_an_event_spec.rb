@@ -12,16 +12,16 @@ RSpec.feature 'deletes an event' do
       click_on calendar.title
     end
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       expect(page).to have_css('.events li', count: 1)
     end
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_on event.title
     end
     click_on 'Delete'
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       expect(page).to have_css('.events li', count: 0)
     end
   end

@@ -26,14 +26,14 @@ RSpec.feature 'User creates a calendar' do
     fill_form_and_submit(:calendar, title: title)
     click_on(title)
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_link I18n.t('helpers.action.event.new')
     end
 
     event_params = { title: 'TPK' }
     fill_form_and_submit(:event, event_params)
 
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       expect(page).to have_css('li', text: event_params[:title])
     end
   end

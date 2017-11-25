@@ -11,14 +11,13 @@ class CalendarsController < AuthorizedController
     @calendar = Calendar.find(params[:id])
     @presenter = present(@calendar)
     raise CalendarNotFound if !current_user.can_view?(@calendar)
+    @presenter.current_user = current_user
 
     if params[:date].present?
-      @date = ArDate.parse(params[:date])
+      @presenter.origin_date = ArDate.parse(params[:date])
     else
-      @date = @calendar.last_edit_date
+      @presenter.origin_date = @calendar.last_edit_date
     end
-
-    @events = EventFilterer.new(@calendar.events_for_month(around: @date))
   end
 
   def new

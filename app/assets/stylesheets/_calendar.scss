@@ -13,8 +13,7 @@ section.calendar {
   }
 
   nav,
-  header,
-  div.days {
+  header {
     display: flex;
   }
 
@@ -60,7 +59,7 @@ section.calendar {
   }
 
   header div,
-  div.day {
+  div.date {
     flex-grow: 1;
     flex-basis: 0px;
     overflow: hidden;
@@ -74,7 +73,7 @@ section.calendar {
     text-align: center;
   }
 
-  div.day {
+  div.date {
     background-color: $white;
     margin-left: $small-spacing;
     margin-top: $small-spacing;
@@ -86,12 +85,26 @@ section.calendar {
     flex-grow: 1;
   }
 
-  div.day {
+  div.date {
     color: $medium-gray;
 
     &:hover {
-      a.new-event {
+      .new-event {
         display: inline;
+      }
+
+      header .set-today {
+        display: inline;
+      }
+    }
+
+    .new-event,
+    .set-today {
+      color: $light-text-color;
+      display: none;
+
+      &:hover {
+        color: $accent-color;
       }
     }
 
@@ -101,16 +114,16 @@ section.calendar {
       padding: $small-spacing $small-spacing * 2;
     }
 
-    a.new-event {
+    .set-today {
       display: none;
     }
   }
 
-  .day.not-month {
+  .date.not-month {
     background-color: $non-month-background-color;
   }
 
-  div.day.today {
+  div.date.today {
     color: $accent-color;
     position: relative;
 
@@ -125,17 +138,17 @@ section.calendar {
   }
 
   ul.events {
-    font-family: $ingra-font;
     margin-bottom: 0;
     margin-top: 0;
     padding-left: 0;
+  }
 
-    li {
-      color: black;
-      overflow: hidden;
-      padding: 0 $small-spacing * 2;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  ul.events li,
+  .new-event {
+    font-family: $ingra-font;
+    overflow: hidden;
+    padding: 0 $small-spacing * 2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

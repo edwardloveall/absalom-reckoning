@@ -49,7 +49,7 @@ RSpec.feature "User can't add event to calendar they can only view" do
     create(:permission, :viewer, user: user, calendar: calendar)
 
     visit calendar_path(calendar)
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       expect(page).not_to have_css('a', text: 'New Event')
     end
 
@@ -71,7 +71,7 @@ RSpec.feature "User can add event to calendar they can edit" do
     permission = create(:permission, :editor, user: user, calendar: calendar)
 
     visit calendar_path(calendar)
-    within('.week:nth-of-type(2) .day:nth-of-type(3)') do
+    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
       click_on 'New Event'
     end
 

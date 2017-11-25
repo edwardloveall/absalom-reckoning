@@ -1,31 +1,24 @@
 <section class="calendar">
   <nav>
-    <%= @presenter.previous_month_link(from: @date) %>
-    <%= @presenter.month_and_year(from: @date) %>
-    <%= @presenter.next_month_link(from: @date) %>
+    <%= @presenter.previous_month_link %>
+    <%= @presenter.month_and_year %>
+    <%= @presenter.next_month_link %>
   </nav>
-  <%= calendar_display @date do |date| %>
-    <header>
-      <span class="number"><%= date.day %></span>
-      <% if current_user.can_edit?(@calendar) %>
-        <% if date == @calendar.current_date %>
-          <span class="today">Today</span>
-        <% else %>
-          <%= link_to 'Set Today', current_date_calendar_path(@calendar, current_date: date), method: :patch, class: "action" %>
+  <div class="wrapper">
+    <%= @presenter.day_names_header %>
+    <% @presenter.calendar_weeks do |week| %>
+      <div class="week">
+        <% @presenter.week_dates(within: week) do |date| %>
+          <div class="<%= @presenter.date_classes(date) %>">
+            <header>
+              <span class="number"><%= date.day %></span>
+              <%= @presenter.today_action(on: date) %>
+            </header>
+            <%= @presenter.events(on: date) %>
+            <%= @presenter.new_event_action(on: date) %>
+          </div>
         <% end %>
-      <% end %>
-    </header>
-    <ul class="events">
-      <%= render(partial: 'calendars/event',
-                 collection: @events.for(date: date),
-                 locals: { calendar: @calendar }) %>
-      <% if current_user.can_edit?(@calendar) %>
-        <%= link_to(
-          t('helpers.action.event.new'),
-          new_calendar_event_path(@calendar, occurred_on: date.day_number),
-          class: 'new-event action'
-        ) %>
-      <% end %>
-    </ul>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </section>
