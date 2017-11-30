@@ -32,6 +32,7 @@ form {
     margin: 0;
     margin-top: $base-spacing + $small-spacing + 1rem;
     padding: $base-spacing;
+    -webkit-appearance: none;
 
     &:active,
     &:focus,
