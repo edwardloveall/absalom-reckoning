@@ -38,4 +38,18 @@ RSpec.describe Event do
     it { should validate_presence_of(:occurred_on) }
     it { should validate_presence_of(:title) }
   end
+
+  describe '#hidden' do
+    it 'returns true if hidden_at is set' do
+      event = Event.new(hidden_at: Time.current)
+
+      expect(event).to be_hidden
+    end
+
+    it 'returns false if hidden_at is not set' do
+      event = Event.new(hidden_at: nil)
+
+      expect(event).not_to be_hidden
+    end
+  end
 end

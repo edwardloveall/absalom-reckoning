@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124013023) do
+ActiveRecord::Schema.define(version: 20171201203913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171124013023) do
     t.integer "occurred_on", null: false
     t.string "title", null: false
     t.integer "calendar_id"
+    t.datetime "hidden_at", default: "2017-12-01 20:51:14"
     t.index ["calendar_id"], name: "index_events_on_calendar_id"
     t.index ["occurred_on"], name: "index_events_on_occurred_on"
   end
