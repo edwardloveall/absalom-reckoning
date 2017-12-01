@@ -40,10 +40,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara-selenium'
   gem 'database_cleaner'
   gem 'formulaic'
   gem 'launchy'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'
