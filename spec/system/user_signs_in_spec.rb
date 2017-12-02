@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User signs in' do
-  scenario 'sees email' do
+RSpec.describe 'User signs in' do
+  it 'sees email' do
     attributes = { email: 'user@example.com', password: '12345' }
     user = signed_up_user(attributes)
 
@@ -18,7 +18,7 @@ RSpec.feature 'User signs in' do
   end
 
   context 'with invalid email and password' do
-    scenario 'sees sign in form again' do
+    it 'sees sign in form again' do
       attributes = { email: 'no_one@example.com', password: 'wrong' }
 
       visit root_path
@@ -33,7 +33,7 @@ RSpec.feature 'User signs in' do
   end
 
   context 'user is already signed in' do
-    scenario 'is taken to their calendar' do
+    it 'is taken to their calendar' do
       attributes = { email: 'user@example.com', password: '12345' }
       user = signed_up_user(attributes)
       calendar = user.calendars.first

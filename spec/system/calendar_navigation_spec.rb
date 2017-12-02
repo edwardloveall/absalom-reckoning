@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User navigates to a calendar' do
-  scenario 'by clicking links in the sidebar' do
+RSpec.describe 'User navigates to a calendar' do
+  it 'by clicking links in the sidebar' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -13,7 +13,7 @@ RSpec.feature 'User navigates to a calendar' do
     expect(current_path).to eq(calendar_path(calendar))
   end
 
-  scenario 'is taken to the month that they edited last' do
+  it 'is taken to the month that they edited last' do
     user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first

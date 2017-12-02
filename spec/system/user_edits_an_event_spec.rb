@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User edits an Event' do
-  scenario 'sees their changes' do
+RSpec.describe 'User edits an Event' do
+  it 'sees their changes' do
     user = signed_up_user
     sign_in(user)
     date = ArDate.new(year: 4711, month: 1, day: 4)
@@ -17,7 +17,7 @@ RSpec.feature 'User edits an Event' do
   end
 
   context 'in a different month' do
-    scenario 'sees their changes' do
+    it 'sees their changes' do
       user = signed_up_user
       sign_in(user)
       date = ArDate.new(year: 4711, month: 2, day: 15)
@@ -35,8 +35,8 @@ RSpec.feature 'User edits an Event' do
   end
 end
 
-RSpec.feature 'User tries to edit an Event with invalid data' do
-  scenario 'sees and error' do
+RSpec.describe 'User tries to edit an Event with invalid data' do
+  it 'sees and error' do
     user = signed_up_user
     sign_in(user)
     date = ArDate.new(year: 4711, month: 1, day: 4)
@@ -54,8 +54,8 @@ RSpec.feature 'User tries to edit an Event with invalid data' do
   end
 end
 
-RSpec.feature 'User changes the event date' do
-  scenario 'and is taken to the new event' do
+RSpec.describe 'User changes the event date' do
+  it 'and is taken to the new event' do
     user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first

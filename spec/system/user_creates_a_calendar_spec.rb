@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates a calendar' do
-  scenario 'is taken to that calendar' do
+RSpec.describe 'User creates a calendar' do
+  it 'is taken to that calendar' do
     user = signed_up_user
     sign_in(user)
     title = 'Holidays'
@@ -16,7 +16,7 @@ RSpec.feature 'User creates a calendar' do
     expect(page).to have_css('aside a', text: title)
   end
 
-  scenario 'is allowed to add events to it' do
+  it 'is allowed to add events to it' do
     user = signed_up_user
     sign_in(user)
     title = 'My Calendar'

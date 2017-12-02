@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User deletes a calendar' do
-  scenario 'is taken back to their list of calendars' do
+RSpec.describe 'User deletes a calendar' do
+  it 'is taken back to their list of calendars' do
     user = sign_in(signed_up_user)
     calendar = user.calendars.first
 

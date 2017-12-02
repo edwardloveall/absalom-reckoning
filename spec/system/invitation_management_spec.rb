@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Invitation management' do
-  scenario 'user invites another user to a calendar' do
+RSpec.describe 'Invitation management' do
+  it 'user invites another user to a calendar' do
     email = 'invited@example.com'
     calendar_title = 'Awesome Calendar'
     owner = sign_in(signed_up_user)
@@ -36,7 +36,7 @@ RSpec.feature 'Invitation management' do
     end
   end
 
-  scenario 'user deletes an invite' do
+  it 'user deletes an invite' do
     email = 'invited@example.com'
     invited = sign_in(signed_up_user(email: email))
     owner = signed_up_user
@@ -71,7 +71,7 @@ RSpec.feature 'Invitation management' do
     expect(page).not_to have_css('li', text: email)
   end
 
-  scenario 'invitation is hidden after a permission is created' do
+  it 'invitation is hidden after a permission is created' do
     owner = signed_up_user
     calendar = owner.calendars.first
     email = 'hello@example.com'

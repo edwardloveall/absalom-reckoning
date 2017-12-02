@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User adds an Event' do
-  scenario 'sees their event' do
+RSpec.describe 'User adds an Event' do
+  it 'sees their event' do
     user = signed_up_user
     sign_in(user)
 
@@ -19,7 +19,7 @@ RSpec.feature 'User adds an Event' do
   end
 
   context 'on a different month' do
-    scenario 'is taken back to to that month' do
+    it 'is taken back to to that month' do
       user = signed_up_user
       sign_in(user)
 
@@ -40,8 +40,8 @@ RSpec.feature 'User adds an Event' do
   end
 end
 
-RSpec.feature 'User tries to add an event with invalid data' do
-  scenario 'sees and error' do
+RSpec.describe 'User tries to add an event with invalid data' do
+  it 'sees and error' do
     user = signed_up_user
     sign_in(user)
 
@@ -59,8 +59,8 @@ RSpec.feature 'User tries to add an event with invalid data' do
   end
 end
 
-RSpec.feature 'User decides not to add an event' do
-  scenario 'and is redirected back to their calendar' do
+RSpec.describe 'User decides not to add an event' do
+  it 'and is redirected back to their calendar' do
     user = signed_up_user
     sign_in(user)
 
@@ -78,8 +78,8 @@ RSpec.feature 'User decides not to add an event' do
   end
 end
 
-RSpec.feature 'User sets an event date manually' do
-  scenario 'creates an event on that date' do
+RSpec.describe 'User sets an event date manually' do
+  it 'creates an event on that date' do
     user = signed_up_user
     sign_in(user)
     form_params = { title: 'TPK', date: '4700-02-03' }

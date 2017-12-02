@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'deletes an event' do
-  scenario 'and is taken back to the calendar' do
+RSpec.describe 'deletes an event' do
+  it 'and is taken back to the calendar' do
     user = sign_in(signed_up_user)
     calendar = user.calendars.first
     date = ArDate.new(year: 4711, month: 1, day: 4)

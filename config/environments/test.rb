@@ -13,4 +13,5 @@ Rails.application.configure do
   config.public_file_server.headers = {
     'Cache-Control' => 'public, max-age=3600'
   }
+  routes.default_url_options[:host] = 'http://example.com'
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Users sets "Today" on a calendar' do
-  scenario 'sees the today marker changed' do
+RSpec.describe 'Users sets "Today" on a calendar' do
+  it 'sees the today marker changed' do
     user = signed_up_user
     sign_in(user)
 

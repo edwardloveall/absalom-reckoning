@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Permission management' do
-  scenario 'owner sees permissions on a particular calendar' do
+RSpec.describe 'Permission management' do
+  it 'owner sees permissions on a particular calendar' do
     owner = sign_in(signed_up_user)
     calendar = owner.calendars.first
     email = 'hello@example.com'
@@ -13,7 +13,7 @@ RSpec.feature 'Permission management' do
     expect(page).to have_css('.permissions li', text: email)
   end
 
-  scenario 'owner revokes permission on a particular calendar' do
+  it 'owner revokes permission on a particular calendar' do
     owner = sign_in(signed_up_user)
     calendar = owner.calendars.first
     email = 'hello@example.com'
@@ -31,7 +31,7 @@ RSpec.feature 'Permission management' do
   end
 
   context 'non-owner tries to revoke a permission' do
-    scenario "straight up can't" do
+    it "straight up can't" do
       owner = signed_up_user
       calendar = owner.calendars.first
       email = 'hello@example.com'

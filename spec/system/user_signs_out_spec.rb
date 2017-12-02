@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Users signs out' do
-  scenario 'sees sign in link' do
+RSpec.describe 'Users signs out' do
+  it 'sees sign in link' do
     user = signed_up_user
     sign_in(user)
 

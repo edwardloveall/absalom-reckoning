@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User signs up' do
-  scenario 'sees email' do
+RSpec.describe 'User signs up' do
+  it 'sees email' do
     attributes = attributes_for(:user)
 
     visit root_path
@@ -16,7 +16,7 @@ RSpec.feature 'User signs up' do
     end
   end
 
-  scenario 'sees a calendar' do
+  it 'sees a calendar' do
     attributes = attributes_for(:user)
 
     visit root_path
@@ -35,7 +35,7 @@ RSpec.feature 'User signs up' do
   end
 
   context 'with invalid user data' do
-    scenario 'sees error' do
+    it 'sees error' do
       attributes = { email: '', password: '' }
 
       visit root_path

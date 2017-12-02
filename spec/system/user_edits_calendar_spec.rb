@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'User edits a Calendar' do
-  scenario 'changes the calendar attributes' do
+RSpec.describe 'User edits a Calendar' do
+  it 'changes the calendar attributes' do
     user = signed_up_user
     calendar = user.calendars.first
     sign_in(user)
@@ -18,7 +18,7 @@ RSpec.feature 'User edits a Calendar' do
   end
 
   context 'user is an editor of the calendar' do
-    scenario "can't access the edit screen" do
+    it "can't access the edit screen" do
       title = 'Best Calendar'
       calendar = create(:calendar, title: title)
       user = sign_in(signed_up_user)

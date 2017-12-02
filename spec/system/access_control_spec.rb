@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "User can't access a calendar if they're not signed in" do
-  scenario 'redirects the user to the homepage with a message' do
+RSpec.describe "User can't access a calendar if they're not signed in" do
+  it 'redirects the user to the homepage with a message' do
     user = signed_up_user
     calendar = user.calendars.first
 
@@ -14,8 +14,8 @@ RSpec.feature "User can't access a calendar if they're not signed in" do
   end
 end
 
-RSpec.feature "User can't access event page if they're not signed in" do
-  scenario 'redirects the user to the homepage with a message' do
+RSpec.describe "User can't access event page if they're not signed in" do
+  it 'redirects the user to the homepage with a message' do
     user = signed_up_user
     calendar = user.calendars.first
 
@@ -28,8 +28,8 @@ RSpec.feature "User can't access event page if they're not signed in" do
   end
 end
 
-RSpec.feature "User can't see a calendar without view permissions" do
-  scenario 'redirects the user to their calendar page with a message' do
+RSpec.describe "User can't see a calendar without view permissions" do
+  it 'redirects the user to their calendar page with a message' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -41,8 +41,8 @@ RSpec.feature "User can't see a calendar without view permissions" do
   end
 end
 
-RSpec.feature "User can't add event to calendar they can only view" do
-  scenario 'redirects the user to the calendar show view with a message' do
+RSpec.describe "User can't add event to calendar they can only view" do
+  it 'redirects the user to the calendar show view with a message' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -63,8 +63,8 @@ RSpec.feature "User can't add event to calendar they can only view" do
   end
 end
 
-RSpec.feature "User can add event to calendar they can edit" do
-  scenario 'shows them the event on the calendar' do
+RSpec.describe "User can add event to calendar they can edit" do
+  it 'shows them the event on the calendar' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -86,8 +86,8 @@ RSpec.feature "User can add event to calendar they can edit" do
   end
 end
 
-RSpec.feature "User can't edit event on calendar they can only view" do
-  scenario 'only shows the event title' do
+RSpec.describe "User can't edit event on calendar they can only view" do
+  it 'only shows the event title' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -100,7 +100,7 @@ RSpec.feature "User can't edit event on calendar they can only view" do
     expect(page).not_to have_css('a', text: event.title)
   end
 
-  scenario 'redirects them back to the calendar with a message' do
+  it 'redirects them back to the calendar with a message' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
@@ -117,8 +117,8 @@ RSpec.feature "User can't edit event on calendar they can only view" do
   end
 end
 
-RSpec.feature "User can't update event on calendar they can only view" do
-  scenario 'redirects them back to the calendar with a message' do
+RSpec.describe "User can't update event on calendar they can only view" do
+  it 'redirects them back to the calendar with a message' do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
