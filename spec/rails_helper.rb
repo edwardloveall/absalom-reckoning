@@ -11,14 +11,13 @@ require 'selenium/webdriver'
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 module SystemHelpers
-  # Extend this module in spec/support/system/*.rb
   include Formulaic::Dsl
+  include Monban::Test::Helpers
+  include SignedUpUser
 end
 
 RSpec.configure do |config|
   config.include SystemHelpers, type: :system
-  config.include Monban::Test::Helpers, type: :system
-  config.include SignedUpUser, type: :system
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true
