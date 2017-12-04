@@ -72,8 +72,8 @@ RSpec.describe 'User decides not to add an event' do
 
     click_on('Cancel')
 
-    expected_url = calendar_url(user.calendars.first, date: '4711-02-08')
-    expect(current_url).to eq(expected_url)
+    path_with_date = calendar_path(user.calendars.first, date: '4711-02-08')
+    expect(page).to have_current_path(path_with_date)
     expect(page).to have_css('h2', text: 'Calistril 4711')
   end
 end
