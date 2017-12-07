@@ -5,7 +5,7 @@ class AddHiddenToEvents < ActiveRecord::Migration[5.1]
       :hidden_at,
       :datetime,
       index: true,
-      default: Time.current
+      default: -> { 'now()' }
     )
   end
 end

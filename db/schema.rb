@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171201203913) do
     t.integer "occurred_on", null: false
     t.string "title", null: false
     t.integer "calendar_id"
-    t.datetime "hidden_at", default: "2017-12-01 20:51:14"
+    t.datetime "hidden_at", default: -> { "now()" }
     t.index ["calendar_id"], name: "index_events_on_calendar_id"
     t.index ["occurred_on"], name: "index_events_on_occurred_on"
   end
