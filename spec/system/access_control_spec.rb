@@ -91,7 +91,7 @@ RSpec.describe "User can't edit event on calendar they can only view" do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
-    event = create(:event, calendar: calendar)
+    event = create(:event, :visible, calendar: calendar)
     create(:permission, :viewer, user: user, calendar: calendar)
 
     visit calendar_path(calendar)
@@ -122,7 +122,7 @@ RSpec.describe "User can't update event on calendar they can only view" do
     user = signed_up_user
     sign_in(user)
     calendar = create(:calendar)
-    event = create(:event, calendar: calendar)
+    event = create(:event, :visible, calendar: calendar)
     permission = create(:permission, :editor, user: user, calendar: calendar)
 
     visit calendar_path(calendar)

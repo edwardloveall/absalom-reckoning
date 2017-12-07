@@ -23,7 +23,7 @@ RSpec.describe EventQuery do
         permission = create(:permission, :editor, user: editor)
         calendar = permission.calendar
         create(:event, :hidden, calendar: calendar)
-        events = [create(:event, :not_hidden, calendar: calendar)]
+        events = [create(:event, :visible, calendar: calendar)]
 
         result = EventQuery.visible_to(editor, from: calendar)
 

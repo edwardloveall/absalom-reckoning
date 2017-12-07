@@ -55,7 +55,7 @@ RSpec.describe Event do
 
   describe '.visible' do
     it 'returns all not hidden events' do
-      visible = [create(:event, :not_hidden)]
+      visible = [create(:event, :visible)]
       create(:event, :hidden)
 
       events = Event.visible
