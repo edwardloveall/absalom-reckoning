@@ -3,7 +3,6 @@ FactoryGirl.define do
     title 'TPK'
     occurred_on ArDate.new
     calendar
-    hidden_at nil
 
     trait :hidden do
       hidden_at { Time.current }
