@@ -233,7 +233,9 @@ RSpec.describe CalendarPresenter do
         current_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4711, month: 1, day: 13)
         calendar = create(:calendar)
-        event = calendar.events.create(title: 'Yay', occurred_on: current_date)
+        event = calendar.events.create(
+          title: 'Yay', occurred_on: current_date, hidden_at: nil
+        )
         calendar.events.create(title: 'Boo', occurred_on: other_date)
         user = build(:user)
         allow(user).to receive(:can_edit?).and_return(true)
@@ -257,7 +259,9 @@ RSpec.describe CalendarPresenter do
         current_date = ArDate.new(year: 4711, month: 1, day: 3)
         other_date = ArDate.new(year: 4711, month: 1, day: 13)
         calendar = create(:calendar)
-        event = calendar.events.create(title: 'Yay', occurred_on: current_date)
+        event = calendar.events.create(
+          title: 'Yay', occurred_on: current_date, hidden_at: nil
+        )
         calendar.events.create(title: 'Boo', occurred_on: other_date)
         user = build(:user)
         allow(user).to receive(:can_edit?).and_return(false)
@@ -277,9 +281,11 @@ RSpec.describe CalendarPresenter do
 
     context 'if there are no events' do
       it 'returns an empty list' do
+        user = double(:user, can_own?: true)
         some_date = ArDate.new(year: 4711, month: 1, day: 3)
         calendar = build(:calendar, current_date: some_date)
         presenter = present(calendar)
+        presenter.current_user = user
         html = '<ul class="events"></ul>'
 
         result = presenter.events(on: some_date)
