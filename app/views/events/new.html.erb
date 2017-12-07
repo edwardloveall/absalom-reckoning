@@ -6,7 +6,7 @@
     input_html: { value: date_from_day_number(params[:occurred_on]).to_s }
   ) %>
   <%= form.input(:title) %>
-  <%= form.input(:hidden, as: :boolean) %>
+  <%= form.input(:hidden, as: :boolean, input_html: { checked: true }) %>
   <div class="actions">
     <%= form.submit %>
     <%= link_to(
