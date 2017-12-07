@@ -77,7 +77,9 @@ class CalendarPresenter < Keynote::Presenter
 
   def events(on:)
     date = on
-    events = calendar.events.where(event_conditions(date))
+    events = EventQuery.
+      visible_to(current_user, from: calendar).
+      where(occurred_on: date)
     build_html do
       ul.events do
         if !events.empty?
@@ -122,13 +124,5 @@ class CalendarPresenter < Keynote::Presenter
     else
       false
     end
-  end
-
-  def event_conditions(date)
-    conditions = { occurred_on: date }
-    if !current_user.can_own?(calendar)
-      conditions[:hidden_at] = nil
-    end
-    conditions
   end
 end
