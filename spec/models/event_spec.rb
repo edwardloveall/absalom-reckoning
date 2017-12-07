@@ -52,4 +52,15 @@ RSpec.describe Event do
       expect(event).not_to be_hidden
     end
   end
+
+  describe '.visible' do
+    it 'returns all not hidden events' do
+      visible = [create(:event, :not_hidden)]
+      create(:event, :hidden)
+
+      events = Event.visible
+
+      expect(events).to match_array(visible)
+    end
+  end
 end

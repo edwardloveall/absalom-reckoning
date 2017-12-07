@@ -3,6 +3,8 @@ class Event < ApplicationRecord
 
   belongs_to :calendar
 
+  scope :visible, -> { where(hidden_at: nil) }
+
   time_for_a_boolean :hidden
 
   validates :occurred_on, presence: true
