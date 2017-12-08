@@ -48,7 +48,59 @@ RSpec.describe 'User creates a hidden event' do
   end
 end
 
+RSpec.describe 'User edits an event' do
+  context 'user is the calendars owner' do
+    it 'can change the visibility' do
+      owner = signed_up_user
+      editor = signed_up_user
+      calendar = owner.calendars.first
+      create(:permission, :editor, calendar: calendar, user: editor)
+      create(:event, :visible, title: 'TPK', calendar: calendar)
 
+      sign_in(editor)
+      visit calendar_path(calendar)
+
+      within('.week:nth-of-type(1) .date:nth-of-type(7)') do
+        expect(page).to have_css('li', text: 'TPK')
+      end
+
+      sign_in(owner)
+      visit calendar_path(calendar)
+      within('.week:nth-of-type(1) .date:nth-of-type(7)') do
+        click_on 'TPK'
+      end
+      form_params = { title: 'TPK', hidden: true }
+      fill_form_and_submit(:event, :edit, form_params)
+
+      within('.week:nth-of-type(1) .date:nth-of-type(7)') do
+        expect(page).to have_css('li', text: 'TPK')
+      end
+
+      sign_in(editor)
+      visit calendar_path(calendar)
+
+      within('.week:nth-of-type(1) .date:nth-of-type(7)') do
+        expect(page).not_to have_css('li', text: 'TPK')
+      end
+    end
+  end
+
+  context 'user is an editor' do
+    it 'can not see the hidden option' do
+      editor = signed_up_user
+      permission = create(:permission, :editor, user: editor)
+      calendar = permission.calendar
+      create(:event, :visible, title: 'TPK', calendar: calendar)
+
+      sign_in(editor)
+      visit calendar_path(calendar)
+      within('.week:nth-of-type(1) .date:nth-of-type(7)') do
+        click_on 'TPK'
+      end
+
+      within('form') do
+        expect(page).not_to have_css('input#event_hidden')
+      end
     end
   end
 end

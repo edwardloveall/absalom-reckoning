@@ -6,6 +6,9 @@
     input_html: { value: @event.occurred_on.to_s }
   ) %>
   <%= form.input(:title) %>
+  <% if current_user.can_own?(@event.calendar) %>
+    <%= form.input(:hidden, as: :boolean, input_html: { checked: true }) %>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
     <%= link_to(
