@@ -7,7 +7,7 @@
   ) %>
   <%= form.input(:title) %>
   <% if current_user.can_own?(@event.calendar) %>
-    <%= form.input(:hidden, as: :boolean, input_html: { checked: true }) %>
+    <%= form.input(:hidden, as: :boolean) %>
   <% end %>
   <div class="actions">
     <%= form.submit %>

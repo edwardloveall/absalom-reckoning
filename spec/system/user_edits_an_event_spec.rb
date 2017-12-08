@@ -16,6 +16,20 @@ RSpec.describe 'User edits an Event' do
     expect(page).to have_css('li', text: 'A new title')
   end
 
+  it 'does not automatically hide the event' do
+    user = signed_up_user
+    calendar = user.calendars.first
+    sign_in(user)
+    date = ArDate.new(year: 4711, month: 1, day: 4)
+    event = create(:event, :visible, calendar: calendar, occurred_on: date)
+
+    visit calendar_path(user.calendars.first)
+    click_link(event.title)
+
+    checkbox = page.find('#event_hidden')
+    expect(checkbox).not_to be_checked
+  end
+
   context 'in a different month' do
     it 'sees their changes' do
       user = signed_up_user
