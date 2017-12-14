@@ -4,22 +4,28 @@ namespace :dev do
     require 'csv'
     include ActionView::Helpers::SanitizeHelper
 
-    user = create_user
-    calendar = create_calendar(user: user)
+    user = create_user('edward@edwardloveall.com')
+    create_user('foo@example.com')
+    calendar = user.calendars.first
+    create_invites(calendar: calendar)
     create_events(calendar: calendar)
   end
 
-  def create_user
-    Monban.config.sign_up_service.new(
-      email: 'edward@edwardloveall.com',
+  def create_user(email)
+    SignUpUser.perform(
+      email: email,
       password: '12345'
-    ).perform
+    )
   end
 
-  def create_calendar(user:)
-    Calendar.create(title: 'The Lord of the Rings').tap do |calendar|
-      Permission.create(calendar: calendar, user: user, level: :owner)
-    end
+  def create_invites(calendar:)
+    owner = calendar.permissions.find_by(level: Permission.own).user
+    calendar.invitations.create(
+      email: 'foo@example.com', level: 'editor', owner: owner
+    )
+    calendar.invitations.create(
+      email: 'bar@example.com', level: 'viewer', owner: owner
+    )
   end
 
   def create_events(calendar:)
