@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201203913) do
+ActiveRecord::Schema.define(version: 20171208204159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 20171201203913) do
     t.bigint "calendar_id"
     t.bigint "user_id"
     t.string "level", default: "viewer"
+    t.bigint "invitation_id"
     t.index ["calendar_id"], name: "index_permissions_on_calendar_id"
+    t.index ["invitation_id"], name: "index_permissions_on_invitation_id"
     t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 

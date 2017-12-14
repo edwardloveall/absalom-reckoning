@@ -3,6 +3,7 @@ class Permission < ApplicationRecord
   INVITATION_LEVELS = %w(editor viewer).freeze
 
   belongs_to :calendar
+  belongs_to :invitation, optional: true
   belongs_to :user
 
   validates :calendar, presence: true

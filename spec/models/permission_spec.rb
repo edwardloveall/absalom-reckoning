@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Permission do
   describe 'associations' do
     it { should belong_to :calendar }
+    it { should belong_to :invitation }
     it { should belong_to :user }
   end
 
