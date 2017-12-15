@@ -1,9 +1,15 @@
 class SignUpUser
+  attr_reader :user_params
+
   def self.perform(user_params)
-    new.perform(user_params)
+    new(user_params).perform
   end
 
-  def perform(user_params)
+  def initialize(user_params = {})
+    @user_params = user_params
+  end
+
+  def perform
     user = create_user(user_params)
     ApplicationRecord.transaction do
       create_initial_calendar(user: user)

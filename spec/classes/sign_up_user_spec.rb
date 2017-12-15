@@ -6,7 +6,7 @@ describe SignUpUser do
       sign_up_user = SignUpUser.new
       allow(sign_up_user).to receive(:create_user)
 
-      sign_up_user.perform({})
+      sign_up_user.perform
 
       expect(sign_up_user).to have_received(:create_user)
     end
@@ -15,15 +15,15 @@ describe SignUpUser do
       sign_up_user = SignUpUser.new
       allow(sign_up_user).to receive(:create_initial_calendar)
 
-      sign_up_user.perform({})
+      sign_up_user.perform
 
       expect(sign_up_user).to have_received(:create_initial_calendar)
     end
 
     it 'returns a user' do
-      sign_up_user = SignUpUser.new
+      sign_up_user = SignUpUser.new(attributes_for(:user))
 
-      result = sign_up_user.perform(attributes_for(:user))
+      result = sign_up_user.perform
 
       expect(result).to be_a(User)
     end
