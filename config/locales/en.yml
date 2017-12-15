@@ -16,6 +16,7 @@ en:
     messages:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
+        empty_permissions: No permissions yet! Invite someone below.
       confirm_delete: Are you sure?
       invitation:
         create: 'Success! %{email} can now accept this invitation.'

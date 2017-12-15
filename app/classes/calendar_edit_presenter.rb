@@ -2,6 +2,7 @@ class CalendarEditPresenter < Keynote::Presenter
   presents :calendar
 
   def permission_list
+    return empty_permissions if permissions.empty?
     build_html do
       ul class: 'current-permissions' do
         permissions.each do |permission|
@@ -44,5 +45,13 @@ class CalendarEditPresenter < Keynote::Presenter
     @_permissions ||= calendar.
       permissions.
       where(level: Permission::INVITATION_LEVELS)
+  end
+
+  def empty_permissions
+    build_html do
+      div.empty do
+        text t('helpers.messages.calendar.empty_permissions')
+      end
+    end
   end
 end

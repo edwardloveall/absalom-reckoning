@@ -17,6 +17,21 @@ RSpec.describe CalendarEditPresenter do
         text: 'Revoke'
       )
     end
+
+    context 'if there are no permissions present' do
+      it 'returns nil' do
+        user = signed_up_user
+        calendar = user.calendars.first
+        presenter = present(:calendar_edit, calendar)
+
+        result = Capybara.string(presenter.permission_list)
+
+        expect(result).to have_css(
+          'div.empty',
+          text: 'No permissions yet! Invite someone below.'
+        )
+      end
+    end
   end
 
   describe '#invitation_list' do
