@@ -1,0 +1,5 @@
+.empty {
+  @extend %tile;
+  color: $light-text-color;
+  margin-top: $base-spacing;
+}
