@@ -27,6 +27,17 @@ describe SignUpUser do
 
       expect(result).to be_a(User)
     end
+
+    context 'with invalid user credentials' do
+      it 'does not create the calendar' do
+        attributes = { email: 'user@example.com', password: nil }
+        calendar_count = Calendar.count
+
+        SignUpUser.perform(attributes)
+
+        expect(Calendar.count).to eq(calendar_count)
+      end
+    end
   end
 
   describe '#create_user' do

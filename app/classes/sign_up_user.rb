@@ -5,7 +5,11 @@ class SignUpUser
 
   def perform(user_params)
     user = create_user(user_params)
-    create_initial_calendar(user: user)
+    ApplicationRecord.transaction do
+      create_initial_calendar(user: user)
+    end
+    user
+  rescue ActiveRecord::RecordInvalid
     user
   end
 
@@ -14,8 +18,8 @@ class SignUpUser
   end
 
   def create_initial_calendar(user:)
-    calendar = Calendar.create(title: 'My Campaign')
-    Permission.create(user: user, calendar: calendar, level: 'owner')
+    calendar = Calendar.create!(title: 'My Campaign')
+    Permission.create!(user: user, calendar: calendar, level: 'owner')
     calendar
   end
 end
