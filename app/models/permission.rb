@@ -8,7 +8,7 @@ class Permission < ApplicationRecord
 
   validates :calendar, presence: true
   validates :level, presence: true, inclusion: { in: LEVELS }
-  validates :user, presence: true
+  validates :user_id, presence: true
 
   def self.own
     %w(owner)

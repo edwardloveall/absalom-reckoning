@@ -13,6 +13,6 @@ RSpec.describe Permission do
     it do
       should validate_inclusion_of(:level).in_array(Permission::LEVELS)
     end
-    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:user_id) }
   end
 end
