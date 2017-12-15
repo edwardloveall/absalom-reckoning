@@ -1,6 +1,7 @@
 class Invitation < ApplicationRecord
   belongs_to :calendar
   belongs_to :owner, class_name: 'User'
+  has_one :permission
 
   scope :pending, -> { where(accepted_at: nil) }
 

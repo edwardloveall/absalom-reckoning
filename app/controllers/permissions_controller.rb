@@ -1,7 +1,7 @@
 class PermissionsController < AuthorizedController
   def create
     invitation = Invitation.find(params[:invitation_id])
-    permission = Permission.new(params_from_invite(invitation))
+    permission = invitation.build_permission(params_from_invite(invitation))
 
     if permission.save
       invitation.accept!

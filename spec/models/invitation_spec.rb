@@ -4,6 +4,7 @@ RSpec.describe Invitation do
   describe 'associations' do
     it { should belong_to(:calendar) }
     it { should belong_to(:owner).class_name('User') }
+    it { should have_one(:permission) }
   end
 
   describe 'validations' do
