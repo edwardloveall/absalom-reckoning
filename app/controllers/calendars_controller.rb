@@ -16,7 +16,7 @@ class CalendarsController < AuthorizedController
     if params[:date].present?
       @presenter.origin_date = ArDate.parse(params[:date])
     else
-      @presenter.origin_date = @calendar.last_edit_date
+      @presenter.origin_date = @calendar.current_date
     end
   end
 

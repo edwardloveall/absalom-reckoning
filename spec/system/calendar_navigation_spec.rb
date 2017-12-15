@@ -13,26 +13,18 @@ RSpec.describe 'User navigates to a calendar' do
     expect(current_path).to eq(calendar_path(calendar))
   end
 
-  it 'is taken to the month that they edited last' do
+  it 'is taken to "today" on the calendar' do
     user = signed_up_user
     sign_in(user)
     calendar = user.calendars.first
+    current_date = ArDate.new(year: 5, month: 3, day: 1)
+    calendar.update(current_date: current_date)
 
     visit calendars_path
     click_on calendar.title
-    click_on('next')
-    month_name = find('main h2').text
-    within('.week:nth-of-type(2) .date:nth-of-type(3)') do
-      click_link('New Event')
-    end
-    fill_form_and_submit(:event, title: 'TPK')
-
-    within('.sidebar') do
-      click_on calendar.title
-    end
 
     within('main') do
-      expect(page).to have_css('h2', text: month_name)
+      expect(page).to have_css('h2', text: 'Pharast 5')
     end
   end
 end

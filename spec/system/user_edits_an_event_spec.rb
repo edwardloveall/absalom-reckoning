@@ -34,12 +34,15 @@ RSpec.describe 'User edits an Event' do
     it 'sees their changes' do
       user = signed_up_user
       sign_in(user)
+      calendar = user.calendars.first
+      calendar.update(current_date: ArDate.new(year: 4711, month: 1, day: 1))
       date = ArDate.new(year: 4711, month: 2, day: 15)
-      event = create(:event, calendar: user.calendars.first, occurred_on: date)
+      event = create(:event, calendar: calendar, occurred_on: date)
 
-      visit calendar_path(user.calendars.first)
+      visit calendar_path(calendar)
+
+      click_on('next')
       click_on(event.title)
-
       form_params = { title: 'A new title' }
       fill_form_and_submit(:event, :update, form_params)
 
