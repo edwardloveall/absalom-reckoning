@@ -12,7 +12,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 module SystemHelpers
   include Formulaic::Dsl
-  include Monban::Test::Helpers
+  include Oath::Test::Helpers
 end
 
 RSpec.configure do |config|
@@ -23,7 +23,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.after(:each) do
-    Monban.test_reset!
+    Oath.test_reset!
   end
 
   config.after(:suite) do
@@ -32,4 +32,4 @@ RSpec.configure do |config|
 end
 
 ActiveRecord::Migration.maintain_test_schema!
-Monban.test_mode!
+Oath.test_mode!

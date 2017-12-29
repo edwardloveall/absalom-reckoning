@@ -20,7 +20,7 @@ class SignUpUser
   end
 
   def create_user(user_params)
-    Monban.config.sign_up_service.new(user_params).perform
+    Oath.config.sign_up_service.new(user_params).perform
   end
 
   def create_initial_calendar(user:)

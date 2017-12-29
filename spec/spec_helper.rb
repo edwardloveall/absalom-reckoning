@@ -22,7 +22,7 @@ RSpec.configure do |config|
   config.order = :random
 
   config.after :each do
-    Monban.test_reset!
+    Oath.test_reset!
   end
 end
 

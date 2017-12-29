@@ -41,9 +41,9 @@ describe SignUpUser do
   end
 
   describe '#create_user' do
-    it 'uses monban to create a user' do
+    it 'uses Oath to create a user' do
       service = double(:sign_up)
-      allow(Monban::Services::SignUp).to receive(:new).and_return(service)
+      allow(Oath::Services::SignUp).to receive(:new).and_return(service)
       allow(service).to receive(:perform)
 
       SignUpUser.new.create_user({})
