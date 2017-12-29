@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208204159) do
+ActiveRecord::Schema.define(version: 20171229192132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20171208204159) do
     t.index ["calendar_id"], name: "index_invitations_on_calendar_id"
     t.index ["email"], name: "index_invitations_on_email"
     t.index ["owner_id"], name: "index_invitations_on_owner_id"
+  end
+
+  create_table "password_resets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "token"
+    t.index ["user_id"], name: "index_password_resets_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
