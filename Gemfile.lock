@@ -143,15 +143,15 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
-    monban (1.1.0)
-      bcrypt
-      rails
-      warden
-    monban-generators (0.0.6)
-      monban (>= 0.0.12)
     nio4r (2.0.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    oath (1.1.0)
+      bcrypt
+      rails
+      warden
+    oath-generators (1.0.1)
+      oath (>= 0.0.12)
     parser (2.3.1.1)
       ast (~> 2.2)
     pg (0.20.0)
@@ -299,8 +299,8 @@ DEPENDENCIES
   keynote
   launchy
   listen
-  monban
-  monban-generators
+  oath
+  oath-generators
   parser (= 2.3.1.1)
   pg
   pry-byebug
@@ -325,4 +325,4 @@ RUBY VERSION
    ruby 2.3.5p376
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

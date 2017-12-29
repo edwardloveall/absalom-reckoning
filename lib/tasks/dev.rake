@@ -10,7 +10,7 @@ namespace :dev do
   end
 
   def create_user
-    Monban.config.sign_up_service.new(
+    Oath.config.sign_up_service.new(
       email: 'edward@edwardloveall.com',
       password: '12345'
     ).perform

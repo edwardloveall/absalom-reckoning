@@ -17,14 +17,14 @@ end
 
 RSpec.configure do |config|
   config.include Features, type: :feature
-  config.include Monban::Test::Helpers, type: :feature
+  config.include Oath::Test::Helpers, type: :feature
   config.include SignedUpUser, type: :feature
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
 
   config.after(:each) do
-    Monban.test_reset!
+    Oath.test_reset!
   end
 
   config.after(:suite) do
@@ -33,7 +33,7 @@ RSpec.configure do |config|
 end
 
 ActiveRecord::Migration.maintain_test_schema!
-Monban.test_mode!
+Oath.test_mode!
 
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)

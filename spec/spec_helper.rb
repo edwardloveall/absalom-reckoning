@@ -19,11 +19,11 @@ RSpec.configure do |config|
   end
 
   config.example_status_persistence_file_path = 'tmp/rspec_examples.txt'
-  config.include Monban::Test::Helpers, type: :feature
+  config.include Oath::Test::Helpers, type: :feature
   config.order = :random
 
   config.after :each do
-    Monban.test_reset!
+    Oath.test_reset!
   end
 end
 
