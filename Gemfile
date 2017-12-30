@@ -12,6 +12,7 @@ gem 'parser', '2.3.1.1'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.1.0'
+gem 'recipient_interceptor'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'time_for_a_boolean',

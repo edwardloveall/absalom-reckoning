@@ -23,3 +23,7 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 end
+
+if ENV['EMAIL_RECIPIENTS'].present?
+  Mail.register_interceptor(RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS']))
+end
