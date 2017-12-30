@@ -1,0 +1,10 @@
+<div class="password-reset">
+  <h2>Reset your password</h2>
+
+  <p>To be emailed a link to reset your password, please enter your email address.</p>
+
+  <%= simple_form_for @password_reset do |form| %>
+    <%= form.input :email %>
+    <%= form.submit %>
+  <% end %>
+</div>

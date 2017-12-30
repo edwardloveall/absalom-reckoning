@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :password_resets, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :password_resets, only: [:edit, :update]
+  end
   resources :invitations, only: [:index]
   resources :permissions, only: [:create]
   resources :calendars do

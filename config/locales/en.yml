@@ -13,6 +13,8 @@ en:
         cancel: Cancel
         delete: Delete
         new: New Event
+      password_reset:
+        new: Reset Password
     messages:
       calendar:
         confirm_delete: Are you sure? This will also delete all events associated with the calendar.
@@ -40,6 +42,9 @@ en:
       invitation:
         create: Send Invitation
         destroy: Delete
+      password_reset:
+        create: Reset Password
+        update: Update Password
       permission:
         create: Accept
         destroy: Revoke
@@ -48,6 +53,9 @@ en:
         destroy: Sign out
       user:
         create: Sign up
+  mail:
+    password_reset:
+      subject: Absalom Reckoning Password Reset
   titles:
     application: Absalom Reckoning
     current_day: Today

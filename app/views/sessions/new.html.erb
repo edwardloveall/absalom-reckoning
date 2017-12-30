@@ -1,5 +1,8 @@
 <%= simple_form_for :session, url: session_path do |form| %>
   <%= form.input :email %>
   <%= form.input :password %>
-  <%= form.submit t('helpers.submit.session.create') %>
+  <div class="actions">
+    <%= form.submit t('helpers.submit.session.create') %>
+    <%= link_to t('helpers.action.password_reset.new'), new_password_reset_path %>
+  </div>
 <% end %>
