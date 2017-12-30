@@ -12,12 +12,12 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @password_reset = PasswordReset.find_by!(token: params[:id], user_id: params[:user_id])
+    @password_reset = find_password_reset
     @user = @password_reset.user
   end
 
   def update
-    @password_reset = PasswordReset.find_by!(token: params[:id], user_id: params[:user_id])
+    @password_reset = find_password_reset
     @user = @password_reset.user
 
     reset_password(@user, params[:password_reset][:password])
@@ -28,5 +28,11 @@ class PasswordResetsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  private
+
+  def find_password_reset
+    PasswordReset.find_by!(token: params[:id], user_id: params[:user_id])
   end
 end
