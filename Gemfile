@@ -3,7 +3,7 @@ ruby '2.3.5'
 
 gem 'autoprefixer-rails'
 gem 'bourbon'
-gem 'bootsnap', require: false
+gem 'bootsnap', '~> 1.2.0.pre', require: false
 gem 'flutie'
 gem 'json'
 gem 'keynote'
